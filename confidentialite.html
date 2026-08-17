@@ -34,14 +34,7 @@
     .nav-group:hover .nav-chevron { transform: rotate(180deg); }
   </style>
   <!-- Google Analytics + Consent Mode (CNIL) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', { analytics_storage: 'denied' });
-    if (localStorage.getItem('tf_cookie_consent') === 'accepted') {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-    }
-  </script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-39RE8T7LE5"></script>
   <script>gtag('js', new Date()); gtag('config', 'G-39RE8T7LE5');</script>
 </head>
@@ -112,7 +105,6 @@
         <ul class="mt-3 space-y-1 pl-5 list-disc marker:text-brand-500">
           <li>Envoi de la newsletter hebdomadaire (avec consentement explicite)</li>
           <li>Traitement des demandes de contact ou de contribution</li>
-          <li>Amélioration de l'expérience utilisateur et analyse d'audience anonymisée</li>
           <li>Respect des obligations légales</li>
         </ul>
       </section>
@@ -121,8 +113,7 @@
         <h2 class="text-lg font-bold text-gray-900 mb-3">4. Base légale</h2>
         <p>Les traitements reposent sur :</p>
         <ul class="mt-3 space-y-1 pl-5 list-disc marker:text-brand-500">
-          <li><strong>Le consentement</strong> pour la newsletter et les cookies non essentiels.</li>
-          <li><strong>L'intérêt légitime</strong> pour l'analyse d'audience anonymisée et la sécurité du site.</li>
+          <li><strong>Le consentement</strong> pour la newsletter.</li>
           <li><strong>L'exécution d'un contrat</strong> pour répondre aux demandes de contact ou de partenariat.</li>
         </ul>
       </section>
@@ -240,7 +231,6 @@
     </div>
   </footer>
 
-  <script src="/cookie-consent.js"></script>
   <script>document.getElementById('menu-btn').addEventListener('click',()=>document.getElementById('mobile-menu').classList.toggle('hidden'));</script>
 </body>
 </html>

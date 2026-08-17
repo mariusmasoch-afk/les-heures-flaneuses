@@ -63,14 +63,7 @@
   </style>
   <script src="/animations.js" defer></script>
   <!-- Google Analytics + Consent Mode (CNIL) -->
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('consent', 'default', { analytics_storage: 'denied' });
-    if (localStorage.getItem('tf_cookie_consent') === 'accepted') {
-      gtag('consent', 'update', { analytics_storage: 'granted' });
-    }
-  </script>
+  <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-39RE8T7LE5"></script>
   <script>gtag('js', new Date()); gtag('config', 'G-39RE8T7LE5');</script>
   <script>
@@ -321,6 +314,5 @@
     }
     loadArticles();
   </script>
-  <script src="/cookie-consent.js"></script>
 </body>
 </html>
