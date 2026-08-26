@@ -435,6 +435,46 @@
     }
     btn.disabled = false; btn.textContent = "S'abonner";
   }
+
+  // ---- POPUP NEWSLETTER ----
+  async function handleNewsletterPopup(e) {
+    e.preventDefault();
+    const email = document.getElementById('np-email-input').value.trim();
+    const btn   = document.getElementById('np-btn');
+    document.getElementById('np-success').classList.add('hidden');
+    document.getElementById('np-error').classList.add('hidden');
+    btn.disabled = true; btn.textContent = '…';
+
+    const { error } = await db.from('abonnes').insert([{ email }]);
+    if (error) {
+      document.getElementById('np-error').classList.remove('hidden');
+      btn.disabled = false; btn.textContent = "S'abonner";
+    } else {
+      document.getElementById('np-form').classList.add('hidden');
+      document.getElementById('np-success').classList.remove('hidden');
+      localStorage.setItem('lhf_newsletter_subscribed', '1');
+      setTimeout(closeNewsletterPopup, 1800);
+    }
+  }
+
+  function closeNewsletterPopup() {
+    document.getElementById('np-overlay').classList.remove('open');
+    localStorage.setItem('lhf_newsletter_popup_seen', Date.now().toString());
+  }
+
+  (function initNewsletterPopup() {
+    const subscribed = localStorage.getItem('lhf_newsletter_subscribed');
+    const lastSeen   = parseInt(localStorage.getItem('lhf_newsletter_popup_seen') || '0', 10);
+    const fourteenDays = 14 * 24 * 60 * 60 * 1000;
+    if (subscribed || (Date.now() - lastSeen) < fourteenDays) return;
+
+    const overlay = document.getElementById('np-overlay');
+    setTimeout(() => overlay.classList.add('open'), 1500);
+
+    document.getElementById('np-close').addEventListener('click', closeNewsletterPopup);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeNewsletterPopup(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && overlay.classList.contains('open')) closeNewsletterPopup(); });
+  })();
   </script>
 
   <script>
