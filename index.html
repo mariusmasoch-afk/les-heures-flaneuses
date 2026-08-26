@@ -119,6 +119,28 @@
 
 <body class="bg-white text-gray-900 font-sans antialiased">
 
+  <!-- POPUP NEWSLETTER -->
+  <div id="np-overlay" role="dialog" aria-modal="true" aria-labelledby="np-title">
+    <div id="np-card">
+      <button id="np-close" aria-label="Fermer">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+      <img src="/favicon.svg" alt="" style="height:44px;width:44px" class="rounded-xl mx-auto mb-4" />
+      <h2 id="np-title" class="text-xl font-bold text-gray-900 tracking-tight leading-snug">Les meilleures expériences,<br>directement dans ta boîte mail</h2>
+      <p class="text-sm text-gray-500 mt-2">Un mail dès qu'un nouvel article est publié. Pas de spam, désinscription en un clic.</p>
+      <form id="np-form" class="flex flex-col gap-3 mt-5" onsubmit="handleNewsletterPopup(event)">
+        <label for="np-email-input" class="sr-only">Adresse e-mail</label>
+        <input id="np-email-input" type="email" placeholder="ton@email.com" required
+          class="w-full rounded-xl px-4 py-3 bg-gray-50 border border-gray-200 text-gray-900 placeholder-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 transition" />
+        <button type="submit" id="np-btn"
+          class="w-full px-6 py-3 rounded-xl bg-gray-900 hover:bg-gray-700 text-white font-semibold text-sm transition-colors">S'abonner</button>
+      </form>
+      <p id="np-success" class="hidden text-sm text-emerald-600 font-medium mt-3">✓ Inscription confirmée !</p>
+      <p id="np-error"   class="hidden text-sm text-red-500 mt-3">Cette adresse est déjà inscrite ou une erreur est survenue.</p>
+      <p class="text-xs text-gray-400 mt-4">En t'abonnant, tu acceptes notre <a href="confidentialite.html" class="underline hover:text-gray-600">politique de confidentialité</a>.</p>
+    </div>
+  </div>
+
   <!-- HEADER -->
   <header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-100">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-6">
