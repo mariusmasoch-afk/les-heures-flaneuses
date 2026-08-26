@@ -45,6 +45,28 @@
     .nav-link::after { content:''; position:absolute; left:0; bottom:-2px; height:2px; width:0; background:#f59e0b; transition:width .22s ease; }
     .nav-link:hover::after { width:100%; }
 
+    /* Popup newsletter */
+    #np-overlay {
+      position: fixed; inset: 0; background: rgba(17,17,17,.6); backdrop-filter: blur(2px);
+      display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 200;
+      opacity: 0; visibility: hidden; transition: opacity .3s ease, visibility .3s;
+    }
+    #np-overlay.open { opacity: 1; visibility: visible; }
+    #np-card {
+      background: #fff; border-radius: 20px; max-width: 420px; width: 100%; position: relative;
+      padding: 40px 32px 32px; text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,.35);
+      transform: translateY(16px) scale(.97); transition: transform .3s ease;
+    }
+    #np-overlay.open #np-card { transform: translateY(0) scale(1); }
+    #np-close {
+      position: absolute; top: 14px; right: 14px; width: 30px; height: 30px; border-radius: 999px;
+      display: flex; align-items: center; justify-content: center; color: #9ca3af; transition: background .15s, color .15s;
+    }
+    #np-close:hover { background: #f3f4f6; color: #111827; }
+    @media (prefers-reduced-motion: reduce) {
+      #np-overlay, #np-card { transition: none !important; }
+    }
+
     /* Hero plein écran */
     #hero { position:relative; width:100%; height:78vh; min-height:420px; max-height:820px; overflow:hidden; background:#111; }
     #hero-slides { position:absolute; inset:0; }
