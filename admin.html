@@ -1282,6 +1282,40 @@
     if (e.target.closest('button')) e.preventDefault();
   });
 
+  // --- Liste à puces : chaque ligne de la sélection devient une puce ---
+  function toggleBulletList() {
+    const sel = window.getSelection();
+    if (!sel.rangeCount) return;
+    const range = sel.getRangeAt(0);
+
+    // Pas de sélection (juste un curseur) : comportement natif (ex. sortir d'une liste)
+    if (range.collapsed) {
+      document.execCommand('insertUnorderedList');
+      return;
+    }
+
+    const frag = range.cloneContents();
+    const holder = document.createElement('div');
+    holder.appendChild(frag);
+    let html = holder.innerHTML;
+
+    // Normalise les retours à la ligne (<br>, fin de <div>/<p>) en marqueur commun
+    html = html.replace(/<br\s*\/?>/gi, '\n');
+    html = html.replace(/<\/(div|p)>\s*<\1[^>]*>/gi, '\n');
+    html = html.replace(/<\/?(div|p)[^>]*>/gi, '');
+
+    const lines = html.split('\n').map(l => l.trim()).filter(l => l.length > 0);
+
+    // Une seule ligne sélectionnée : comportement natif
+    if (lines.length <= 1) {
+      document.execCommand('insertUnorderedList');
+      return;
+    }
+
+    const listHtml = '<ul>' + lines.map(l => `<li>${l}</li>`).join('') + '</ul>';
+    document.execCommand('insertHTML', false, listHtml);
+  }
+
   // --- Word count & read time ---
   function updateWordCount() {
     const text = document.getElementById('editor-body').innerText.trim();
