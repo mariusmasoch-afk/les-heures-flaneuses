@@ -1282,13 +1282,20 @@
     if (e.target.closest('button')) e.preventDefault();
   });
 
-  // --- Liste à puces : chaque ligne de la sélection devient une puce ---
+  // --- Liste à puces : comportement façon Word (bascule ON/OFF, une puce par ligne) ---
   function toggleBulletList() {
     const sel = window.getSelection();
     if (!sel.rangeCount) return;
+
+    // Déjà une liste à puces : on la retire (bascule, comme dans Word)
+    if (document.queryCommandState('insertUnorderedList')) {
+      document.execCommand('insertUnorderedList');
+      return;
+    }
+
     const range = sel.getRangeAt(0);
 
-    // Pas de sélection (juste un curseur) : comportement natif (ex. sortir d'une liste)
+    // Pas de sélection (juste un curseur) : transforme la ligne courante
     if (range.collapsed) {
       document.execCommand('insertUnorderedList');
       return;
