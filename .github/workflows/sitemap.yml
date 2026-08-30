@@ -1,0 +1,36 @@
+name: Régénérer le sitemap
+
+on:
+  schedule:
+    # Toutes les 6 heures — les publications se font via Supabase, jamais via git,
+    # donc rien d'autre ne peut déclencher la mise à jour du sitemap.
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  update-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Générer sitemap.xml
+        run: python3 scripts/generate_sitemap.py
+
+      - name: Commit si changement
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- sitemap.xml; then
+            git add sitemap.xml
+            git commit -m "Mise à jour automatique du sitemap"
+            git push
+          else
+            echo "Aucun changement du sitemap."
+          fi

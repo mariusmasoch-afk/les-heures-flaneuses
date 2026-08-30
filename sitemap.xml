@@ -7,7 +7,7 @@
     <priority>1.0</priority>
   </url>
 
-<url>
+  <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=mode</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -47,6 +47,48 @@
     <loc>https://lesheuresflaneuses.fr/confidentialite.html</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=garmin-forerunner-170-la-montre-running-qui-democratise-lamo</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=tissot-prc-100-solar-quand-lhorlogerie-suisse-sempare-de-len</loc>
+    <lastmod>2026-08-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=test-avis-baltic-aquascaphe-lelegance-neo-retro-a-la-francai</loc>
+    <lastmod>2026-08-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=futuroscope-plongee-technologique-et-sensorielle-au-cur-de-l</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=traces-de-trail-des-gorges-du-chambon-une-immersion-brute-en</loc>
+    <lastmod>2026-07-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=pin-traveler-lapplication-ultime-pour-cartographier-et-docum</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 
 </urlset>
