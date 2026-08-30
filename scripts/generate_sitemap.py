@@ -42,8 +42,18 @@ def fetch_articles():
             "Authorization": f"Bearer {SUPABASE_ANON}",
         },
     )
-    with urllib.request.urlopen(req, timeout=20) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.URLError as exc:
+        # Certificats système absents/incomplets (fréquent avec python.org sur macOS) :
+        # on retente avec le magasin de certificats de certifi si disponible.
+        if isinstance(exc.reason, ssl.SSLCertVerificationError):
+            import certifi
+            ctx = ssl.create_default_context(cafile=certifi.where())
+            with urllib.request.urlopen(req, context=ctx, timeout=20) as resp:
+                return json.loads(resp.read().decode("utf-8"))
+        raise
 
 
 def lastmod_from(date_creation):
