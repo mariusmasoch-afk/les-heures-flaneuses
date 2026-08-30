@@ -6,6 +6,7 @@ sont récupérées dynamiquement (les publications se font uniquement côté
 Supabase, jamais via git, donc rien d'autre ne peut garder le sitemap à jour).
 """
 import json
+import ssl
 import urllib.request
 from datetime import datetime, timezone
 from xml.sax.saxutils import escape
