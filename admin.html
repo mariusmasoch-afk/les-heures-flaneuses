@@ -1277,6 +1277,11 @@
     savedRange = null;
   }
 
+  // --- Empêche les boutons de la barre d'outils de voler le focus/la sélection de l'éditeur ---
+  document.getElementById('editor-toolbar').addEventListener('mousedown', function(e) {
+    if (e.target.closest('button')) e.preventDefault();
+  });
+
   // --- Word count & read time ---
   function updateWordCount() {
     const text = document.getElementById('editor-body').innerText.trim();
