@@ -859,15 +859,7 @@
 =============================================================== -->
 <script>
 
-  // ============================================================
-  // SUPABASE — Colle ici tes identifiants (Project Settings > API)
-  // ============================================================
-  const SUPABASE_URL  = 'https://yrgylnmhqcimwgmjponj.supabase.co';
-  const SUPABASE_ANON = 'sb_publishable__SdwJpIWNVfPfVNX7eFc-w_mQA8av6H';
-
-  const { createClient } = supabase;
-  const db = createClient(SUPABASE_URL, SUPABASE_ANON);
-  // ============================================================
+  // SUPABASE_URL, SUPABASE_ANON et db sont déjà déclarés par le script de la gate d'authentification, plus haut.
 
   // --- Navigation entre les vues ---
   const VIEW_META = {
