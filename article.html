@@ -447,8 +447,23 @@
       // SEO & maillage
       generateFaqSchema();
       loadRelatedArticles(a.categorie, a.slug);
+      sanitizeArticleBodyStyles();
       applyFakeHeadings();
       applyDropCap();
+    }
+
+    // Neutralise les styles parasites (line-height, font-family) que certains textes collés
+    // depuis d'autres sites/outils IA embarquent en dur, et qui écrasent le style du site.
+    function sanitizeArticleBodyStyles() {
+      const body = document.querySelector('.article-content');
+      if (!body) return;
+      body.querySelectorAll('[style]').forEach(el => {
+        el.style.removeProperty('line-height');
+        el.style.removeProperty('font-family');
+        Array.from(el.style).forEach(prop => {
+          if (prop.startsWith('--tw-')) el.style.removeProperty(prop);
+        });
+      });
     }
 
     // Repère les blocs qui ne sont que du texte en gras (faux titres) pour leur donner
