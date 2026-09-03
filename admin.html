@@ -1096,7 +1096,6 @@
   function insertLink() {
     const url = prompt('URL du lien :');
     if (!url) return;
-    const sponsored = confirm('Est-ce un lien sponsorisé / partenariat rémunéré avec cette marque ?\n\nOK = Oui (ajoute rel="sponsored", conforme aux règles Google)\nAnnuler = Non, lien éditorial normal');
 
     document.execCommand('createLink', false, url);
 
@@ -1115,7 +1114,7 @@
     }
     if (a) {
       a.setAttribute('target', '_blank');
-      a.setAttribute('rel', sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer');
+      a.setAttribute('rel', 'noopener noreferrer');
     }
   }
 
