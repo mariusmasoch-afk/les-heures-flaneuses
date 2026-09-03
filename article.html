@@ -44,7 +44,17 @@
     .article-content h2 { font-size:1.5rem; font-weight:700; color:#111827; margin:2rem 0 .75rem; }
     .article-content h3 { font-size:1.2rem; font-weight:700; color:#111827; margin:1.5rem 0 .5rem; }
     .article-content h4 { font-size:1rem; font-weight:600; color:#374151; margin:1.25rem 0 .4rem; }
-    .article-content p  { margin:.9rem 0; line-height:1.8; color:#374151; }
+    /* L'éditeur produit des <div> (pas des <p>) pour chaque paragraphe : on les stylise pareil,
+       en excluant les blocs spéciaux (contenteditable="false" : verdict, FAQ, notation, encadrés). */
+    .article-content p,
+    .article-content > div:not([contenteditable="false"]) {
+      margin:.9rem 0; line-height:1.85; color:#374151; font-size:1.0625rem;
+    }
+    /* Faux titres : texte entièrement en gras (cet éditeur ne pose pas toujours de vraie balise Hx) */
+    .article-content .fake-heading {
+      font-size:1.3rem !important; font-weight:700; color:#111827;
+      margin:2.25rem 0 .75rem !important; line-height:1.35 !important;
+    }
     .article-content ul, .article-content ol { margin:.9rem 0 .9rem 1.5rem; }
     .article-content ul { list-style:disc; }
     .article-content ol { list-style:decimal; }
