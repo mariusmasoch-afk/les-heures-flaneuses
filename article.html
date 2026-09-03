@@ -450,7 +450,11 @@
         if (SKIP_TAGS.has(child.tagName)) continue;
         if (SKIP_CLASSES.some(c => child.classList.contains(c))) continue;
         if (child.querySelector('img, iframe')) continue;
-        if (child.textContent.trim().length < 20) continue;
+        const text = child.textContent.trim();
+        if (text.length < 20) continue;
+        // Ignore les faux titres composés uniquement de texte en gras (pas de vraie balise Hx dans cet éditeur)
+        const bold = child.querySelector('b, strong');
+        if (bold && bold.textContent.trim() === text) continue;
         child.classList.add('drop-cap');
         break;
       }
