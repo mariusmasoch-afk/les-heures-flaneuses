@@ -402,6 +402,9 @@
     window.addEventListener('pointerup', cfPointerUp);
     cf.addEventListener('click', cfClick);
     cf.addEventListener('wheel', cfWheel, { passive: false });
+    cf.addEventListener('touchstart', cfTouchStart, { passive: true });
+    cf.addEventListener('touchmove', cfTouchMove, { passive: false });
+    cf.addEventListener('touchend', cfTouchEnd);
     cf.addEventListener('keydown', cfKeydown);
     document.getElementById('cf-prev').addEventListener('click', () => cfGoTo(Math.round(cfIndex) - 1));
     document.getElementById('cf-next').addEventListener('click', () => cfGoTo(Math.round(cfIndex) + 1));
