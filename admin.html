@@ -1095,7 +1095,28 @@
 
   function insertLink() {
     const url = prompt('URL du lien :');
-    if (url) document.execCommand('createLink', false, url);
+    if (!url) return;
+    const sponsored = confirm('Est-ce un lien sponsorisé / partenariat rémunéré avec cette marque ?\n\nOK = Oui (ajoute rel="sponsored", conforme aux règles Google)\nAnnuler = Non, lien éditorial normal');
+
+    document.execCommand('createLink', false, url);
+
+    // Retrouver le <a> qui vient d'être créé pour lui ajouter target/rel
+    // (createLink ne pose que le href, rien d'autre)
+    const sel = window.getSelection();
+    let a = null;
+    if (sel.rangeCount) {
+      let node = sel.anchorNode;
+      while (node && node.nodeName !== 'A') node = node.parentNode;
+      a = node;
+    }
+    if (!a) {
+      a = Array.from(document.querySelectorAll('#editor-body a'))
+        .find(el => el.getAttribute('href') === url && !el.target);
+    }
+    if (a) {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', sponsored ? 'noopener noreferrer sponsored' : 'noopener noreferrer');
+    }
   }
 
   function insertHR() {
