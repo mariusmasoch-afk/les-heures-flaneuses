@@ -1263,17 +1263,56 @@
 
   function handleEditorPaste(e) {
     const items = e.clipboardData && e.clipboardData.items;
-    if (!items) return;
-    for (const item of items) {
-      if (item.type.startsWith('image/')) {
-        e.preventDefault();
-        const file = item.getAsFile();
-        const sel = window.getSelection();
-        const range = sel && sel.rangeCount > 0 ? sel.getRangeAt(0).cloneRange() : null;
-        if (range) uploadAndInsertImage(file, range);
-        return;
+    if (items) {
+      for (const item of items) {
+        if (item.type.startsWith('image/')) {
+          e.preventDefault();
+          const file = item.getAsFile();
+          const sel = window.getSelection();
+          const range = sel && sel.rangeCount > 0 ? sel.getRangeAt(0).cloneRange() : null;
+          if (range) uploadAndInsertImage(file, range);
+          return;
+        }
       }
     }
+
+    // Texte/HTML collé depuis un autre site ou un outil IA : on retire tous les styles
+    // parasites (police, interlignage, variables Tailwind…) avant insertion, pour ne garder
+    // que la mise en forme utile (gras, italique, liens, listes…).
+    e.preventDefault();
+    const html = e.clipboardData.getData('text/html');
+    if (html) {
+      document.execCommand('insertHTML', false, sanitizePastedHTML(html));
+    } else {
+      const text = e.clipboardData.getData('text/plain');
+      document.execCommand('insertText', false, text);
+    }
+  }
+
+  function sanitizePastedHTML(html) {
+    const ALLOWED_TAGS = new Set(['P','DIV','SPAN','B','STRONG','I','EM','U','A','UL','OL','LI','BR','H2','H3','H4','BLOCKQUOTE']);
+    const doc = new DOMParser().parseFromString(html, 'text/html');
+
+    function clean(node) {
+      Array.from(node.childNodes).forEach(child => {
+        if (child.nodeType === 1) { // élément
+          if (!ALLOWED_TAGS.has(child.tagName)) {
+            // Balise non autorisée (span Google Docs, style, script…) : on garde son contenu, pas la balise
+            while (child.firstChild) node.insertBefore(child.firstChild, child);
+            node.removeChild(child);
+            return;
+          }
+          const keepHref = child.tagName === 'A' ? child.getAttribute('href') : null;
+          Array.from(child.attributes).forEach(attr => child.removeAttribute(attr.name));
+          if (keepHref) child.setAttribute('href', keepHref);
+          clean(child);
+        } else if (child.nodeType !== 3) { // ni texte ni élément (commentaires…)
+          node.removeChild(child);
+        }
+      });
+    }
+    clean(doc.body);
+    return doc.body.innerHTML;
   }
 
   let savedRange = null;
