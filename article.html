@@ -90,8 +90,8 @@
     .share-btn:hover { color:#f59e0b; transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
     #share-toast { position:fixed; right:20px; bottom:80px; z-index:41; background:#111827; color:#fff; font-size:.75rem; font-weight:500; padding:.5rem .8rem; border-radius:.6rem; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s; pointer-events:none; }
     #share-toast.show { opacity:1; transform:translateY(0); }
-    /* Lettrine sur le premier paragraphe du corps de l'article */
-    .article-content > p:first-of-type::first-letter {
+    /* Lettrine sur le premier bloc de texte du corps de l'article */
+    .article-content .drop-cap::first-letter {
       float:left; font-family:Georgia,'Times New Roman',serif; font-size:3.6rem; line-height:.82;
       font-weight:700; color:#f59e0b; padding:.25rem .5rem 0 0;
     }
