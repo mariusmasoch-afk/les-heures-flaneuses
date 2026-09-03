@@ -502,6 +502,39 @@
     }
 
     loadArticle();
+
+    // --- Barre de progression de lecture ---
+    window.addEventListener('scroll', () => {
+      const el = document.getElementById('article-content');
+      const bar = document.getElementById('reading-progress');
+      if (!el || el.classList.contains('hidden')) { bar.style.width = '0%'; return; }
+      const rect = el.getBoundingClientRect();
+      const total = el.offsetHeight - window.innerHeight;
+      const scrolled = -rect.top;
+      const pct = total > 0 ? Math.min(100, Math.max(0, (scrolled / total) * 100)) : 0;
+      bar.style.width = pct + '%';
+    }, { passive: true });
+
+    // --- Partage ---
+    function shareLinkedIn() {
+      const url = encodeURIComponent(window.location.href);
+      window.open(`https://www.linkedin.com/sharing/share-offsite/?url=${url}`, '_blank', 'noopener,noreferrer');
+    }
+    async function copyArticleLink() {
+      try {
+        await navigator.clipboard.writeText(window.location.href);
+      } catch {
+        const input = document.createElement('input');
+        input.value = window.location.href;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand('copy');
+        input.remove();
+      }
+      const toast = document.getElementById('share-toast');
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 1800);
+    }
   </script>
   <script src="/animations.js" defer></script>
   <script>document.getElementById('menu-btn').addEventListener('click',()=>document.getElementById('mobile-menu').classList.toggle('hidden'));</script>
