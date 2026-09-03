@@ -437,6 +437,23 @@
       // SEO & maillage
       generateFaqSchema();
       loadRelatedArticles(a.categorie, a.slug);
+      applyDropCap();
+    }
+
+    // Lettrine sur le premier bloc de texte réel du corps (le contenu peut mélanger <div>/<p>)
+    function applyDropCap() {
+      const body = document.querySelector('.article-content');
+      if (!body) return;
+      const SKIP_TAGS = new Set(['H2','H3','H4','BLOCKQUOTE','UL','OL','HR','IMG','IFRAME']);
+      const SKIP_CLASSES = ['verdict-block', 'faq-block'];
+      for (const child of body.children) {
+        if (SKIP_TAGS.has(child.tagName)) continue;
+        if (SKIP_CLASSES.some(c => child.classList.contains(c))) continue;
+        if (child.querySelector('img, iframe')) continue;
+        if (child.textContent.trim().length < 20) continue;
+        child.classList.add('drop-cap');
+        break;
+      }
     }
 
     async function loadRelatedArticles(categorie, currentSlug) {
