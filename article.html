@@ -447,9 +447,25 @@
       // SEO & maillage
       generateFaqSchema();
       loadRelatedArticles(a.categorie, a.slug);
+      stripEmptyBlocks();
       sanitizeArticleBodyStyles();
       applyFakeHeadings();
       applyDropCap();
+    }
+
+    // Retire les paragraphes/div vides (restes d'appuis sur Entrée dans l'éditeur) qui créent
+    // de gros sauts de ligne blancs entre les sections, en laissant intacts les blocs spéciaux
+    // (verdict, FAQ, notation, encadrés).
+    function stripEmptyBlocks() {
+      const body = document.querySelector('.article-content');
+      if (!body) return;
+      body.querySelectorAll('p, div').forEach(el => {
+        if (el.hasAttribute('contenteditable')) return;
+        if (el.closest('[contenteditable="false"]')) return;
+        if (el.querySelector('img, iframe, hr')) return;
+        const text = el.textContent.replace(/ /g, ' ').trim();
+        if (text === '') el.remove();
+      });
     }
 
     // Neutralise les styles parasites (line-height, font-family) que certains textes collés
