@@ -320,9 +320,9 @@
       if (!ld) { ld = document.createElement('script'); ld.id = 'schema-ld'; ld.type = 'application/ld+json'; document.head.appendChild(ld); }
       ld.textContent = JSON.stringify(schema);
 
-      // Image de couverture
+      // Image de couverture — plein cadre (sort du conteneur étroit)
       const coverHTML = a.image_url
-        ? `<div class="w-full h-80 sm:h-[480px] rounded-2xl overflow-hidden mb-10 bg-gray-100">
+        ? `<div class="full-bleed h-64 sm:h-96 md:h-[480px] overflow-hidden mb-10 bg-gray-100">
              <img src="${a.image_url}" alt="${a.titre}" class="w-full h-full object-cover" />
            </div>`
         : '';
