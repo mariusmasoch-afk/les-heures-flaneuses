@@ -1313,6 +1313,9 @@
     if (e.target.closest('button')) e.preventDefault();
   });
 
+  // --- Utilise de vraies balises <p> pour chaque paragraphe (au lieu de <div> par défaut) ---
+  document.execCommand('defaultParagraphSeparator', false, 'p');
+
   // --- Liste à puces : comportement façon Word (bascule ON/OFF, une puce par ligne) ---
   function toggleBulletList() {
     const sel = window.getSelection();
