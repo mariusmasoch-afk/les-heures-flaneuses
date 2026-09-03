@@ -467,6 +467,7 @@
   }
 
   function cfPointerDown(e) {
+    if (e.pointerType === 'touch') return; // le tactile est géré par les gestionnaires touch (défilement vertical)
     cfDragging = true;
     cfDidDrag = false;
     cfStartX = e.clientX;
@@ -500,11 +501,74 @@
       cfGoTo(idx);
     }
   }
+
+  // Molette (souris/trackpad) : fait défiler les cartes, puis relâche la main au scroll
+  // normal de la page une fois la première/dernière carte atteinte.
+  let cfWheelAccum = 0;
   function cfWheel(e) {
-    if (Math.abs(e.deltaX) <= Math.abs(e.deltaY)) return;
+    const delta = Math.abs(e.deltaY) >= Math.abs(e.deltaX) ? e.deltaY : e.deltaX;
+    const dir = delta > 0 ? 1 : -1;
+    const atStart = Math.round(cfIndex) <= 0 && dir < 0;
+    const atEnd   = Math.round(cfIndex) >= cfArticles.length - 1 && dir > 0;
+    if (atStart || atEnd) { cfWheelAccum = 0; return; } // laisse la page scroller normalement
     e.preventDefault();
-    cfGoTo(Math.round(cfIndex) + (e.deltaX > 0 ? 1 : -1));
+    cfWheelAccum += delta;
+    if (Math.abs(cfWheelAccum) > 45) {
+      cfGoTo(Math.round(cfIndex) + (cfWheelAccum > 0 ? 1 : -1));
+      cfWheelAccum = 0;
+    }
   }
+
+  // Doigt (mobile) : un balayage vertical fait défiler les cartes ; une fois la limite
+  // atteinte, le reste du geste fait défiler la page (comme un scroll normal).
+  let cfTouchMode = null; // 'coverflow' | 'page' | null
+  let cfTouchStartY = 0;
+  let cfTouchLastY = 0;
+  let cfTouchStartIndex = 0;
+
+  function cfTouchStart(e) {
+    if (e.touches.length !== 1) return;
+    cfTouchMode = 'coverflow';
+    cfTouchStartY = cfTouchLastY = e.touches[0].clientY;
+    cfTouchStartIndex = cfIndex;
+    document.querySelectorAll('.cf-item').forEach(el => el.classList.add('dragging'));
+  }
+  function cfTouchMove(e) {
+    if (!cfTouchMode) return;
+    const y = e.touches[0].clientY;
+    const stepDy = y - cfTouchLastY;
+    cfTouchLastY = y;
+
+    if (cfTouchMode === 'page') {
+      window.scrollBy(0, -stepDy);
+      return;
+    }
+
+    const totalDy = y - cfTouchStartY;
+    const dir = totalDy < 0 ? 1 : -1;
+    const atStart = cfTouchStartIndex <= 0 && dir < 0;
+    const atEnd   = cfTouchStartIndex >= cfArticles.length - 1 && dir > 0;
+    const projected = cfClampIndex(cfTouchStartIndex - totalDy / CF_ITEM_SPACING);
+
+    if ((atStart && projected <= 0) || (atEnd && projected >= cfArticles.length - 1)) {
+      // Limite atteinte en plein geste : bascule sur le scroll normal de la page
+      cfTouchMode = 'page';
+      document.querySelectorAll('.cf-item').forEach(el => el.classList.remove('dragging'));
+      window.scrollBy(0, -stepDy);
+      return;
+    }
+    e.preventDefault();
+    cfIndex = projected;
+    renderCoverflow();
+  }
+  function cfTouchEnd() {
+    if (cfTouchMode === 'coverflow') {
+      document.querySelectorAll('.cf-item').forEach(el => el.classList.remove('dragging'));
+      cfGoTo(Math.round(cfIndex));
+    }
+    cfTouchMode = null;
+  }
+
   function cfKeydown(e) {
     if (e.key === 'ArrowLeft')  { e.preventDefault(); cfGoTo(Math.round(cfIndex) - 1); }
     if (e.key === 'ArrowRight') { e.preventDefault(); cfGoTo(Math.round(cfIndex) + 1); }
