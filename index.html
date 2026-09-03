@@ -112,14 +112,14 @@
 
     /* Cover Flow — derniers articles */
     .coverflow {
-      position:relative; height:320px; margin:0 -1rem;
-      perspective:1400px; overflow:hidden; cursor:grab; touch-action:pan-y; -webkit-user-select:none; user-select:none;
+      position:relative; height:280px; margin:0 -1rem;
+      perspective:1400px; overflow:hidden; cursor:grab; touch-action:none; -webkit-user-select:none; user-select:none;
       outline:none;
     }
     .coverflow.grabbing { cursor:grabbing; }
     .coverflow-track { position:absolute; inset:0; transform-style:preserve-3d; }
     .cf-item {
-      position:absolute; top:50%; left:50%; width:220px; height:280px; margin:-140px 0 0 -110px;
+      position:absolute; top:50%; left:50%; width:230px; height:230px; margin:-115px 0 0 -115px;
       border-radius:14px; overflow:hidden; background:#f3f4f6;
       box-shadow:0 20px 45px rgba(0,0,0,.22);
       transition:transform .55s cubic-bezier(.22,1,.36,1), opacity .55s, box-shadow .3s;
@@ -141,8 +141,8 @@
     .coverflow-caption { text-align:center; margin-top:28px; min-height:96px; }
 
     @media (max-width: 640px) {
-      .coverflow { height:260px; }
-      .cf-item { width:170px; height:220px; margin:-110px 0 0 -85px; }
+      .coverflow { height:210px; }
+      .cf-item { width:170px; height:170px; margin:-85px 0 0 -85px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
