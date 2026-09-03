@@ -110,8 +110,44 @@
     .skeleton { background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 50%,#f3f4f6 75%); background-size:200% 100%; animation:shimmer 1.4s infinite; }
     @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
 
+    /* Cover Flow — derniers articles */
+    .coverflow {
+      position:relative; height:320px; margin:0 -1rem;
+      perspective:1400px; overflow:hidden; cursor:grab; touch-action:pan-y; -webkit-user-select:none; user-select:none;
+      outline:none;
+    }
+    .coverflow.grabbing { cursor:grabbing; }
+    .coverflow-track { position:absolute; inset:0; transform-style:preserve-3d; }
+    .cf-item {
+      position:absolute; top:50%; left:50%; width:220px; height:280px; margin:-140px 0 0 -110px;
+      border-radius:14px; overflow:hidden; background:#f3f4f6;
+      box-shadow:0 20px 45px rgba(0,0,0,.22);
+      transition:transform .55s cubic-bezier(.22,1,.36,1), opacity .55s, box-shadow .3s;
+      will-change:transform;
+      -webkit-box-reflect:below 6px linear-gradient(to bottom, rgba(0,0,0,0) 45%, rgba(0,0,0,.14) 100%);
+    }
+    .cf-item.dragging { transition:none; }
+    .cf-item img { width:100%; height:100%; object-fit:cover; display:block; -webkit-user-drag:none; pointer-events:none; }
+    .cf-item.is-center { box-shadow:0 28px 60px rgba(0,0,0,.32); cursor:pointer; }
+
+    .cf-nav-btn {
+      width:36px; height:36px; border-radius:9999px; border:1px solid #e5e7eb; background:#fff;
+      color:#374151; display:flex; align-items:center; justify-content:center;
+      transition:background .15s, transform .15s, opacity .15s;
+    }
+    .cf-nav-btn:hover { background:#f9fafb; transform:scale(1.06); }
+    .cf-nav-btn:disabled { opacity:.3; pointer-events:none; }
+
+    .coverflow-caption { text-align:center; margin-top:28px; min-height:96px; }
+
+    @media (max-width: 640px) {
+      .coverflow { height:260px; }
+      .cf-item { width:170px; height:220px; margin:-110px 0 0 -85px; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal, .article-card, .article-card img, .hero-slide { transition:none !important; animation:none !important; opacity:1 !important; transform:none !important; }
+      .cf-item { transition:none !important; }
     }
   </style>
   <script src="/animations.js" defer></script>
