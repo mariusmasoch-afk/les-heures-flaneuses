@@ -447,7 +447,27 @@
       // SEO & maillage
       generateFaqSchema();
       loadRelatedArticles(a.categorie, a.slug);
+      applyFakeHeadings();
       applyDropCap();
+    }
+
+    // Repère les blocs qui ne sont que du texte en gras (faux titres) pour leur donner
+    // un vrai style de sous-titre, puisque cet éditeur ne pose pas toujours de balise Hx.
+    function applyFakeHeadings() {
+      const body = document.querySelector('.article-content');
+      if (!body) return;
+      const SKIP_TAGS = new Set(['H2','H3','H4','BLOCKQUOTE','UL','OL','HR','IMG','IFRAME']);
+      for (const child of body.children) {
+        if (SKIP_TAGS.has(child.tagName)) continue;
+        if (child.hasAttribute('contenteditable')) continue; // blocs spéciaux (verdict, FAQ, notation, encadrés)
+        if (child.tagName !== 'DIV' && child.tagName !== 'P') continue;
+        const text = child.textContent.trim();
+        if (!text || text.length > 100) continue;
+        const bold = child.querySelector('b, strong');
+        if (bold && bold.textContent.trim() === text) {
+          child.classList.add('fake-heading');
+        }
+      }
     }
 
     // Lettrine sur le premier bloc de texte réel du corps (le contenu peut mélanger <div>/<p>)
