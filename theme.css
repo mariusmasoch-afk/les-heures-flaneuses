@@ -1,0 +1,103 @@
+/* ============================================================
+   LES HEURES FLÂNEUSES — Système de design
+   Direction : "Encre et brique" — éditorial, chaud, vivant.
+   Ambiance liée à l'heure réelle du visiteur (voir time-ambience.js).
+   ============================================================ */
+
+:root {
+  /* Palette de base ("jour") */
+  --paper:        #EFE7D8; /* fond — lin, papier vieilli */
+  --paper-raised: #F6F0E4; /* cartes, surfaces légèrement plus claires */
+  --ink:          #24201B; /* texte — quasi noir, chaud */
+  --ink-soft:     #5B5348; /* texte secondaire */
+  --brick:        #A8462F; /* accent primaire — tampon postal */
+  --brick-deep:   #7E3220; /* accent primaire, hover/actif */
+  --pine:         #2B4E45; /* accent froid — malle de voyage */
+  --brass:        #C79A56; /* accent muet — tags, filets */
+  --line:         rgba(36,32,27,.14);
+
+  --accent: var(--brick);
+  --accent-deep: var(--brick-deep);
+  --ambient-a: #F2E4C8;
+  --ambient-b: #EFE7D8;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Karla', system-ui, sans-serif;
+}
+
+/* Bascule d'ambiance selon l'heure réelle du visiteur */
+html[data-daytime="morning"] {
+  --ambient-a: #F3D9C9;
+  --ambient-b: #EFE7D8;
+}
+html[data-daytime="midday"] {
+  --ambient-a: #F2E4C8;
+  --ambient-b: #EFE7D8;
+}
+html[data-daytime="evening"] {
+  --ambient-a: #E8B77A;
+  --ambient-b: #E4CFA3;
+  --accent: #C1622B;
+  --accent-deep: #9A4B1F;
+}
+html[data-daytime="night"] {
+  --paper:        #1B1815;
+  --paper-raised: #241F1A;
+  --ink:          #EFE3D3;
+  --ink-soft:     #B8AA98;
+  --line:         rgba(239,231,216,.14);
+  --ambient-a:    #2E2620;
+  --ambient-b:    #1B1815;
+  --accent:       #D97A54;
+  --accent-deep:  #B85C38;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  transition: background-color .6s ease, color .6s ease;
+}
+
+h1, h2, h3, h4, .font-display {
+  font-family: var(--font-display);
+  letter-spacing: -0.01em;
+}
+
+/* Voile atmosphérique — traduit "Les Heures" en ambiance vivante plutôt qu'en simple toggle jour/nuit */
+#ambient {
+  position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: radial-gradient(ellipse 120% 55% at 50% -10%, var(--ambient-a), transparent 70%);
+  opacity: .55;
+}
+html[data-daytime="night"] #ambient { opacity: .4; }
+
+/* ---- Lien à trait d'encre — la touche signature ----
+   Un soulignement tracé à la main qui se dessine au survol, comme un trait de stylo,
+   plutôt que la barre plate générique. */
+.ink-link {
+  position: relative;
+  text-decoration: none;
+  color: inherit;
+}
+.ink-link::after {
+  content: '';
+  position: absolute; left: 0; right: 100%; bottom: -3px; height: 7px;
+  background-repeat: repeat-x; background-position: left center; background-size: 22px 7px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='7' viewBox='0 0 22 7'%3E%3Cpath d='M0.5 4.2 Q3 1.2 5.5 4 T11 3.6 T16.5 4.2 T21.5 3.4' fill='none' stroke='%23A8462F' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+  transition: right .4s cubic-bezier(.22,1,.36,1);
+}
+html[data-daytime="night"] .ink-link::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='7' viewBox='0 0 22 7'%3E%3Cpath d='M0.5 4.2 Q3 1.2 5.5 4 T11 3.6 T16.5 4.2 T21.5 3.4' fill='none' stroke='%23D97A54' stroke-width='1.6' stroke-linecap='round'/%3E%3C/svg%3E");
+}
+.ink-link:hover::after,
+.ink-link:focus-visible::after { right: 0; }
+.ink-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
+/* Filets et bordures qui suivent la palette plutôt que le gris Tailwind par défaut */
+.hairline { border-color: var(--line) !important; }
+.paper-surface { background: var(--paper-raised); }
