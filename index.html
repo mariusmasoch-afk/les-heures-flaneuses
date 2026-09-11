@@ -26,9 +26,10 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+          fontFamily: { sans: ['Karla', 'system-ui', 'sans-serif'], display: ['Fraunces', 'Georgia', 'serif'] },
           colors: {
-            brand: { 50:'#fffbeb', 100:'#fef3c7', 400:'#fbbf24', 500:'#f59e0b', 600:'#d97706', 700:'#b45309' },
+            brand: { 50:'#F6F0E4', 100:'#E4CFA3', 400:'#C1622B', 500:'#A8462F', 600:'#7E3220', 700:'#5B2418' },
+            ink: '#24201B', paper: '#EFE7D8', pine: '#2B4E45', brass: '#C79A56',
           },
         },
       },
@@ -37,7 +38,9 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/theme.css" />
+  <script src="/time-ambience.js"></script>
 
   <style>
     /* Nav underline */
