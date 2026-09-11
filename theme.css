@@ -98,6 +98,12 @@ html[data-daytime="night"] .ink-link::after {
 .ink-link:focus-visible::after { right: 0; }
 .ink-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
 
+/* Titres d'articles (peuvent passer sur plusieurs lignes) : pas de trait d'encre, qui ne
+   se dessinerait que sous la dernière ligne — juste un glissement de teinte au survol. */
+.title-link { color: inherit; text-decoration: none; transition: color .2s ease; }
+.title-link:hover, .title-link:focus-visible { color: var(--accent); }
+.title-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+
 /* Filets et bordures qui suivent la palette plutôt que le gris Tailwind par défaut */
 .hairline { border-color: var(--line) !important; }
 .paper-surface { background: var(--paper-raised); }
