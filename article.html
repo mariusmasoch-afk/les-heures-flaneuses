@@ -458,7 +458,31 @@
       sanitizeArticleBodyStyles();
       applyFakeHeadings();
       applyDropCap();
+      layoutSidebar();
     }
+
+    // Sur ordinateur (≥1024px) : bascule rédacteur / encart achat / articles similaires
+    // dans la colonne de droite. En dessous de ce seuil, tout reste à sa place d'origine
+    // (chaque bloc garde une ancre juste avant lui pour pouvoir y revenir).
+    const desktopMQ = window.matchMedia('(min-width: 1024px)');
+    function layoutSidebar() {
+      const aside = document.getElementById('article-aside');
+      if (!aside) return;
+      const isDesktop = desktopMQ.matches;
+      [
+        { el: document.getElementById('author-block'),               anchor: document.getElementById('author-anchor') },
+        { el: document.getElementById('buy-cta-block'),               anchor: document.getElementById('buy-cta-anchor') },
+        { el: document.getElementById('related-articles-container'), anchor: document.getElementById('related-anchor') },
+      ].forEach(({ el, anchor }) => {
+        if (!el || !anchor) return;
+        if (isDesktop) {
+          if (el.parentElement !== aside) aside.appendChild(el);
+        } else if (el.parentElement === aside) {
+          anchor.after(el);
+        }
+      });
+    }
+    desktopMQ.addEventListener('change', layoutSidebar);
 
     // Retire les paragraphes/div vides (restes d'appuis sur Entrée dans l'éditeur) qui créent
     // de gros sauts de ligne blancs entre les sections, en laissant intacts les blocs spéciaux
