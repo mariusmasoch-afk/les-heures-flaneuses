@@ -1451,12 +1451,16 @@
     // Attendre que l'image soit rendue
     setTimeout(() => {
       if (cropper) { cropper.destroy(); cropper = null; }
-      cropper = new Cropper(img, { aspectRatio: 16/9, viewMode: 1, autoCropArea: 1, movable: true, zoomable: true, rotatable: false });
+      cropper = new Cropper(img, { aspectRatio: 16/9, viewMode: 1, autoCropArea: 1, movable: true, zoomable: true, rotatable: true });
     }, 100);
   }
 
   function setCropRatio(ratio) {
     if (cropper) cropper.setAspectRatio(ratio);
+  }
+
+  function rotateCrop(deg) {
+    if (cropper) cropper.rotate(deg);
   }
 
   function cancelCrop() {
