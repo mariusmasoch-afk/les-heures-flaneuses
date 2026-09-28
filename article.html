@@ -16,12 +16,11 @@
     tailwind.config = {
       theme: {
         extend: {
-          fontFamily: { sans: ['Inter','system-ui','sans-serif'] },
-          colors: { brand: { 50:'#fffbeb',100:'#fef3c7',400:'#fbbf24',500:'#f59e0b',600:'#d97706',700:'#b45309' } },
-          typography: { DEFAULT: { css: {
-            a: { color: '#f59e0b', '&:hover': { color: '#d97706' } },
-            'h2,h3,h4': { fontWeight: '700', color: '#111827' },
-          }}}
+          fontFamily: { sans: ['Karla', 'system-ui', 'sans-serif'], display: ['Fraunces', 'Georgia', 'serif'] },
+          colors: {
+            brand: { 50:'#F6F0E4', 100:'#E4CFA3', 400:'#C1622B', 500:'#A8462F', 600:'#7E3220', 700:'#5B2418' },
+            ink: '#24201B', paper: '#EFE7D8', pine: '#2B4E45', brass: '#C79A56',
+          },
         },
       },
       plugins: [],
@@ -29,49 +28,42 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Karla:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/theme.css" />
+  <script src="/time-ambience.js"></script>
   <style>
-    .nav-link::after { content:''; display:block; height:2px; width:0; background:#f59e0b; transition:width .25s ease; }
-    .nav-link:hover::after { width:100%; }
-    .nav-group { position: relative; }
-    .nav-dropdown { position:absolute; top:calc(100% + 6px); left:50%; transform:translateX(-50%) translateY(-4px); min-width:200px; background:#fff; border:1px solid #f3f4f6; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,.10); padding:6px; opacity:0; visibility:hidden; transition:opacity .18s ease,transform .18s ease,visibility .18s; z-index:100; }
-    .nav-group:hover .nav-dropdown { opacity:1; visibility:visible; transform:translateX(-50%) translateY(0); }
-    .nav-dropdown a { display:flex; align-items:center; gap:9px; padding:8px 12px; border-radius:8px; color:#374151; font-size:.875rem; font-weight:500; text-decoration:none; transition:background .15s,color .15s; }
-    .nav-dropdown a:hover { background:#f9fafb; color:#111827; }
-    .nav-chevron { transition:transform .2s ease; }
-    .nav-group:hover .nav-chevron { transform:rotate(180deg); }
     /* Article content styles */
-    .article-content h2 { font-size:1.5rem; font-weight:700; color:#111827; margin:2rem 0 .75rem; }
-    .article-content h3 { font-size:1.2rem; font-weight:700; color:#111827; margin:1.5rem 0 .5rem; }
-    .article-content h4 { font-size:1rem; font-weight:600; color:#374151; margin:1.25rem 0 .4rem; }
+    .article-content h2 { font-size:1.5rem; font-weight:700; color:var(--ink); margin:2rem 0 .75rem; font-family:var(--font-display); }
+    .article-content h3 { font-size:1.2rem; font-weight:700; color:var(--ink); margin:1.5rem 0 .5rem; font-family:var(--font-display); }
+    .article-content h4 { font-size:1rem; font-weight:600; color:var(--ink); margin:1.25rem 0 .4rem; }
     /* L'éditeur produit des <div> (pas des <p>) pour chaque paragraphe : on les stylise pareil,
        en excluant les blocs spéciaux (contenteditable="false" : verdict, FAQ, notation, encadrés). */
     .article-content p,
     .article-content > div:not([contenteditable="false"]) {
-      margin:.9rem 0; line-height:1.85; color:#374151; font-size:1.0625rem;
+      margin:.9rem 0; line-height:1.85; color:var(--ink-soft); font-size:1.0625rem;
     }
     /* Faux titres : texte entièrement en gras (cet éditeur ne pose pas toujours de vraie balise Hx) */
     .article-content .fake-heading {
-      font-size:1.3rem !important; font-weight:700; color:#111827;
+      font-size:1.3rem !important; font-weight:700; color:var(--ink); font-family:var(--font-display);
       margin:2.25rem 0 .75rem !important; line-height:1.35 !important;
     }
     .article-content ul, .article-content ol { margin:.9rem 0 .9rem 1.5rem; }
     .article-content ul { list-style:disc; }
     .article-content ol { list-style:decimal; }
-    .article-content li { margin:.35rem 0; line-height:1.7; color:#374151; }
-    .article-content a  { color:#f59e0b; text-decoration:underline; }
-    .article-content a:hover { color:#d97706; }
-    .article-content blockquote { border-left:3px solid #f59e0b; padding-left:1rem; margin:1.5rem 0; color:#6b7280; font-style:italic; }
-    .article-content hr { margin:2rem 0; border-color:#e5e7eb; }
-    .article-content img { border-radius:.75rem; margin:1.5rem 0; max-width:100%; }
-    .article-content strong { font-weight:600; color:#111827; }
+    .article-content li { margin:.35rem 0; line-height:1.7; color:var(--ink-soft); }
+    .article-content a  { color:var(--accent); text-decoration:underline; }
+    .article-content a:hover { color:var(--accent-deep); }
+    .article-content blockquote { border-left:3px solid var(--accent); padding-left:1rem; margin:1.5rem 0; color:var(--ink-soft); font-style:italic; font-family:var(--font-display); }
+    .article-content hr { margin:2rem 0; border-color:var(--line); }
+    .article-content img { border-radius:2px; margin:1.5rem 0; max-width:100%; }
+    .article-content strong { font-weight:600; color:var(--ink); }
     /* Bloc Verdict rapide */
-    .article-content .verdict-block { margin:1.5rem 0; border-radius:.75rem; border:1px solid #e5e7eb; background:#f9fafb; overflow:hidden; }
+    .article-content .verdict-block { margin:1.5rem 0; border-radius:.75rem; border:1px solid var(--line); background:var(--paper-raised); overflow:hidden; }
     /* Bloc FAQ */
     .article-content .faq-block { margin:1.5rem 0; }
-    .article-content .faq-item { border:1px solid #e5e7eb; border-radius:.75rem; overflow:hidden; margin-bottom:.5rem; }
-    .article-content .faq-question { padding:1rem; font-weight:600; color:#111827; background:#f9fafb; font-size:.95rem; }
-    .article-content .faq-answer { padding:1rem; color:#4b5563; font-size:.9rem; line-height:1.7; border-top:1px solid #e5e7eb; }
+    .article-content .faq-item { border:1px solid var(--line); border-radius:.75rem; overflow:hidden; margin-bottom:.5rem; }
+    .article-content .faq-question { padding:1rem; font-weight:600; color:var(--ink); background:var(--paper-raised); font-size:.95rem; }
+    .article-content .faq-answer { padding:1rem; color:var(--ink-soft); font-size:.9rem; line-height:1.7; border-top:1px solid var(--line); }
     /* Articles similaires */
     .related-card img { transition: transform .3s ease; }
     .related-card:hover img { transform: scale(1.05); }
@@ -87,23 +79,20 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal, header, #article-content { transition:none !important; animation:none !important; opacity:1 !important; transform:none !important; }
     }
-    /* Skeleton */
-    .skeleton { background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%); background-size:200% 100%; animation: shimmer 1.4s infinite; border-radius:.5rem; }
-    @keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
     /* Image de couverture plein cadre (sort du conteneur étroit) */
     .full-bleed { width:100vw; position:relative; left:50%; right:50%; margin-left:-50vw; margin-right:-50vw; }
     /* Barre de progression de lecture */
-    #reading-progress { position:fixed; top:0; left:0; height:3px; width:0%; background:#f59e0b; z-index:60; transition:width .1s linear; }
+    #reading-progress { position:fixed; top:0; left:0; height:3px; width:0%; background:var(--accent); z-index:60; transition:width .1s linear; }
     /* Boutons de partage flottants */
     #share-float { position:fixed; right:20px; bottom:24px; z-index:40; display:flex; flex-direction:column; gap:10px; }
-    .share-btn { width:44px; height:44px; border-radius:9999px; background:#fff; border:1px solid #f3f4f6; box-shadow:0 4px 16px rgba(0,0,0,.08); display:flex; align-items:center; justify-content:center; color:#6b7280; transition:color .15s, transform .15s, box-shadow .15s; }
-    .share-btn:hover { color:#f59e0b; transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
-    #share-toast { position:fixed; right:20px; bottom:80px; z-index:41; background:#111827; color:#fff; font-size:.75rem; font-weight:500; padding:.5rem .8rem; border-radius:.6rem; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s; pointer-events:none; }
+    .share-btn { width:44px; height:44px; border-radius:9999px; background:var(--paper-raised); border:1px solid var(--line); box-shadow:0 4px 16px rgba(0,0,0,.08); display:flex; align-items:center; justify-content:center; color:var(--ink-soft); transition:color .15s, transform .15s, box-shadow .15s; }
+    .share-btn:hover { color:var(--accent); transform:translateY(-2px); box-shadow:0 6px 20px rgba(0,0,0,.12); }
+    #share-toast { position:fixed; right:20px; bottom:80px; z-index:41; background:var(--ink); color:var(--paper); font-size:.75rem; font-weight:500; padding:.5rem .8rem; border-radius:.6rem; opacity:0; transform:translateY(4px); transition:opacity .2s, transform .2s; pointer-events:none; }
     #share-toast.show { opacity:1; transform:translateY(0); }
     /* Lettrine sur le premier bloc de texte du corps de l'article */
     .article-content .drop-cap::first-letter {
-      float:left; font-family:Georgia,'Times New Roman',serif; font-size:3.6rem; line-height:.82;
-      font-weight:700; color:#f59e0b; padding:.25rem .5rem 0 0;
+      float:left; font-family:var(--font-display); font-size:3.6rem; line-height:.82;
+      font-weight:700; color:var(--accent); padding:.25rem .5rem 0 0;
     }
     @media (max-width: 640px) {
       #share-float { right:12px; bottom:16px; }
@@ -114,7 +103,8 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-39RE8T7LE5"></script>
   <script>gtag('js', new Date()); gtag('config', 'G-39RE8T7LE5');</script>
 </head>
-<body class="bg-white text-gray-900 font-sans antialiased">
+<body class="font-sans antialiased">
+  <div id="ambient"></div>
 
   <!-- Barre de progression de lecture -->
   <div id="reading-progress"></div>
