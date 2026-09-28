@@ -341,15 +341,15 @@
           ? `<div class="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-gray-100"><img src="${r.photo_url}" alt="${r.prenom} ${r.nom}" class="w-full h-full object-cover" /></div>`
           : `<div class="w-16 h-16 rounded-2xl bg-brand-100 flex items-center justify-center shrink-0 text-brand-600 font-bold text-xl">${r.prenom[0]}${r.nom[0]}</div>`;
         redacteurHTML = `
-          <div class="mt-10 pt-8 border-t border-gray-100">
-            <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-4">À propos de l'auteur</p>
-            <div class="flex items-center gap-5 p-5 rounded-2xl bg-gray-50 border border-gray-100">
+          <div class="mt-10 pt-8" style="border-top:1px solid var(--line)">
+            <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:var(--ink-soft)">À propos de l'auteur</p>
+            <div class="flex items-center gap-5 p-5" style="background:var(--paper-raised); border:1px solid var(--line)">
               ${avatar}
               <div class="min-w-0">
-                <p class="font-semibold text-gray-900 text-base">${r.prenom} ${r.nom}</p>
-                <p class="text-xs text-brand-500 font-medium mt-0.5 mb-1">${r.specialite || 'Rédacteur Les Heures Flâneuses'}</p>
-                ${r.linkedin_url ? `<a href="${r.linkedin_url}" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 text-xs text-gray-400 hover:text-brand-500 transition-colors mb-1"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>` : ''}
-                ${r.bio ? `<p class="text-sm text-gray-500 leading-relaxed">${r.bio}</p>` : ''}
+                <p class="font-display font-medium text-base" style="color:var(--ink)">${r.prenom} ${r.nom}</p>
+                <p class="text-xs font-medium mt-0.5 mb-1" style="color:var(--accent)">${r.specialite || 'Rédacteur Les Heures Flâneuses'}</p>
+                ${r.linkedin_url ? `<a href="${r.linkedin_url}" target="_blank" rel="noopener noreferrer" class="ink-link inline-flex items-center gap-1 text-xs mb-1" style="color:var(--ink-soft)"><svg class="w-3 h-3" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>` : ''}
+                ${r.bio ? `<p class="text-sm leading-relaxed" style="color:var(--ink-soft)">${r.bio}</p>` : ''}
               </div>
             </div>
           </div>`;
@@ -361,43 +361,44 @@
 
         <!-- Badge catégorie -->
         <div class="mb-6">
-          <a href="categorie.html?cat=${a.categorie}" class="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold ${style.badge}">${style.label}</a>
+          <a href="categorie.html?cat=${a.categorie}" class="inline-flex items-center px-3 py-1 text-xs font-semibold" style="color:${style.text};background:${style.bg}">${style.label}</a>
         </div>
 
         <!-- Titre -->
-        <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 leading-tight mb-4">${a.titre}</h1>
+        <h1 class="font-display text-3xl sm:text-4xl font-medium leading-tight mb-4" style="color:var(--ink)">${a.titre}</h1>
 
         <!-- Métadonnées -->
-        <div class="flex items-center gap-4 text-sm text-gray-400 mb-8 flex-wrap">
+        <div class="flex items-center gap-4 text-sm mb-8 flex-wrap" style="color:var(--ink-soft)">
           <span>${date}</span>
-          ${updated ? `<span class="text-xs text-brand-500 font-medium bg-brand-50 px-2 py-0.5 rounded-full">Mis à jour le ${updated}</span>` : ''}
+          ${updated ? `<span class="text-xs font-medium px-2 py-0.5" style="color:var(--accent);background:var(--paper-raised)">Mis à jour le ${updated}</span>` : ''}
           ${mins ? `<span>·</span><span>${mins}</span>` : ''}
           ${a.redacteurs ? `
           <span>·</span>
           <div class="flex items-center gap-2">
             ${a.redacteurs.photo_url
-              ? `<img src="${a.redacteurs.photo_url}" alt="${a.redacteurs.prenom} ${a.redacteurs.nom}" class="w-6 h-6 rounded-full object-cover border border-gray-200" />`
-              : `<div class="w-6 h-6 rounded-full bg-brand-100 flex items-center justify-center text-brand-600 font-bold text-xs shrink-0">${a.redacteurs.prenom[0]}${a.redacteurs.nom[0]}</div>`
+              ? `<img src="${a.redacteurs.photo_url}" alt="${a.redacteurs.prenom} ${a.redacteurs.nom}" class="w-6 h-6 rounded-full object-cover" style="border:1px solid var(--line)" />`
+              : `<div class="w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs shrink-0" style="background:var(--paper-raised);color:var(--accent)">${a.redacteurs.prenom[0]}${a.redacteurs.nom[0]}</div>`
             }
-            <span>par <strong class="text-gray-700">${a.redacteurs.prenom} ${a.redacteurs.nom}</strong></span>
+            <span>par <strong style="color:var(--ink)">${a.redacteurs.prenom} ${a.redacteurs.nom}</strong></span>
           </div>` : ''}
         </div>
 
         <!-- Extrait chapô -->
-        ${a.extrait ? `<p class="text-lg text-gray-500 italic leading-relaxed mb-8 pb-8 border-b border-dashed border-gray-200">${a.extrait}</p>` : ''}
+        ${a.extrait ? `<p class="font-display italic text-lg leading-relaxed mb-8 pb-8" style="color:var(--ink-soft); border-bottom:1px dashed var(--line)">${a.extrait}</p>` : ''}
 
         <!-- Corps de l'article -->
         <div class="article-content">${a.contenu || ''}</div>
 
         <!-- Encart lien d'achat -->
         ${a.lien_achat ? `
-        <div class="mt-10 flex items-center justify-between gap-4 p-6 rounded-2xl bg-gray-50 border border-gray-100">
+        <div class="mt-10 flex items-center justify-between gap-4 p-6" style="background:var(--paper-raised); border:1px solid var(--line)">
           <div>
-            <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-1">Où acheter</p>
-            <p class="text-sm text-gray-600 leading-relaxed">Retrouvez ce produit en ligne au meilleur prix.</p>
+            <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color:var(--ink-soft)">Où acheter</p>
+            <p class="text-sm leading-relaxed" style="color:var(--ink-soft)">Retrouvez ce produit en ligne au meilleur prix.</p>
           </div>
           <a href="${a.lien_achat}" target="_blank" rel="noopener noreferrer sponsored"
-            class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gray-900 text-white text-sm font-semibold hover:bg-gray-700 transition-colors">
+            class="shrink-0 inline-flex items-center gap-2 px-5 py-2.5 text-sm font-semibold transition-colors"
+            style="background:var(--ink); color:var(--paper)">
             Voir le produit
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
           </a>
@@ -405,13 +406,13 @@
 
         <!-- Carte Google Maps -->
         ${a.localisation ? `
-        <div class="mt-10 pt-8 border-t border-gray-100">
-          <p class="text-xs font-semibold uppercase tracking-widest text-gray-400 mb-3 flex items-center gap-1.5">
+        <div class="mt-10 pt-8" style="border-top:1px solid var(--line)">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-3 flex items-center gap-1.5" style="color:var(--ink-soft)">
             <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
             Localisation
           </p>
-          <p class="text-sm text-gray-600 mb-3 font-medium">${a.localisation}</p>
-          <div class="rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style="height:320px;">
+          <p class="text-sm mb-3 font-medium" style="color:var(--ink-soft)">${a.localisation}</p>
+          <div class="overflow-hidden" style="height:320px; border:1px solid var(--line)">
             <iframe
               src="https://maps.google.com/maps?q=${encodeURIComponent(a.localisation)}&t=&z=15&ie=UTF8&iwloc=&output=embed"
               width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
@@ -425,11 +426,11 @@
         ${redacteurHTML}
 
         <!-- Articles similaires -->
-        <div id="related-articles-container" class="mt-10 pt-8 border-t border-gray-100"></div>
+        <div id="related-articles-container" class="mt-10 pt-8" style="border-top:1px solid var(--line)"></div>
 
         <!-- Navigation retour -->
-        <div class="mt-12 pt-8 border-t border-gray-100">
-          <a href="categorie.html?cat=${a.categorie}" class="inline-flex items-center gap-2 text-sm font-medium text-brand-600 hover:text-brand-700 transition-colors">
+        <div class="mt-12 pt-8" style="border-top:1px solid var(--line)">
+          <a href="categorie.html?cat=${a.categorie}" class="ink-link inline-flex items-center gap-2 text-sm font-medium" style="color:var(--accent)">
             <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             Retour à ${style.label}
           </a>
