@@ -77,6 +77,11 @@
     .hero-thumb.active { border-color:#EFE7D8; transform:scale(1.05); opacity:1; }
     .hero-thumb:not(.active) { opacity:.45; }
 
+    /* Titre du hero : grossit au survol */
+    #hero-title { transform-origin: center; transition: transform .3s cubic-bezier(.22,1,.36,1); }
+    #hero-link:hover #hero-title, #hero-link:focus-visible #hero-title { transform: scale(1.04); }
+    @media (prefers-reduced-motion: reduce) { #hero-link:hover #hero-title { transform: none; } }
+
     /* Dot */
     .hero-dot { height:5px; border-radius:4px; background:rgba(239,231,216,.4); transition:width .3s, background .3s; }
     .hero-dot.active { width:26px !important; background:#EFE7D8; }
