@@ -169,19 +169,15 @@
     const db = createClient(SUPABASE_URL, SUPABASE_ANON);
 
     const CAT_META = {
-      'mode':       { label:'Mode',                desc:'Pièces incontournables, tendances et adresses mode sélectionnées avec soin.',  badge:'bg-rose-100 text-rose-700',      emoji:'✨' },
-      'sport':      { label:'Tech',   desc:'Gadgets, objets connectés et innovations testés au quotidien.',         badge:'bg-blue-100 text-blue-700',      emoji:'💻' },
-      'hotels':     { label:'Hôtels & Voyages',    desc:'Nos coups de cœur hôtels et adresses de voyage pour des escapades mémorables.', badge:'bg-stone-100 text-stone-700',    emoji:'🏨' },
+      'mode':       { label:'Mode',                desc:'Pièces incontournables, tendances et adresses mode sélectionnées avec soin.',  text:'#A8462F', bg:'#F3DFCB', emoji:'✨' },
+      'sport':      { label:'Tech',   desc:'Gadgets, objets connectés et innovations testés au quotidien.',         text:'#2B4E45', bg:'#DCE6DE', emoji:'💻' },
+      'hotels':     { label:'Hôtels & Voyages',    desc:'Nos coups de cœur hôtels et adresses de voyage pour des escapades mémorables.', text:'#8A6A2F', bg:'#EEE1BE', emoji:'🏨' },
     };
-    const CAT_STYLES = {
-      'mode':       { bg:'from-rose-50 to-pink-50',        tag:'bg-rose-100 text-rose-700' },
-      'sport':      { bg:'from-blue-50 to-cyan-50',        tag:'bg-blue-100 text-blue-700' },
-      'hotels':     { bg:'from-stone-50 to-orange-50',     tag:'bg-stone-100 text-stone-700' },
-    };
+    const CAT_STYLES = CAT_META;
 
     const CAT_BANNERS = {
       mode: {
-        gradient: 'linear-gradient(135deg,#881337 0%,#be185d 45%,#ec4899 100%)',
+        gradient: 'linear-gradient(135deg,#5B2418 0%,#7E3220 45%,#A8462F 100%)',
         svg: `<svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;opacity:.18">
           <ellipse cx="600" cy="300" rx="500" ry="180" fill="white" opacity=".06"/>
           <path d="M200 320 Q300 80 400 160 Q500 240 600 60 Q700 240 800 160 Q900 80 1000 320" stroke="white" stroke-width="2.5" fill="none" opacity=".35"/>
