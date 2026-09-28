@@ -151,7 +151,7 @@
   </header>
 
   <!-- CONTENU ARTICLE -->
-  <main id="article-main" class="max-w-3xl mx-auto px-4 sm:px-6 py-14">
+  <main id="article-main" class="max-w-3xl lg:max-w-6xl mx-auto px-4 sm:px-6 py-14">
 
     <!-- SKELETON (visible pendant le chargement) -->
     <div id="skeleton">
@@ -169,8 +169,14 @@
       </div>
     </div>
 
-    <!-- CONTENU (injecté par JS) -->
-    <div id="article-content" class="hidden"></div>
+    <!-- Sur ordinateur (≥1024px) : contenu à gauche, encart achat/rédacteur/articles
+         similaires basculés à droite en JS (voir layoutSidebar). Mobile/tablette : inchangés,
+         ces blocs restent à leur place d'origine dans #article-content. -->
+    <div id="article-layout" class="lg:grid lg:grid-cols-[1fr_340px] lg:gap-x-16 lg:items-start">
+      <!-- CONTENU (injecté par JS) -->
+      <div id="article-content" class="hidden lg:max-w-none"></div>
+      <aside id="article-aside" class="hidden lg:block lg:sticky lg:top-24 space-y-8"></aside>
+    </div>
 
     <!-- ERREUR -->
     <div id="article-error" class="hidden text-center py-20">
