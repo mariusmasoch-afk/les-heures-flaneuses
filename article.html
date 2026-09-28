@@ -348,7 +348,7 @@
           ? `<div class="w-16 h-16 rounded-2xl overflow-hidden shrink-0" style="border:1px solid var(--line)"><img src="${r.photo_url}" alt="${r.prenom} ${r.nom}" class="w-full h-full object-cover" /></div>`
           : `<div class="w-16 h-16 rounded-2xl bg-brand-100 flex items-center justify-center shrink-0 text-brand-600 font-bold text-xl">${r.prenom[0]}${r.nom[0]}</div>`;
         redacteurHTML = `
-          <div class="mt-10 pt-8" style="border-top:1px solid var(--line)">
+          <div id="author-block" class="mt-10 pt-8" style="border-top:1px solid var(--line)">
             <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color:var(--ink-soft)">À propos de l'auteur</p>
             <div class="flex items-center gap-5 p-5" style="background:var(--paper-raised); border:1px solid var(--line)">
               ${avatar}
