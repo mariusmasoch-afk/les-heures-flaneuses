@@ -397,8 +397,9 @@
         <div class="article-content">${a.contenu || ''}</div>
 
         <!-- Encart lien d'achat -->
+        <span id="buy-cta-anchor" class="hidden"></span>
         ${a.lien_achat ? `
-        <div class="mt-10 flex items-center justify-between gap-4 p-6" style="background:var(--paper-raised); border:1px solid var(--line)">
+        <div id="buy-cta-block" class="mt-10 flex items-center justify-between gap-4 p-6" style="background:var(--paper-raised); border:1px solid var(--line)">
           <div>
             <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color:var(--ink-soft)">Où acheter</p>
             <p class="text-sm leading-relaxed" style="color:var(--ink-soft)">Retrouvez ce produit en ligne au meilleur prix.</p>
