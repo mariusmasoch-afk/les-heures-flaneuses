@@ -97,3 +97,12 @@ html[data-daytime="night"] #ambient { opacity: .4; }
 /* Filets et bordures qui suivent la palette plutôt que le gris Tailwind par défaut */
 .hairline { border-color: var(--line) !important; }
 .paper-surface { background: var(--paper-raised); }
+
+/* Skeleton de chargement, partagé entre les pages */
+.skeleton {
+  background: linear-gradient(90deg, var(--paper-raised) 25%, var(--line) 50%, var(--paper-raised) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+@keyframes shimmer { 0%{background-position:200% 0} 100%{background-position:-200% 0} }
+@media (prefers-reduced-motion: reduce) { .skeleton { animation: none; } }
