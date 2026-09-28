@@ -329,7 +329,7 @@
 
       // Image de couverture — plein cadre (sort du conteneur étroit)
       const coverHTML = a.image_url
-        ? `<div class="full-bleed h-64 sm:h-96 md:h-[480px] overflow-hidden mb-10 bg-gray-100">
+        ? `<div class="full-bleed h-64 sm:h-96 md:h-[480px] overflow-hidden mb-10" style="background:var(--paper-raised)">
              <img src="${a.image_url}" alt="${a.titre}" class="w-full h-full object-cover" />
            </div>`
         : '';
