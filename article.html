@@ -274,7 +274,7 @@
     }
 
     function render(a) {
-      const style = CAT_STYLES[a.categorie] || { badge:'bg-gray-100 text-gray-600', label: a.categorie || '' };
+      const style = CAT_STYLES[a.categorie] || { text:'var(--ink-soft)', bg:'var(--paper-raised)', label: a.categorie || '' };
       const date  = new Date(a.date_creation).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
       const mins  = a.temps_lecture ? `${a.temps_lecture} min de lecture` : '';
       const updated = a.date_modification && (new Date(a.date_modification) - new Date(a.date_creation) > 86400000)
