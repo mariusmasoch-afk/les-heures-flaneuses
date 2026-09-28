@@ -237,14 +237,16 @@
     }
 
     // En-tête de rubrique
-    document.getElementById('cat-badge').className = `inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-3 w-fit ${meta.badge}`;
-    document.getElementById('cat-badge').textContent = meta.emoji + '  ' + meta.label;
+    const badgeEl = document.getElementById('cat-badge');
+    badgeEl.className = 'inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold mb-3 w-fit';
+    badgeEl.style.color = meta.text; badgeEl.style.background = meta.bg;
+    badgeEl.textContent = meta.emoji + '  ' + meta.label;
     document.getElementById('cat-title').textContent = meta.label;
     document.getElementById('cat-desc').textContent  = meta.desc;
 
     // Highlight nav actif
     document.querySelectorAll('nav a').forEach(a => {
-      if (a.href.includes(`cat=${cat}`)) a.classList.add('text-brand-600', 'font-semibold');
+      if (a.href.includes(`cat=${cat}`)) { a.style.color = 'var(--accent)'; a.style.fontWeight = '700'; }
     });
 
     const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
