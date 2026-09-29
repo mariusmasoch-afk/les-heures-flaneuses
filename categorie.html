@@ -236,10 +236,6 @@
     }
 
     // En-tête de rubrique
-    const badgeEl = document.getElementById('cat-badge');
-    badgeEl.className = 'inline-flex items-center gap-2 px-3 py-1 text-xs font-semibold mb-3 w-fit';
-    badgeEl.style.color = meta.text; badgeEl.style.background = meta.bg;
-    badgeEl.textContent = meta.emoji + '  ' + meta.label;
     document.getElementById('cat-title').textContent = meta.label;
     document.getElementById('cat-desc').textContent  = meta.desc;
 
