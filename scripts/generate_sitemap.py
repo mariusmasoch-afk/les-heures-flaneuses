@@ -16,15 +16,17 @@ SUPABASE_ANON = "sb_publishable__SdwJpIWNVfPfVNX7eFc-w_mQA8av6H"
 SITE = "https://lesheuresflaneuses.fr"
 OUT_PATH = "sitemap.xml"
 
+TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
 STATIC_PAGES = [
-    (f"{SITE}/", "daily", "1.0", None),
-    (f"{SITE}/categorie.html?cat=mode", "weekly", "0.8", None),
-    (f"{SITE}/categorie.html?cat=sport", "weekly", "0.8", None),
-    (f"{SITE}/categorie.html?cat=hotels", "weekly", "0.8", None),
-    (f"{SITE}/contact.html", "monthly", "0.5", None),
-    (f"{SITE}/ecrire.html", "monthly", "0.5", None),
-    (f"{SITE}/mentions-legales.html", "yearly", "0.3", None),
-    (f"{SITE}/confidentialite.html", "yearly", "0.3", None),
+    (f"{SITE}/", "daily", "1.0", TODAY),
+    (f"{SITE}/categorie.html?cat=mode", "weekly", "0.8", TODAY),
+    (f"{SITE}/categorie.html?cat=sport", "weekly", "0.8", TODAY),
+    (f"{SITE}/categorie.html?cat=hotels", "weekly", "0.8", TODAY),
+    (f"{SITE}/contact.html", "monthly", "0.5", TODAY),
+    (f"{SITE}/ecrire.html", "monthly", "0.5", TODAY),
+    (f"{SITE}/mentions-legales.html", "yearly", "0.3", TODAY),
+    (f"{SITE}/confidentialite.html", "yearly", "0.3", TODAY),
 ]
 
 
