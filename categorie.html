@@ -173,15 +173,6 @@
     // Mise à jour du head
     document.title = `Les Heures Flâneuses — ${meta.label}`;
 
-    // Bannière dégradé
-    const banner = CAT_BANNERS[cat];
-    if (banner) {
-      document.getElementById('cat-banner').style.background = banner.gradient;
-      document.getElementById('cat-banner-deco').innerHTML = banner.svg;
-      document.getElementById('cat-banner-emoji').textContent = meta.emoji || '';
-      document.getElementById('cat-banner-label').textContent = meta.label || '';
-    }
-
     // En-tête de rubrique
     document.getElementById('cat-title').textContent = meta.label;
     document.getElementById('cat-desc').textContent  = meta.desc;
