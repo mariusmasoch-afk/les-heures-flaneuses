@@ -21,8 +21,8 @@
   --ambient-a: #F2E4C8;
   --ambient-b: #EFE7D8;
 
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Karla', system-ui, sans-serif;
+  --font-display: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 /* Bascule d'ambiance selon l'heure réelle du visiteur */
