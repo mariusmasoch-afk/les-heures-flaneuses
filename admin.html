@@ -1420,11 +1420,16 @@
     }, 3000);
     // Auto-generate slug from title
     const title = document.getElementById('title-input').innerText.trim();
-    const slug = title.toLowerCase()
+    let slug = title.toLowerCase()
+      .replace(/\u0153/g, 'oe').replace(/\u00e6/g, 'ae')
       .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
       .replace(/[^a-z0-9\s-]/g, '')
       .replace(/\s+/g, '-')
-      .slice(0, 60);
+      .replace(/-+/g, '-');
+    // Coupe sur un mot entier plut\u00f4t qu'en plein mot au-del\u00e0 de 60 caract\u00e8res
+    if (slug.length > 60) {
+      slug = slug.slice(0, 60).replace(/-[^-]*$/, '');
+    }
     document.getElementById('slug-input').value = slug;
   }
 
