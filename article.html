@@ -325,6 +325,18 @@
         m.content = content;
       });
 
+      // Twitter Card
+      const twitterMetas = {
+        'twitter:title':       `${a.titre} — Les Heures Flâneuses`,
+        'twitter:description': a.extrait || '',
+        'twitter:image':       a.image_url || 'https://lesheuresflaneuses.fr/og-cover.jpg',
+      };
+      Object.entries(twitterMetas).forEach(([name, content]) => {
+        let m = document.querySelector(`meta[name="${name}"]`);
+        if (!m) { m = document.createElement('meta'); m.setAttribute('name', name); document.head.appendChild(m); }
+        m.content = content;
+      });
+
       // Schema.org JSON-LD
       const author = a.redacteurs ? { '@type': 'Person', name: `${a.redacteurs.prenom} ${a.redacteurs.nom}` } : { '@type': 'Organization', name: 'Les Heures Flâneuses' };
       const schema = {
