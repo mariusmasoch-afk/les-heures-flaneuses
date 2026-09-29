@@ -1,0 +1,44 @@
+name: Build CSS Tailwind
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'article.html'
+      - 'categorie.html'
+      - 'tailwind.config.js'
+      - 'src/tailwind-input.css'
+      - 'package.json'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-css:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Installer les dépendances
+        run: npm install --no-audit --no-fund
+
+      - name: Générer tailwind.css
+        run: npm run build:css
+
+      - name: Commit si changement
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet -- tailwind.css; then
+            git add tailwind.css
+            git commit -m "Régénère tailwind.css"
+            git push
+          else
+            echo "Aucun changement du CSS."
+          fi
