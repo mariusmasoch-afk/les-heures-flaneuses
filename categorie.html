@@ -165,50 +165,6 @@
     };
     const CAT_STYLES = CAT_META;
 
-    const CAT_BANNERS = {
-      mode: {
-        gradient: 'linear-gradient(135deg,#5B2418 0%,#7E3220 45%,#A8462F 100%)',
-        svg: `<svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;opacity:.18">
-          <ellipse cx="600" cy="300" rx="500" ry="180" fill="white" opacity=".06"/>
-          <path d="M200 320 Q300 80 400 160 Q500 240 600 60 Q700 240 800 160 Q900 80 1000 320" stroke="white" stroke-width="2.5" fill="none" opacity=".35"/>
-          <circle cx="400" cy="160" r="5" fill="white" opacity=".7"/>
-          <circle cx="600" cy="60" r="5" fill="white" opacity=".7"/>
-          <circle cx="800" cy="160" r="5" fill="white" opacity=".7"/>
-          <circle cx="1080" cy="60" r="140" fill="white" opacity=".06"/>
-          <circle cx="120" cy="80" r="100" fill="white" opacity=".06"/>
-          <path d="M0 280 Q300 220 600 260 T1200 240" stroke="white" stroke-width="1" fill="none" opacity=".2"/>
-        </svg>`
-      },
-      hotels: {
-        gradient: 'linear-gradient(135deg,#1B1815 0%,#3A2E1F 45%,#8A6A2F 100%)',
-        svg: `<svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;opacity:.22">
-          <circle cx="1100" cy="160" r="220" fill="white" opacity=".07"/>
-          <circle cx="1100" cy="160" r="150" fill="white" opacity=".07"/>
-          <circle cx="1100" cy="160" r="80" fill="white" opacity=".1"/>
-          <path d="M0 320 L0 120 Q100 80 200 100 L200 320Z" fill="white" opacity=".05"/>
-          <path d="M250 320 L250 60 Q350 20 450 50 L450 320Z" fill="white" opacity=".05"/>
-          <path d="M500 320 L500 100 Q600 60 700 80 L700 320Z" fill="white" opacity=".05"/>
-          <line x1="0" y1="310" x2="1200" y2="310" stroke="white" stroke-width="1.5" opacity=".3"/>
-          <circle cx="200" cy="40" r="4" fill="white"/><circle cx="550" cy="20" r="3" fill="white"/>
-        </svg>`
-      },
-      sport: {
-        gradient: 'linear-gradient(135deg,#16302A 0%,#2B4E45 45%,#4A7A6C 100%)',
-        svg: `<svg viewBox="0 0 1200 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="width:100%;height:100%;opacity:.18">
-          <circle cx="600" cy="160" r="260" fill="none" stroke="white" stroke-width="2" opacity=".3"/>
-          <circle cx="600" cy="160" r="180" fill="none" stroke="white" stroke-width="1.5" opacity=".2"/>
-          <path d="M0 160 Q200 80 400 160 T800 160 T1200 160" stroke="white" stroke-width="2.5" fill="none" opacity=".4"/>
-          <path d="M0 200 Q300 120 600 200 T1200 200" stroke="white" stroke-width="1.5" fill="none" opacity=".25"/>
-          <circle cx="1080" cy="60" r="130" fill="white" opacity=".07"/>
-          <circle cx="120" cy="260" r="100" fill="white" opacity=".07"/>
-          <circle cx="350" cy="100" r="6" fill="white" opacity=".7"/>
-          <circle cx="600" cy="220" r="5" fill="white" opacity=".6"/>
-          <circle cx="880" cy="90" r="7" fill="white" opacity=".6"/>
-          <line x1="0" y1="310" x2="1200" y2="310" stroke="white" stroke-width="1.5" opacity=".25"/>
-        </svg>`
-      },
-    };
-
     const params = new URLSearchParams(window.location.search);
     const cat = params.get('cat');
     if (!cat || !CAT_META[cat]) { window.location.href = '/'; }
