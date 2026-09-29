@@ -1,55 +1,46 @@
 /* ============================================================
-   LES HEURES FLÂNEUSES — Système de design
-   Direction : "Encre et brique" — éditorial, chaud, vivant.
-   Ambiance liée à l'heure réelle du visiteur (voir time-ambience.js).
+   LES HEURES FLÂNEUSES — Système de design "Glitch Blog"
+   Zine numérique : papier blanc, sans-serif confiant, une seule
+   couleur d'accent (magenta électrique) utilisée en encre, jamais
+   en aplat. Chrome d'interface minimal, l'image de chaque article
+   porte la page.
    ============================================================ */
 
 :root {
-  /* Palette de base ("jour") */
-  --paper:        #EFE7D8; /* fond — lin, papier vieilli */
-  --paper-raised: #F6F0E4; /* cartes, surfaces légèrement plus claires */
-  --ink:          #24201B; /* texte — quasi noir, chaud */
-  --ink-soft:     #5B5348; /* texte secondaire */
-  --brick:        #A8462F; /* accent primaire — tampon postal */
-  --brick-deep:   #7E3220; /* accent primaire, hover/actif */
-  --pine:         #2B4E45; /* accent froid — malle de voyage */
-  --brass:        #C79A56; /* accent muet — tags, filets */
-  --line:         rgba(36,32,27,.14);
+  /* Couleurs */
+  --page-white:     #ffffff;
+  --ink-black:      #000000;
+  --hairline-gray:  #e4e4e4;
+  --input-border:   #b4b4b4;
+  --accent:         #ff00bc; /* Glitch Magenta — à utiliser en encre, jamais en aplat large */
 
-  --accent: var(--brick);
-  --accent-deep: var(--brick-deep);
-  --ambient-a: #F2E4C8;
-  --ambient-b: #EFE7D8;
+  /* Alias conservés pour compatibilité avec les pages non encore migrées */
+  --paper:        var(--page-white);
+  --paper-raised: #fafafa;
+  --ink:          var(--ink-black);
+  --ink-soft:     #4a4a4a;
+  --line:         var(--hairline-gray);
+  --accent-deep:  #cc0096;
 
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Karla', system-ui, sans-serif;
-}
+  --font-body: 'InterVariable', 'Inter', ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: var(--font-body); /* système typographique unique (pas de serif) */
 
-/* Bascule d'ambiance selon l'heure réelle du visiteur */
-html[data-daytime="morning"] {
-  --ambient-a: #F3D9C9;
-  --ambient-b: #EFE7D8;
-}
-html[data-daytime="midday"] {
-  --ambient-a: #F2E4C8;
-  --ambient-b: #EFE7D8;
-}
-html[data-daytime="evening"] {
-  --ambient-a: #E8B77A;
-  --ambient-b: #E4CFA3;
-  --accent: #C1622B;
-  --accent-deep: #9A4B1F;
-}
-html[data-daytime="night"] {
-  --paper:        #1B1815;
-  --paper-raised: #241F1A;
-  --ink:          #EFE3D3;
-  --ink-soft:     #B8AA98;
-  --line:         rgba(239,231,216,.14);
-  --ambient-a:    #2E2620;
-  --ambient-b:    #1B1815;
-  --accent:       #D97A54;
-  --accent-deep:  #B85C38;
+  /* Échelle typographique */
+  --text-caption: 14px;
+  --text-body: 16px;
+  --text-body-lg: 18px;
+  --text-subheading: 20px;
+  --text-display: 40px;
+
+  /* Espacements */
+  --space-4: 4px;
+  --space-8: 8px;
+  --space-16: 16px;
+  --space-20: 20px;
+  --space-28: 28px;
+  --space-48: 48px;
+
+  --page-max-width: 1200px;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -57,50 +48,47 @@ html[data-daytime="night"] {
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--page-white);
+  color: var(--ink-black);
   font-family: var(--font-body);
-  transition: background-color .6s ease, color .6s ease;
 }
 
 h1, h2, h3, h4, .font-display {
-  font-family: var(--font-display);
+  font-family: var(--font-body);
+  font-weight: 600;
   letter-spacing: -0.01em;
 }
 
-/* Voile atmosphérique — traduit "Les Heures" en ambiance vivante plutôt qu'en simple toggle jour/nuit */
-#ambient {
-  position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background: radial-gradient(ellipse 120% 55% at 50% -10%, var(--ambient-a), transparent 70%);
-  opacity: .55;
-}
-html[data-daytime="night"] #ambient { opacity: .4; }
+/* Pas d'ambiance jour/nuit dans ce système — thème clair fixe, volontairement. */
+#ambient { display: none; }
 
-/* ---- Liens : le mot grossit au survol (plutôt qu'un soulignement) ----
-   inline-block pour que transform s'applique ; l'origine à gauche évite que le texte
-   déborde à gauche du conteneur. */
-.ink-link, .title-link {
-  display: inline-block;
-  color: inherit;
+/* ---- Lien signature : texte noir, trait magenta — remplace le bleu de lien par défaut ---- */
+.ink-link {
+  position: relative;
   text-decoration: none;
-  transform-origin: left center;
-  transition: transform .25s cubic-bezier(.22,1,.36,1), color .2s ease;
+  color: var(--ink-black);
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+  transition: border-color .15s ease;
 }
-.ink-link:hover, .ink-link:focus-visible { transform: scale(1.1); color: var(--accent); }
-/* Titres (souvent sur plusieurs lignes, texte plus grand) : agrandissement plus discret */
-.title-link:hover, .title-link:focus-visible { transform: scale(1.03); color: var(--accent); }
-.ink-link:focus-visible, .title-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-@media (prefers-reduced-motion: reduce) {
-  .ink-link:hover, .title-link:hover { transform: none; }
-}
+.ink-link:hover, .ink-link:focus-visible { border-bottom-color: var(--accent); }
+.ink-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-/* Filets et bordures qui suivent la palette plutôt que le gris Tailwind par défaut */
-.hairline { border-color: var(--line) !important; }
-.paper-surface { background: var(--paper-raised); }
+/* Titres d'article : pas de trait (peuvent passer sur plusieurs lignes) — le survol
+   fait juste apparaître le magenta, sans mouvement. */
+.title-link { color: var(--ink-black); text-decoration: none; transition: color .15s ease; }
+.title-link:hover, .title-link:focus-visible { color: var(--accent); }
+.title-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.hairline { border-color: var(--hairline-gray) !important; }
+.paper-surface { background: var(--page-white); }
+
+/* Angles nets partout — signature du système */
+.sharp, .rounded-sm, .rounded-xl, .rounded-2xl, .rounded-lg, .rounded-full { border-radius: 0 !important; }
 
 /* Skeleton de chargement, partagé entre les pages */
 .skeleton {
-  background: linear-gradient(90deg, var(--paper-raised) 25%, var(--line) 50%, var(--paper-raised) 75%);
+  background: linear-gradient(90deg, #f2f2f2 25%, #e8e8e8 50%, #f2f2f2 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s infinite;
 }
