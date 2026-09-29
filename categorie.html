@@ -60,9 +60,19 @@
       const cats = { mode: 'Mode', sport: 'Tech', hotels: 'Hôtels & Voyages' };
       const label = cats[cat] || 'Les Heures Flâneuses';
       const url = 'https://lesheuresflaneuses.fr/categorie.html?cat=' + cat;
-      const c = document.createElement('link'); c.rel = 'canonical'; c.href = url; document.head.appendChild(c);
-      [['og:type','website'],['og:title',label+' — Les Heures Flâneuses'],['og:description','Retrouvez tous nos articles '+label+' sur Les Heures Flâneuses.'],['og:url',url]].forEach(function(p){
-        const m = document.createElement('meta'); m.setAttribute('property',p[0]); m.content = p[1]; document.head.appendChild(m);
+      const desc = 'Retrouvez tous nos articles ' + label + ' sur Les Heures Flâneuses.';
+      let c = document.querySelector('link[rel="canonical"]');
+      if (!c) { c = document.createElement('link'); c.rel = 'canonical'; document.head.appendChild(c); }
+      c.href = url;
+      [['og:type','website'],['og:title',label+' — Les Heures Flâneuses'],['og:description',desc],['og:url',url]].forEach(function(p){
+        let m = document.querySelector('meta[property="'+p[0]+'"]');
+        if (!m) { m = document.createElement('meta'); m.setAttribute('property',p[0]); document.head.appendChild(m); }
+        m.content = p[1];
+      });
+      [['twitter:title',label+' — Les Heures Flâneuses'],['twitter:description',desc]].forEach(function(p){
+        let m = document.querySelector('meta[name="'+p[0]+'"]');
+        if (!m) { m = document.createElement('meta'); m.setAttribute('name',p[0]); document.head.appendChild(m); }
+        m.content = p[1];
       });
     })();
   </script>
