@@ -242,6 +242,11 @@
       const slug   = params.get('slug');
       if (!slug) { showError(); return; }
 
+      const OLD_SLUGS = {
+        'tissot-prc-100-solar-quand-lhorlogerie-suisse-sempare-de-len': 'avis-tissot-prc-100-solar-test-de-la-montre-solaire-suisse',
+      };
+      if (OLD_SLUGS[slug]) { window.location.replace(`article.html?slug=${OLD_SLUGS[slug]}`); return; }
+
       const cacheKey = `tf_article_${slug}`;
 
       // 1. Affichage instantané depuis le cache si disponible
