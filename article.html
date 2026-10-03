@@ -484,6 +484,7 @@
       document.getElementById('article-content').classList.remove('hidden');
 
       // SEO & maillage
+      upgradeFaqAccordion();
       generateFaqSchema();
       loadRelatedArticles(a.categorie, a.slug);
       stripEmptyBlocks();
