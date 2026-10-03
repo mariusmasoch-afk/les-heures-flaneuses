@@ -617,6 +617,25 @@
       window.revealAll && window.revealAll();
     }
 
+    function upgradeFaqAccordion() {
+      document.querySelectorAll('#article-content .faq-item').forEach(item => {
+        if (item.tagName === 'DETAILS') return;
+        const q = item.querySelector('.faq-question');
+        const a = item.querySelector('.faq-answer');
+        if (!q || !a) return;
+        const details = document.createElement('details');
+        details.className = 'faq-item';
+        const summary = document.createElement('summary');
+        summary.className = 'faq-question';
+        summary.innerHTML = q.innerHTML;
+        const answer = document.createElement('div');
+        answer.className = 'faq-answer';
+        answer.innerHTML = a.innerHTML;
+        details.append(summary, answer);
+        item.replaceWith(details);
+      });
+    }
+
     function generateFaqSchema() {
       const items = document.querySelectorAll('#article-content .faq-item');
       if (!items.length) return;
