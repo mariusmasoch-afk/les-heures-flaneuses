@@ -555,7 +555,7 @@
       const used = new Set();
       const items = heads.map(h => {
         let id = h.textContent.trim().toLowerCase().replace(/œ/g, 'oe').normalize('NFD').replace(/[̀-ͯ]/g, '')
-          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50).replace(/-[^-]*$/, m => m.length > 1 ? m : '') || 'section';
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50).replace(/-+$/, '') || 'section';
         let n = 2, base = id;
         while (used.has(id)) id = `${base}-${n++}`;
         used.add(id);
