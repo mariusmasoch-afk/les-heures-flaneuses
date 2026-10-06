@@ -465,9 +465,9 @@
         <!-- Métadonnées -->
         <div class="flex items-center gap-4 text-sm mb-8 flex-wrap" style="color:var(--ink-soft)">
           <span>${date}</span>
-          ${mins ? `<span>·</span><span>${mins}</span>` : ''}
+          ${mins ? `<span class="meta-sep" aria-hidden="true">·</span><span>${mins}</span>` : ''}
           ${a.redacteurs ? `
-          <span>·</span>
+          <span class="meta-sep" aria-hidden="true">·</span>
           <div class="flex items-center gap-2">
             ${a.redacteurs.photo_url
               ? `<img src="${a.redacteurs.photo_url}" alt="${a.redacteurs.prenom} ${a.redacteurs.nom}" class="w-6 h-6 rounded-full object-cover" style="border:1px solid var(--line)" />`
