@@ -77,43 +77,25 @@
       #np-overlay, #np-card { transition: none !important; }
     }
 
-    /* Footer centré */
-    .ft-links { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; justify-content:center; gap:.6rem 2.25rem; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; }
-    .ft-legal { margin-top:1.75rem; letter-spacing:.1em; opacity:.75; }
-    /* Intro + collage */
-    #intro { border-bottom:1px solid var(--line); }
-    .intro-grid { display:grid; grid-template-columns:1fr; gap:2.75rem; align-items:center; padding:3rem 1rem 3.5rem; }
-    @media (min-width:768px) { .intro-grid { grid-template-columns:minmax(0,5fr) minmax(0,6fr); gap:3.5rem; padding:4.5rem 1.5rem 5rem; min-height:34rem; } }
-    .intro-text { max-width:30rem; }
-    .intro-lead { font-family:var(--font-body); font-size:clamp(1.3rem,2.1vw,1.85rem); line-height:1.6; font-weight:300; letter-spacing:.005em; color:var(--ink-soft); margin:0; }
-    .intro-lead::before { content:""; display:inline-block; width:3.25rem; height:1px; margin-right:.9rem; vertical-align:middle; background:var(--ink); }
-    .intro-lead a { color:var(--ink); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:.24em; transition:color .2s ease; }
-    .intro-lead a:hover, .intro-lead a:focus-visible { color:var(--accent); }
-    .intro-links { display:flex; gap:2rem; margin:1.9rem 0 0; font-size:.7rem; letter-spacing:.18em; text-transform:uppercase; color:var(--ink); }
+    /* Hero plein écran */
+    #hero { position:relative; width:100%; height:80vh; min-height:460px; max-height:840px; overflow:hidden; background:#14100D; }
+    #hero-slides { position:absolute; inset:0; }
+    .hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; transition:opacity .8s ease; filter:saturate(.92) contrast(1.03); }
+    #hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(20,16,13,.88) 0%, rgba(20,16,13,.2) 55%, transparent 100%); }
 
-    .collage { position:relative; width:100%; max-width:36rem; margin-inline:auto; aspect-ratio:1 / 1.04; }
-    .cl-skeleton { position:absolute; inset:8% 6%; border-radius:2px; }
-    .cl { position:absolute; display:block; color:var(--ink); text-decoration:none; transform:rotate(var(--r,0deg));
-      box-shadow:0 10px 24px rgba(36,32,27,.16), 0 2px 5px rgba(36,32,27,.12);
-      opacity:0; animation:clIn .7s cubic-bezier(.22,1,.36,1) forwards; animation-delay:var(--d,0s);
-      transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .3s ease; }
-    .cl:hover, .cl:focus-visible { transform:rotate(calc(var(--r,0deg) * .25)) translateY(-6px) scale(1.035); z-index:30 !important; box-shadow:0 18px 36px rgba(36,32,27,.24), 0 3px 8px rgba(36,32,27,.14); }
-    .cl:focus-visible { outline:2px solid var(--accent); outline-offset:4px; }
-    @keyframes clIn { from { opacity:0; transform:translateY(14px) rotate(var(--r,0deg)); } to { opacity:1; transform:rotate(var(--r,0deg)); } }
-    .cl img { display:block; width:100%; object-fit:cover; }
-    .cl-polaroid { left:2%; top:7%; width:47%; --r:-6deg; --d:.05s; z-index:2; background:#fffdf8; padding:.55rem .55rem 1.9rem; }
-    .cl-polaroid img { aspect-ratio:4 / 3; }
-    .cl-polaroid .cl-cap { position:absolute; left:.6rem; right:.6rem; bottom:.45rem; font-size:.68rem; line-height:1.2; font-style:italic; color:#5B5348; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .cl-polaroid::before, .cl-print::before { content:""; position:absolute; top:-.75rem; left:50%; width:36%; height:1.35rem; transform:translateX(-50%) rotate(-5deg); background:color-mix(in srgb, #C79A56 55%, transparent); box-shadow:0 1px 2px rgba(0,0,0,.12); z-index:2; }
-    .cl-print { right:4%; top:0; width:40%; --r:3deg; --d:.15s; z-index:1; background:#fffdf8; padding:.4rem; }
-    .cl-print::before { transform:translateX(-50%) rotate(4deg); background:color-mix(in srgb, #A8462F 35%, transparent); width:30%; }
-    .cl-print img { aspect-ratio:3 / 4; }
-    .cl-film { left:-1%; bottom:8%; width:70%; --r:-1.5deg; --d:.25s; z-index:3; background:#26221E; padding:.9rem .45rem .45rem; display:grid; grid-template-columns:1fr 1fr; gap:.35rem; }
-    .cl-film::before { content:"LES HEURES FLÂNEUSES  ·  ◂ 24  ·  25 ▸"; position:absolute; left:.55rem; top:.2rem; font-size:.42rem; letter-spacing:.2em; color:#8F8476; white-space:nowrap; }
-    .cl-film img { aspect-ratio:4 / 3; }
-    .cl-frame { right:0; bottom:0; width:33%; --r:4deg; --d:.35s; z-index:4; background:#26221E; padding:.4rem; }
-    .cl-frame img { aspect-ratio:3 / 4; }
-    @media (prefers-reduced-motion: reduce) { .cl { animation:none; opacity:1; } .cl:hover { transform:rotate(var(--r,0deg)); } }
+    /* Miniature hero */
+    .hero-thumb { width:88px; height:88px; border-radius:3px; overflow:hidden; background-size:cover; background-position:center; border:1px solid rgba(239,231,216,.35); cursor:pointer; transition:border-color .2s, transform .2s, opacity .2s; }
+    .hero-thumb.active { border-color:#EFE7D8; transform:scale(1.05); opacity:1; }
+    .hero-thumb:not(.active) { opacity:.45; }
+
+    /* Titre du hero : grossit au survol */
+    #hero-title { transform-origin: center; transition: transform .3s cubic-bezier(.22,1,.36,1); }
+    #hero-link:hover #hero-title, #hero-link:focus-visible #hero-title { transform: scale(1.04); }
+    @media (prefers-reduced-motion: reduce) { #hero-link:hover #hero-title { transform: none; } }
+
+    /* Dot */
+    .hero-dot { height:5px; border-radius:4px; background:rgba(239,231,216,.4); transition:width .3s, background .3s; }
+    .hero-dot.active { width:26px !important; background:#EFE7D8; }
 
     /* Cards */
     .article-card img { transition:transform .6s cubic-bezier(.22,1,.36,1); }
@@ -193,21 +175,36 @@
 
   <main>
 
-    <!-- INTRO + COLLAGE -->
-    <section id="intro" aria-label="Présentation">
-      <div class="max-w-7xl mx-auto intro-grid">
-        <div class="intro-text">
-          <h1 class="intro-lead">Les Heures Flâneuses est un blog indépendant de <a href="#articles">tests</a> et d'avis sur la <a href="categorie.html?cat=mode">mode</a>, la <a href="categorie.html?cat=sport">tech</a> et les <a href="categorie.html?cat=hotels">hôtels &amp; voyages</a>. Nous essayons, nous photographions et nous écrivons ce que nous en pensons, sans enjoliver.</h1>
-          <p class="intro-links"><a href="#articles" class="ink-link">Les articles</a><a href="contact.html" class="ink-link">Contact</a></p>
-        </div>
-        <div id="collage" class="collage" aria-label="Derniers articles en images">
-          <div class="cl-skeleton skeleton"></div>
-        </div>
+    <!-- HERO PLEIN ÉCRAN -->
+    <section id="hero" aria-label="Article à la une">
+
+      <!-- Slides -->
+      <div id="hero-slides">
+        <div class="hero-slide skeleton" style="opacity:1"></div>
       </div>
+
+      <!-- Overlay -->
+      <div id="hero-overlay"></div>
+
+      <!-- Miniatures desktop (droite) -->
+      <div id="hero-thumbs" class="absolute right-4 top-1/2 -translate-y-1/2 hidden md:flex flex-col gap-2.5 z-20"></div>
+
+      <!-- Contenu texte -->
+      <div class="absolute inset-0 flex flex-col items-center justify-end pb-16 text-center text-white px-6 md:pr-28 z-10 pointer-events-none">
+        <a id="hero-link" href="#" class="pointer-events-auto flex flex-col items-center gap-1 group">
+          <span id="hero-cat" class="text-xs font-bold tracking-[0.2em] uppercase mb-3" style="color:var(--brass)"></span>
+          <h1 id="hero-title" class="font-display italic text-3xl sm:text-4xl md:text-6xl font-medium leading-[1.08] max-w-4xl drop-shadow"></h1>
+          <p id="hero-date" class="text-sm mt-4 text-white/50 font-medium"></p>
+        </a>
+      </div>
+
+      <!-- Dots (bas gauche) -->
+      <div id="hero-dots" class="absolute bottom-6 left-6 flex items-center gap-2 z-20"></div>
+
     </section>
 
     <!-- DERNIERS ARTICLES — grille déconstruite -->
-    <section id="articles" aria-labelledby="articles-title" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+    <section aria-labelledby="articles-title" class="max-w-7xl mx-auto px-4 sm:px-6 py-16 md:py-24">
       <div class="flex items-end justify-between mb-10 md:mb-14 gap-4" style="border-bottom:1px solid var(--line); padding-bottom:1rem">
         <h2 id="articles-title" class="font-display italic text-3xl md:text-4xl font-medium" style="color:var(--ink)">Derniers articles</h2>
         <span class="hidden sm:block text-xs uppercase tracking-[0.2em] shrink-0" style="color:var(--ink-soft)">Mode · Tech · Voyages</span>
@@ -247,22 +244,31 @@
       </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 text-center" style="border-bottom:1px solid rgba(239,231,216,.1)">
-      <ul class="ft-links">
-        <li><a href="https://www.linkedin.com/in/marius-masoch" target="_blank" rel="noopener noreferrer" class="ink-link">LinkedIn</a></li>
-        <li><a href="ecrire.html" class="ink-link">Écrire pour nous</a></li>
-        <li><a href="contact.html" class="ink-link">Contact</a></li>
-      </ul>
-      <a href="/" class="font-display inline-flex items-baseline gap-2 mt-8" style="color:#EFE3D3" aria-label="Les Heures Flâneuses, accueil">
-        <span class="text-2xl">Les Heures</span><span class="text-3xl italic" style="color:var(--accent)">Flâneuses</span>
-      </a>
-      <ul class="ft-links ft-legal">
-        <li><a href="mentions-legales.html" class="ink-link">Mentions légales</a></li>
-        <li><a href="confidentialite.html" class="ink-link">Confidentialité</a></li>
-      </ul>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 md:gap-16 items-start" style="border-bottom:1px solid rgba(239,231,216,.1)">
+      <div class="max-w-sm">
+        <a href="/" class="font-display inline-flex flex-col leading-none" style="color:#EFE3D3" aria-label="Les Heures Flâneuses, accueil">
+          <span class="text-base">Les Heures</span>
+          <span class="text-3xl italic" style="color:var(--accent)">Flâneuses</span>
+        </a>
+        <p class="mt-5 text-sm leading-relaxed">Un blog indépendant, écrit par Marius Masoch. Des tests et des avis sur la mode, la tech et les voyages, après usage réel.</p>
+      </div>
+      <nav aria-label="Pied de page" class="md:justify-self-end md:text-right">
+        <ul class="font-display text-xl md:text-2xl flex flex-wrap md:justify-end gap-x-6 gap-y-2" style="color:#EFE3D3">
+          <li><a href="categorie.html?cat=mode" class="ink-link">Mode</a></li>
+          <li><a href="categorie.html?cat=hotels" class="ink-link">Hôtels &amp; Voyages</a></li>
+          <li><a href="categorie.html?cat=sport" class="ink-link">Tech</a></li>
+        </ul>
+        <ul class="mt-6 text-sm flex flex-wrap md:justify-end gap-x-5 gap-y-2">
+          <li><a href="ecrire.html" class="ink-link">Écrire pour nous</a></li>
+          <li><a href="contact.html" class="ink-link">Contact</a></li>
+          <li><a href="https://www.linkedin.com/in/marius-masoch" target="_blank" rel="noopener noreferrer" class="ink-link">LinkedIn</a></li>
+          <li><a href="mentions-legales.html" class="ink-link">Mentions légales</a></li>
+          <li><a href="confidentialite.html" class="ink-link">Confidentialité</a></li>
+        </ul>
+      </nav>
     </div>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 text-center text-xs opacity-60">© 2026 Les Heures Flâneuses</div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-6 text-xs opacity-60">© 2026 Les Heures Flâneuses</div>
 
   </footer>
 
@@ -367,43 +373,68 @@
     window.revealAll && window.revealAll();
   }
 
-  // ---- COLLAGE D'ACCUEIL (couvertures des derniers articles) ----
-  function clLink(a) { return a.slug ? `article.html?slug=${a.slug}` : `article.html?id=${a.id}`; }
-  function clImg(a, eager) { return `<img src="${a.image_url || ''}" alt="" ${eager ? '' : 'loading="lazy"'} />`; }
+  // ---- CARROUSEL HERO ----
+  let _slides = [], _idx = 0, _timer = null;
 
-  function buildCollage(list) {
-    const el = document.getElementById('collage');
-    if (!el || !list || !list.length) return;
-    const [p, q, r, t, u] = list;
-    const link = (a, cls, inner) => `<a class="cl ${cls}" href="${clLink(a)}" aria-label="${(a.titre || '').replace(/"/g, '&quot;')}">${inner}</a>`;
-    let html = '';
-    if (q) html += link(q, 'cl-print', clImg(q));
-    if (p) html += link(p, 'cl-polaroid', clImg(p, true) + `<span class="cl-cap">${p.titre}</span>`);
-    if (r) html += link(r, 'cl-film', clImg(r) + clImg(t || r));
-    if (u) html += link(u, 'cl-frame', clImg(u));
-    el.innerHTML = html;
+  function buildCarousel(articles) {
+    if (!articles || !articles.length) return;
+    _slides = articles;
+
+    document.getElementById('hero-slides').innerHTML = articles.map((a, i) =>
+      `<div class="hero-slide" style="background-image:url('${a.image_url || ''}');opacity:${i===0?1:0}"></div>`
+    ).join('');
+
+    document.getElementById('hero-dots').innerHTML = articles.map((_, i) =>
+      `<button onclick="slideTo(${i})" aria-label="Slide ${i+1}" class="hero-dot ${i===0?'active':'w-2'}" style="width:${i===0?'28px':'8px'}"></button>`
+    ).join('');
+
+    document.getElementById('hero-thumbs').innerHTML = articles.map((a, i) =>
+      `<button onclick="slideTo(${i})" aria-label="${a.titre}" class="hero-thumb ${i===0?'active':''}"
+        style="background-image:url('${a.image_url || ''}')"></button>`
+    ).join('');
+
+    updateCarousel(0);
+    startTimer();
   }
 
-  async function loadCollage() {
-    const cols = 'id, titre, categorie, image_url, slug, date_creation';
-    const { data: starred } = await db.from('articles').select(cols)
+  function updateCarousel(idx) {
+    const a   = _slides[idx];
+    const cat = CAT_LABELS[a.categorie] || a.categorie || '';
+    const url = a.slug ? `article.html?slug=${a.slug}` : `article.html?id=${a.id}`;
+
+    document.getElementById('hero-cat').textContent   = cat;
+    document.getElementById('hero-title').textContent = a.titre;
+    document.getElementById('hero-date').textContent  = formatDate(a.date_creation);
+    document.getElementById('hero-link').href = url;
+
+    document.querySelectorAll('.hero-slide').forEach((el, i) => el.style.opacity = i===idx?'1':'0');
+    document.querySelectorAll('.hero-dot').forEach((el, i) => {
+      el.className = `hero-dot ${i===idx?'active':''}`;
+      el.style.width = i===idx ? '28px' : '8px';
+    });
+    document.querySelectorAll('.hero-thumb').forEach((el, i) => {
+      el.className = `hero-thumb ${i===idx?'active':''}`;
+    });
+  }
+
+  function slideTo(idx) { _idx = idx; updateCarousel(idx); clearInterval(_timer); startTimer(); }
+  function startTimer() { _timer = setInterval(() => { _idx = (_idx+1)%_slides.length; updateCarousel(_idx); }, 5000); }
+
+  async function loadCarousel() {
+    const { data: starred } = await db.from('articles')
+      .select('id, titre, categorie, image_url, slug, date_creation')
       .eq('statut', 'publié').eq('is_carousel', true)
       .order('date_creation', { ascending: false }).limit(5);
-    let list = (starred || []).filter(a => a.image_url);
-    if (list.length < 5) {
-      const { data: latest } = await db.from('articles').select(cols)
-        .eq('statut', 'publié')
-        .order('date_creation', { ascending: false }).limit(12);
-      const seen = new Set(list.map(a => a.id));
-      for (const a of (latest || [])) {
-        if (list.length >= 5) break;
-        if (a.image_url && !seen.has(a.id)) { list.push(a); seen.add(a.id); }
-      }
-    }
-    buildCollage(list);
+    if (starred && starred.length) { buildCarousel(starred); return; }
+
+    const { data: latest } = await db.from('articles')
+      .select('id, titre, categorie, image_url, slug, date_creation')
+      .eq('statut', 'publié')
+      .order('date_creation', { ascending: false }).limit(5);
+    if (latest && latest.length) buildCarousel(latest);
   }
 
-  loadCollage();
+  loadCarousel();
   loadArticles();
 
   // ---- NEWSLETTER ----
