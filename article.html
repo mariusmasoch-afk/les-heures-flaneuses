@@ -17,10 +17,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/theme.css?v=20261009" />
+  <link rel="stylesheet" href="/theme.css?v=20261010" />
   <script src="/time-ambience.js"></script>
-  <script src="/subcats.js?v=20261009"></script>
-  <script src="/nav.js?v=20261009" defer></script>
+  <script src="/subcats.js?v=20261010"></script>
+  <script src="/nav.js?v=20261010" defer></script>
   <style>
     /* Article content styles */
     .article-content h2 { font-size:1.5rem; font-weight:700; color:var(--ink); margin:2rem 0 .75rem; font-family:var(--font-display); }
@@ -311,12 +311,6 @@
     const { createClient } = supabase;
     const db = createClient(SUPABASE_URL, SUPABASE_ANON);
 
-    const CAT_STYLES = {
-      'mode':      { text:'#A8462F', bg:'#F3DFCB', label:'Mode' },
-      'sport':     { text:'#2B4E45', bg:'#DCE6DE', label:'Tech' },
-      'hotels':    { text:'#8A6A2F', bg:'#EEE1BE', label:'Hôtels & Voyages' },
-    };
-
     // Cible de navigation d'un article : sa sous-rubrique si elle existe, sinon sa rubrique (jamais les anciennes pages mode/hotels)
     const CAT_GROUP = { mode: 'lifestyle', hotels: 'lifestyle', sport: 'sport' };
     const GROUP_LABEL = { lifestyle: 'Lifestyle', sport: 'Tech' };
@@ -384,7 +378,7 @@
     }
 
     function render(a) {
-      const style = CAT_STYLES[a.categorie] || { text:'var(--ink-soft)', bg:'var(--paper-raised)', label: a.categorie || '' };
+      const style = window.cardTag(a);
       const date  = new Date(a.date_creation).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
       const mins  = a.temps_lecture ? `${a.temps_lecture} min de lecture` : '';
 
@@ -406,7 +400,7 @@
         'og:image':       a.image_url || 'https://lesheuresflaneuses.fr/og-cover.jpg',
         'article:published_time': a.date_creation,
         'article:modified_time':  a.date_modification || a.date_creation,
-        'article:section':        a.categorie || '',
+        'article:section':        window.cardTag(a).label,
       };
       Object.entries(ogMetas).forEach(([prop, content]) => {
         let m = document.querySelector(`meta[property="${prop}"]`);
@@ -483,7 +477,7 @@
       document.getElementById('article-content').innerHTML = `
         <!-- Badge catégorie -->
         <div class="mb-6">
-          <a href="${catTarget(a).groupHref}" class="inline-flex items-center px-3 py-1 text-xs font-semibold" style="color:${style.text};background:${style.bg}">${style.label}</a>
+          <a href="${catTarget(a).href}" class="inline-flex items-center px-3 py-1 text-xs font-semibold" style="color:${style.text};background:${style.bg}">${style.label}</a>
         </div>
 
         <!-- Titre -->
@@ -570,7 +564,7 @@
       upgradeSpecLists();
       upgradeVerdictBlocks();
       generateFaqSchema();
-      loadRelatedArticles(a.categorie, a.slug);
+      loadRelatedArticles(a);
       stripEmptyBlocks();
       sanitizeArticleBodyStyles();
       applyFakeHeadings();
@@ -692,23 +686,29 @@
       }
     }
 
-    async function loadRelatedArticles(categorie, currentSlug) {
+    async function loadRelatedArticles(article) {
       const container = document.getElementById('related-articles-container');
-      if (!container || !categorie) return;
+      if (!container || !article || !article.categorie) return;
+      const currentSlug = article.slug;
+      const g = window.groupOfCat(article.categorie);
+      const cats = g ? window.SUBCATS[g].cats : [article.categorie];
 
-      const { data } = await db
+      const { data: rows } = await db
         .from('articles')
-        .select('titre, slug, image_url, date_creation')
-        .eq('categorie', categorie)
+        .select('titre, slug, image_url, date_creation, sous_categorie')
+        .in('categorie', cats)
         .eq('statut', 'publié')
         .neq('slug', currentSlug)
         .order('date_creation', { ascending: false })
-        .limit(3);
+        .limit(12);
+      const data = (rows || [])
+        .sort((x, y) => (y.sous_categorie === article.sous_categorie) - (x.sous_categorie === article.sous_categorie))
+        .slice(0, 3);
 
       if (!data || !data.length) return;
 
       container.innerHTML = `
-        <p class="reveal text-xs font-semibold uppercase tracking-widest mb-5" style="color:var(--ink-soft)">Dans la même catégorie</p>
+        <p class="reveal text-xs font-semibold uppercase tracking-widest mb-5" style="color:var(--ink-soft)">Dans la même rubrique</p>
         <div class="grid sm:grid-cols-3 gap-5">
           ${data.map((a, i) => `
             <a href="article.html?slug=${a.slug}" class="related-card reveal group block">

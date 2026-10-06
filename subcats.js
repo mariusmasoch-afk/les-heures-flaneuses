@@ -34,3 +34,18 @@ window.groupOfCat = function (cat) {
   }
   return null;
 };
+
+// Couleurs des pastilles par rubrique de navigation
+window.GROUP_STYLE = {
+  lifestyle: { text: '#A8462F', bg: '#F3DFCB' },
+  sport:     { text: '#2B4E45', bg: '#DCE6DE' }
+};
+
+// Pastille d'une carte d'article : sous-rubrique si elle existe, sinon rubrique (jamais l'ancienne catégorie)
+window.cardTag = function (a) {
+  var g = window.groupOfCat(a.categorie);
+  var grp = g ? window.SUBCATS[g] : null;
+  var sub = grp ? grp.subs.filter(function (x) { return x.id === a.sous_categorie; })[0] : null;
+  var st = (g && window.GROUP_STYLE[g]) || { text: 'var(--ink-soft)', bg: 'var(--paper-raised)' };
+  return { label: sub ? sub.label : (grp ? grp.label : (a.categorie || '')), group: g, sub: sub ? sub.id : null, text: st.text, bg: st.bg };
+};
