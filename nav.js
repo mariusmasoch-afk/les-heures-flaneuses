@@ -59,7 +59,7 @@
         html += '<li style="--i:' + i + '" data-sub="' + s.id + '"><a href="' + subUrl(cat, s.id) + '"'
           + (curCat === cat && curSub === s.id ? ' aria-current="page"' : '') + '>'
           + '<span class="np-sub-top"><span class="np-sub-label font-display">' + esc(s.label) + '</span><span class="np-sub-count" data-count></span></span>'
-          + '<span class="np-sub-desc">' + esc(s.desc) + '</span></a></li>';
+          + '</a></li>';
       });
       html += '</ul></section>';
     });
