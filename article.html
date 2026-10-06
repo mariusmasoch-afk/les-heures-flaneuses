@@ -547,6 +547,28 @@
 
     // Repère les blocs qui ne sont que du texte en gras (faux titres) pour leur donner
     // un vrai style de sous-titre, puisque cet éditeur ne pose pas toujours de balise Hx.
+    function buildToc() {
+      const body = document.querySelector('.article-content');
+      if (!body || body.querySelector('.toc')) return;
+      const heads = Array.from(body.querySelectorAll('h2')).filter(h => h.textContent.trim());
+      if (heads.length < 3) return;
+      const used = new Set();
+      const items = heads.map(h => {
+        let id = h.textContent.trim().toLowerCase().replace(/œ/g, 'oe').normalize('NFD').replace(/[̀-ͯ]/g, '')
+          .replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 50).replace(/-[^-]*$/, m => m.length > 1 ? m : '') || 'section';
+        let n = 2, base = id;
+        while (used.has(id)) id = `${base}-${n++}`;
+        used.add(id);
+        h.id = id;
+        return `<li><a href="#${id}">${h.textContent.trim()}</a></li>`;
+      });
+      const toc = document.createElement('details');
+      toc.className = 'toc';
+      toc.open = true;
+      toc.innerHTML = `<summary>Sommaire</summary><ol>${items.join('')}</ol>`;
+      heads[0].before(toc);
+    }
+
     function applyFakeHeadings() {
       const body = document.querySelector('.article-content');
       if (!body) return;
