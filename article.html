@@ -48,6 +48,22 @@
     .article-content strong { font-weight:600; color:var(--ink); }
     /* Bloc Verdict rapide */
     .article-content .verdict-block { margin:1.5rem 0; border-radius:.75rem; border:1px solid var(--line); background:var(--paper-raised); overflow:hidden; }
+    .article-content img, #article-cover img { cursor:zoom-in; }
+    .article-content a img { cursor:pointer; }
+    #article-cover img:focus-visible, .article-content img:focus-visible { outline:2px solid var(--accent); outline-offset:3px; }
+    #lightbox { position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; padding:3.5rem 1rem 4rem; background:rgba(15,12,10,.94); }
+    #lightbox.open { display:flex; }
+    #lightbox figure { margin:0; max-width:100%; max-height:100%; display:flex; flex-direction:column; align-items:center; gap:.75rem; }
+    #lightbox img { display:block; max-width:100%; max-height:calc(100vh - 11rem); width:auto; height:auto; object-fit:contain; border-radius:2px; cursor:default; }
+    #lightbox figcaption { max-width:42rem; text-align:center; font-size:.875rem; line-height:1.5; color:#CFC3B2; }
+    #lightbox .lb-btn { position:absolute; width:2.75rem; height:2.75rem; border-radius:50%; border:1px solid rgba(239,231,216,.25); background:rgba(36,32,27,.6); color:#EFE3D3; font-size:1.75rem; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:background .2s ease; }
+    #lightbox .lb-btn:hover, #lightbox .lb-btn:focus-visible { background:var(--accent); outline:none; }
+    #lightbox .lb-close { top:1rem; right:1rem; }
+    #lightbox .lb-nav { top:50%; transform:translateY(-50%); }
+    #lightbox .lb-prev { left:1rem; }
+    #lightbox .lb-next { right:1rem; }
+    #lightbox.single .lb-nav { display:none; }
+    @media (max-width:640px) { #lightbox .lb-nav { top:auto; bottom:1rem; transform:none; } #lightbox .lb-prev { left:calc(50% - 3.5rem); } #lightbox .lb-next { right:calc(50% - 3.5rem); } }
     .meta-sep { display:none; }
     @media (min-width:640px) { .meta-sep { display:inline; } }
     /* Figures et galerie photo */
