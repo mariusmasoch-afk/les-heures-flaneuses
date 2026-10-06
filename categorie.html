@@ -53,6 +53,8 @@
   <script>
     (function() {
       const cat = new URLSearchParams(location.search).get('cat') || '';
+      // Anciennes rubriques fusionnées dans Lifestyle : redirection immédiate (avant tout rendu)
+      if (cat === 'mode' || cat === 'hotels') { location.replace('categorie.html?cat=lifestyle'); return; }
       const cats = { mode: 'Mode', sport: 'Tech', hotels: 'Hôtels & Voyages', lifestyle: 'Lifestyle' };
       let label = cats[cat] || 'Les Heures Flâneuses';
       let url = 'https://lesheuresflaneuses.fr/categorie.html?cat=' + cat;
