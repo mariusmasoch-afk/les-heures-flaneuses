@@ -19,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/theme.css" />
   <script src="/time-ambience.js"></script>
+  <script src="/subcats.js" defer></script>
   <script src="/nav.js" defer></script>
   <style>
     .article-card img { transition: transform .6s cubic-bezier(.22,1,.36,1); }
@@ -76,6 +77,7 @@
         <img src="/favicon.svg" alt="" class="nc-logo-img rounded-sm" />
         <span class="nc-wordmark font-display">Les Heures <em>Flâneuses</em></span>
       </a>
+      <a href="/#newsletter" class="nc-sub hidden md:inline-flex">S'abonner</a>
       <button id="menu-btn" aria-label="Menu" class="nc-burger md:hidden" style="color:var(--ink)">
         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
       </button>
@@ -85,10 +87,11 @@
       <a href="categorie.html?cat=mode"   class="ink-link nav-link" data-cat="mode">Mode</a>
       <a href="categorie.html?cat=hotels" class="ink-link nav-link" data-cat="hotels">Hôtels &amp; Voyages</a>
       <a href="categorie.html?cat=sport"  class="ink-link nav-link" data-cat="sport">Tech</a>
-      <a href="/#newsletter" class="ink-link nav-link">S'abonner</a>
     </nav>
 
     <div class="nav-horizon" aria-hidden="true"><span class="nav-horizon-elapsed"></span><span class="nav-sun"></span></div>
+
+    <div id="nav-panel" class="nav-panel" aria-hidden="true"></div>
 
     <div id="mobile-menu" class="hidden md:hidden px-4 py-2 text-sm font-medium" style="color:var(--ink-soft)">
       <a href="categorie.html?cat=mode"   class="block">Mode</a>
