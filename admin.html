@@ -11,6 +11,7 @@
 
   <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="/subcats.js"></script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css"/>
@@ -598,6 +599,11 @@
                 <option value="sport">Tech</option>
               </optgroup>
             </select>
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mt-4 mb-2">Sous-rubrique</h3>
+            <select id="sub-select" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-400 transition">
+              <option value="">Aucune</option>
+            </select>
+            <p class="text-xs text-gray-400 mt-1.5">Elle alimente le menu du site et les filtres de la page rubrique.</p>
           </div>
 
           <!-- Tags -->
@@ -1025,6 +1031,7 @@
     // Catégorie
     const sel = document.getElementById('cat-select');
     if (sel && a.categorie) sel.value = a.categorie;
+    fillSubSelect(a.categorie || '', a.sous_categorie || '');
 
     // Lien d'achat
     document.getElementById('buy-link-input').value = a.lien_achat || '';
@@ -1662,6 +1669,7 @@
       contenu:       document.getElementById('editor-body').innerHTML.trim(),
       slug:          document.getElementById('slug-input').value.trim(),
       categorie:     document.getElementById('cat-select').value,
+      sous_categorie: document.getElementById('sub-select').value || null,
       tags:          [...tags],
       image_url,
       statut,
@@ -1773,6 +1781,7 @@
       document.getElementById('slug-input').value        = '';
       document.getElementById('meta-desc').value         = '';
       document.getElementById('cat-select').value        = '';
+      fillSubSelect('', '');
       document.getElementById('redacteur-select').value  = '';
       removeCover();
       tags.length = 0;
@@ -1963,6 +1972,19 @@
       showToast('Erreur newsletter : ' + globalErr.message, false);
     }
   }
+
+
+  // --- Sous-rubriques (liste liée à la catégorie choisie) ---
+  function fillSubSelect(cat, current) {
+    const sel = document.getElementById('sub-select');
+    if (!sel) return;
+    const list = (window.SUBCATS && window.SUBCATS[cat]) ? window.SUBCATS[cat].subs : [];
+    sel.innerHTML = '<option value="">Aucune</option>' + list.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
+    sel.value = list.some(x => x.id === current) ? current : '';
+    sel.disabled = !list.length;
+  }
+  document.getElementById('cat-select').addEventListener('change', e => fillSubSelect(e.target.value, ''));
+  fillSubSelect('', '');
 
   // --- Init default tags ---
   ['UGC', 'Test produit'].forEach(t => tags.push(t));

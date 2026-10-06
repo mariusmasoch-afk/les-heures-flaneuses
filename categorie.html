@@ -19,7 +19,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/theme.css" />
   <script src="/time-ambience.js"></script>
-  <script src="/subcats.js" defer></script>
   <script src="/nav.js" defer></script>
   <style>
     .article-card img { transition: transform .6s cubic-bezier(.22,1,.36,1); }
@@ -38,17 +37,28 @@
     @media (prefers-reduced-motion: reduce) {
       .reveal, .article-card img, header, main { transition:none !important; animation:none !important; opacity:1 !important; transform:none !important; }
     }
+    .cat-subs { display:flex; flex-wrap:wrap; gap:.6rem; margin-top:1.6rem; }
+    .cat-subs:empty { display:none; }
+    .cat-chip { display:inline-flex; align-items:baseline; gap:.5rem; padding:.45rem 1rem; border:1px solid var(--line); border-radius:999px; font-size:.78rem; letter-spacing:.06em; color:var(--ink); text-decoration:none; transition:background .25s ease, color .25s ease, border-color .25s ease; }
+    .cat-chip .n { font-size:.7rem; font-variant-numeric:tabular-nums; color:var(--ink-soft); }
+    .cat-chip:hover, .cat-chip:focus-visible { border-color:var(--accent); color:var(--accent); }
+    .cat-chip[aria-current="page"] { background:var(--ink); border-color:var(--ink); color:var(--paper); }
+    .cat-chip[aria-current="page"] .n { color:inherit; opacity:.7; }
   </style>
   <script src="/animations.js" defer></script>
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-39RE8T7LE5"></script>
   <script>gtag('js', new Date()); gtag('config', 'G-39RE8T7LE5');</script>
+  <script src="/subcats.js"></script>
   <script>
     (function() {
       const cat = new URLSearchParams(location.search).get('cat') || '';
       const cats = { mode: 'Mode', sport: 'Tech', hotels: 'Hôtels & Voyages' };
-      const label = cats[cat] || 'Les Heures Flâneuses';
-      const url = 'https://lesheuresflaneuses.fr/categorie.html?cat=' + cat;
+      let label = cats[cat] || 'Les Heures Flâneuses';
+      let url = 'https://lesheuresflaneuses.fr/categorie.html?cat=' + cat;
+      const subId = new URLSearchParams(location.search).get('sub');
+      const subDef = subId && window.SUBCATS && window.SUBCATS[cat] ? window.SUBCATS[cat].subs.find(function(x){ return x.id === subId; }) : null;
+      if (subDef) { label = label + ' — ' + subDef.label; url += '&sub=' + subId; }
       const desc = 'Retrouvez tous nos articles ' + label + ' sur Les Heures Flâneuses.';
       let c = document.querySelector('link[rel="canonical"]');
       if (!c) { c = document.createElement('link'); c.rel = 'canonical'; document.head.appendChild(c); }
@@ -105,8 +115,10 @@
 
     <!-- Titre rubrique -->
     <div class="mb-10">
+      <p id="cat-eyebrow" class="mb-3 text-xs uppercase tracking-[0.2em] hidden" style="color:var(--ink-soft)"></p>
       <h1 id="cat-title" class="font-display italic text-3xl sm:text-4xl font-medium" style="color:var(--ink)"></h1>
       <p id="cat-desc" class="mt-2 text-base max-w-xl" style="color:var(--ink-soft)"></p>
+      <nav id="cat-subs" class="cat-subs" aria-label="Sous-rubriques"></nav>
     </div>
 
     <!-- Grille articles -->
@@ -169,19 +181,45 @@
     // Mise à jour du head
     document.title = `Les Heures Flâneuses — ${meta.label}`;
 
+    // Sous-rubrique (facultative) : ?cat=mode&sub=montres
+    const SUB_ID = params.get('sub');
+    const SUB_LIST = (window.SUBCATS && window.SUBCATS[cat]) ? window.SUBCATS[cat].subs : [];
+    const SUB = SUB_ID ? SUB_LIST.find(x => x.id === SUB_ID) : null;
+
     // En-tête de rubrique
-    document.getElementById('cat-title').textContent = meta.label;
-    document.getElementById('cat-desc').textContent  = meta.desc;
+    if (SUB) {
+      const eb = document.getElementById('cat-eyebrow');
+      eb.innerHTML = `<a href="categorie.html?cat=${cat}" class="ink-link">← ${meta.label}</a>`;
+      eb.classList.remove('hidden');
+      document.getElementById('cat-title').textContent = SUB.label;
+      document.getElementById('cat-desc').textContent  = SUB.desc;
+      document.title = `Les Heures Flâneuses — ${meta.label} · ${SUB.label}`;
+    } else {
+      document.getElementById('cat-title').textContent = meta.label;
+      document.getElementById('cat-desc').textContent  = meta.desc;
+    }
 
     // Highlight nav actif
-    document.querySelectorAll('nav a').forEach(a => {
+    document.querySelectorAll('.nc-links a').forEach(a => {
       if (a.href.includes(`cat=${cat}`)) { a.style.color = 'var(--accent)'; a.style.fontWeight = '700'; }
     });
 
     const CACHE_TTL = 10 * 60 * 1000; // 10 minutes
-    const CACHE_KEY = `tf_cat_${cat}`;
+    const CACHE_KEY = `tf_cat2_${cat}`;
 
-    function renderGrid(data) {
+    function renderChips(all) {
+      const nav = document.getElementById('cat-subs');
+      const counts = {};
+      all.forEach(a => { if (a.sous_categorie) counts[a.sous_categorie] = (counts[a.sous_categorie] || 0) + 1; });
+      const subs = SUB_LIST.filter(x => counts[x.id]);
+      if (subs.length < 2) { nav.innerHTML = ''; return; }
+      nav.innerHTML = `<a class="cat-chip" href="categorie.html?cat=${cat}"${SUB ? '' : ' aria-current="page"'}>Tout <span class="n">${all.length}</span></a>`
+        + subs.map(x => `<a class="cat-chip" href="categorie.html?cat=${cat}&sub=${x.id}"${SUB && SUB.id === x.id ? ' aria-current="page"' : ''}>${x.label} <span class="n">${counts[x.id]}</span></a>`).join('');
+    }
+
+    function renderGrid(all) {
+      renderChips(all);
+      const data = SUB ? all.filter(a => a.sous_categorie === SUB.id) : all;
       const grid = document.getElementById('articles-grid');
       if (!data.length) {
         grid.innerHTML = `<p class="col-span-3 text-center py-16" style="color:var(--ink-soft)">Aucun article dans cette rubrique pour l'instant.</p>`; return;
@@ -210,7 +248,7 @@
     async function fetchArticles(silent) {
       const { data, error } = await db
         .from('articles')
-        .select('id,titre,extrait,image_url,slug,temps_lecture,date_creation,categorie')
+        .select('id,titre,extrait,image_url,slug,temps_lecture,date_creation,categorie,sous_categorie')
         .eq('statut','publié')
         .eq('categorie', cat)
         .order('date_creation',{ ascending:false });
