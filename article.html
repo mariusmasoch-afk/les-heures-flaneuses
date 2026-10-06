@@ -48,6 +48,52 @@
     .article-content strong { font-weight:600; color:var(--ink); }
     /* Bloc Verdict rapide */
     .article-content .verdict-block { margin:1.5rem 0; border-radius:.75rem; border:1px solid var(--line); background:var(--paper-raised); overflow:hidden; }
+    /* Figures et galerie photo */
+    .article-content figure.article-figure { margin:2rem 0; }
+    .article-content figure.article-figure img { display:block; width:100%; height:auto; margin:0; border-radius:2px; }
+    .article-content figure.article-figure.portrait { max-width:26rem; margin-inline:auto; }
+    .article-content figcaption { margin-top:.6rem; font-size:.85rem; line-height:1.5; font-style:italic; color:var(--ink-soft); }
+    .article-content .photo-gallery { margin:2rem 0; display:grid; grid-template-columns:repeat(3,1fr); gap:.75rem; }
+    .article-content .photo-gallery figure { margin:0; }
+    .article-content .photo-gallery img { display:block; width:100%; aspect-ratio:3/4; object-fit:cover; margin:0; border-radius:2px; }
+    @media (max-width:640px) {
+      .article-content .photo-gallery { grid-template-columns:repeat(2,1fr); gap:.5rem; }
+      .article-content .photo-gallery figure:last-child:nth-child(odd) { grid-column:1 / -1; }
+      .article-content .photo-gallery figure:last-child:nth-child(odd) img { aspect-ratio:4/3; }
+    }
+    /* Tableau de caractéristiques */
+    .article-content .spec-table { margin:1.5rem 0; border:1px solid var(--line); border-radius:.75rem; overflow:hidden; background:var(--paper-raised); }
+    .article-content .spec-table table { width:100%; border-collapse:collapse; font-size:.95rem; }
+    .article-content .spec-table th, .article-content .spec-table td { padding:.75rem 1.1rem; text-align:left; vertical-align:top; border-top:1px solid var(--line); line-height:1.5; }
+    .article-content .spec-table tr:first-child th, .article-content .spec-table tr:first-child td { border-top:0; }
+    .article-content .spec-table th { width:36%; font-weight:600; color:var(--ink); }
+    .article-content .spec-table td { color:var(--ink-soft); }
+    /* En bref : points forts / points faibles */
+    .article-content .pros-cons { margin:1.75rem 0; display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    @media (max-width:640px) { .article-content .pros-cons { grid-template-columns:1fr; } }
+    .article-content .pros-cons .pc-col { border:1px solid var(--line); border-radius:.75rem; padding:1.1rem 1.25rem; background:var(--paper-raised); }
+    .article-content .pros-cons .pc-title { margin:0 0 .5rem; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-soft); }
+    .article-content .pros-cons .pc-pros .pc-title { color:#3BA17D; }
+    .article-content .pros-cons .pc-cons .pc-title { color:var(--accent); }
+    .article-content .pros-cons ul { margin:0; padding:0; list-style:none; }
+    .article-content .pros-cons li { position:relative; margin:.3rem 0; padding-left:1.1rem; font-size:.92rem; line-height:1.5; }
+    .article-content .pros-cons li::before { content:""; position:absolute; left:0; top:.6em; width:.45rem; height:.45rem; border-radius:50%; background:var(--line); }
+    .article-content .pros-cons .pc-pros li::before { background:#3BA17D; }
+    .article-content .pros-cons .pc-cons li::before { background:var(--accent); }
+    /* Notation par critère */
+    .article-content .score-block { margin:2rem 0; border:1px solid var(--line); border-radius:.75rem; background:var(--paper-raised); overflow:hidden; }
+    .article-content .score-head { display:flex; align-items:center; gap:1.25rem; padding:1.25rem 1.5rem; border-bottom:1px solid var(--line); }
+    .article-content .score-note { font-family:var(--font-display); font-size:3rem; font-weight:700; line-height:1; color:var(--accent); font-variant-numeric:tabular-nums; white-space:nowrap; }
+    .article-content .score-note span { margin-left:.15rem; font-size:1.1rem; font-weight:500; color:var(--ink-soft); }
+    .article-content .score-title { font-weight:700; color:var(--ink); }
+    .article-content .score-sub { margin-top:.2rem; font-size:.9rem; line-height:1.45; color:var(--ink-soft); }
+    .article-content .score-criteria { list-style:none; margin:0; padding:1.1rem 1.5rem 1.25rem; display:grid; gap:1.1rem; }
+    .article-content .score-criteria li { margin:0; }
+    .article-content .crit-top { display:flex; justify-content:space-between; gap:1rem; font-weight:600; font-size:.95rem; color:var(--ink); font-variant-numeric:tabular-nums; }
+    .article-content .crit-bar { position:relative; height:6px; margin:.45rem 0; border-radius:3px; background:var(--line); overflow:hidden; }
+    .article-content .crit-bar::after { content:""; position:absolute; inset:0 auto 0 0; width:var(--w, 0%); border-radius:3px; background:var(--accent); }
+    .article-content .crit-note { margin:0; font-size:.875rem; line-height:1.5; color:var(--ink-soft); }
+    @media (max-width:640px) { .article-content .score-head { flex-direction:column; align-items:flex-start; gap:.75rem; } }
     /* Sommaire */
     .article-content h2 { scroll-margin-top: 5rem; }
     .article-content .toc { margin:1.75rem 0 2rem; border:1px solid var(--line); border-radius:.75rem; background:var(--paper-raised); padding:0 1.5rem; }
