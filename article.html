@@ -697,6 +697,54 @@
       window.revealAll && window.revealAll();
     }
 
+    // "Fiche technique" / "Infos pratiques" saisies en liste « Label : valeur » → tableau de caractéristiques
+    function upgradeSpecLists() {
+      const body = document.querySelector('.article-content');
+      if (!body) return;
+      body.querySelectorAll('h2').forEach(h => {
+        if (!/fiche technique|infos pratiques|caract[ée]ristiques/i.test(h.textContent)) return;
+        const ul = h.nextElementSibling;
+        if (!ul || ul.tagName !== 'UL' || ul.children.length < 3) return;
+        const rows = Array.from(ul.children).map(li => {
+          const s = li.firstElementChild;
+          if (!s || !/^(STRONG|B)$/.test(s.tagName)) return null;
+          const copy = li.cloneNode(true);
+          copy.firstElementChild.remove();
+          return { label: s.textContent.replace(/\s*:\s*$/, '').trim(), value: copy.innerHTML.replace(/^[\s ]*:?[\s ]*/, '').trim() };
+        });
+        if (rows.some(r => !r || !r.label || !r.value)) return;
+        const wrap = document.createElement('div');
+        wrap.className = 'spec-table';
+        wrap.setAttribute('contenteditable', 'false');
+        wrap.innerHTML = `<table><tbody>${rows.map(r => `<tr><th>${r.label}</th><td>${r.value}</td></tr>`).join('')}</tbody></table>`;
+        ul.replaceWith(wrap);
+      });
+    }
+
+    // Ancien bloc "Verdict rapide" (styles en dur, illisible en thème sombre) → bloc note + points forts/faibles
+    function upgradeVerdictBlocks() {
+      document.querySelectorAll('#article-content .verdict-block').forEach(block => {
+        const head = block.children[0], grid = block.children[1];
+        if (!head || !grid) return;
+        const m = head.textContent.match(/(\d+(?:[.,]\d+)?)/);
+        if (!m) return;
+        const cols = Array.from(grid.children).map(col => {
+          const ps = col.querySelectorAll('p');
+          const items = (ps[1] ? ps[1].innerHTML : '').split(/<br\s*\/?>/i)
+            .map(s => s.replace(/<[^>]+>/g, '').replace(/^[\s ]*[•\-][\s ]*/, '').trim()).filter(Boolean);
+          return { title: ps[0] ? ps[0].textContent.replace(/^[✓✗✔✘\s]+/, '').trim() : '', items };
+        });
+        if (cols.length < 2 || !cols[0].items.length || !cols[1].items.length) return;
+        const list = c => `<ul>${c.items.map(i => `<li>${i}</li>`).join('')}</ul>`;
+        const el = document.createElement('div');
+        el.className = 'score-block';
+        el.setAttribute('contenteditable', 'false');
+        el.innerHTML = `<div class="score-head"><div class="score-note">${m[1].replace('.', ',')}<span>/10</span></div><div><div class="score-title">Verdict rapide</div><div class="score-sub">Note Les Heures Flâneuses</div></div></div>`
+          + `<div class="pros-cons"><div class="pc-col pc-pros"><p class="pc-title">${cols[0].title || 'Points forts'}</p>${list(cols[0])}</div><div class="pc-col pc-cons"><p class="pc-title">${cols[1].title || 'Points faibles'}</p>${list(cols[1])}</div></div>`;
+        block.replaceWith(el);
+      });
+    }
+
     function upgradeFaqAccordion() {
       document.querySelectorAll('#article-content .faq-item').forEach(item => {
         if (item.tagName === 'DETAILS') return;
