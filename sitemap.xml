@@ -1,263 +1,155 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lesheuresflaneuses.fr/</loc>
     <lastmod>2026-10-06</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle</loc>
     <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
   </url>
-
-  <url>
-    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=mode</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <lastmod>2026-10-02</lastmod>
   </url>
-
-  <url>
-    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=hotels</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <url>
-    <loc>https://lesheuresflaneuses.fr/contact.html</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://lesheuresflaneuses.fr/ecrire.html</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url>
-
-  <url>
-    <loc>https://lesheuresflaneuses.fr/mentions-legales.html</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
-  <url>
-    <loc>https://lesheuresflaneuses.fr/confidentialite.html</loc>
-    <lastmod>2026-10-06</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
-  </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=accessoires</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=ia-outils</loc>
     <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=loisirs</loc>
-    <lastmod>2026-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-09-15</lastmod>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=montres</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2026-10-06</lastmod>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=objets-connectes</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=veille-techno</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.6</priority>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-fairphone-smartphone-reparable</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1790935720806-qwrwelxhh9c.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-baltic-hermetique-tourer-beige-notre-test-honnete</loc>
-    <lastmod>2026-09-28</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-10-06</lastmod>
+    <image:image><image:loc>https://lesheuresflaneuses.fr/images/baltic-hermetique/baltic-hermetique-tourer-beige-cover-4.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=digital-detox-conseils-reduire-temps-ecran</loc>
     <lastmod>2026-09-21</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1474366521946-c3d4b507abf2?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=ou-partir-toussaint-2026-soleil</loc>
     <lastmod>2026-09-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1652092521226-3e03a716ae86?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=entretien-montre-automatique-revision-conseils</loc>
     <lastmod>2026-09-10</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1646724810360-abfa1bb76d6d?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=city-trip-en-europe-3-destinations-pour-un-week-end-de-72h</loc>
-    <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-09-15</lastmod>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1788808518703-tadgaqsyc7h.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=montre-mecanique-nouveau-luxe-urbain</loc>
     <lastmod>2026-09-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1788807285429-q8rtaggvms.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=nothing-le-design-transparent-qui-reveille-la-monotonie-tech</loc>
     <lastmod>2026-09-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1788554295245-3o8mi3i6bi5.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-clozen-test-du-boitier-anti-distraction</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1788384398306-6dmlh57v4pm.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=le-vent-a-la-francaise-le-cap-de-lelegance-responsable</loc>
     <lastmod>2026-09-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1788380258126-8txmxixrzux.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-garmin-forerunner-170-test-de-lamoled-a-moins-de-300</loc>
     <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://lesheuresflaneuses.fr/images/garmin-forerunner-170/garmin-forerunner-170-cover-2.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-tissot-prc-100-solar-test-de-la-montre-solaire-suisse</loc>
     <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1788106246695-fku6xvs6kk.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=entretenir-chaussures-cuir-guide</loc>
     <lastmod>2026-08-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1625357165350-bdbcb6d7d524?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=week-end-biarritz-pays-basque-que-faire</loc>
     <lastmod>2026-08-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1650184467645-11e1a1a4d370?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=comment-choisir-montre-gps-running</loc>
     <lastmod>2026-08-06</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1581889470536-467bdbe30cd0?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=montre-plongee-field-watch-chronographe-quel-style-choisir</loc>
     <lastmod>2026-07-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1620421895918-b4e8c86648fb?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-futuroscope-notre-experience-et-nos-conseils-de-visite</loc>
-    <lastmod>2026-07-19</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-08-05</lastmod>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1784480557964-ruz9aqli3bc.jpg</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=voyager-leger-valise-cabine-conseils</loc>
     <lastmod>2026-07-08</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1502301197179-65228ab57f78?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=ecouteurs-reduction-de-bruit-comment-choisir</loc>
     <lastmod>2026-06-29</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1606220588913-b3aacb4d2f46?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=porto-en-48h-que-faire-que-voir</loc>
     <lastmod>2026-06-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1591040973846-61888c2de010?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=comment-choisir-taille-montre-poignet</loc>
     <lastmod>2026-06-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <image:image><image:loc>https://images.unsplash.com/photo-1506193095-80bc749473f2?auto=format&amp;fit=crop&amp;w=1600&amp;q=80&amp;h=900</image:loc></image:image>
   </url>
-
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-pin-traveler-test-de-lappli-de-voyage</loc>
-    <lastmod>2026-04-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <lastmod>2026-08-05</lastmod>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1775071687844-0ud55jtu8yei.png</image:loc></image:image>
   </url>
-
+  <url>
+    <loc>https://lesheuresflaneuses.fr/contact.html</loc>
+  </url>
+  <url>
+    <loc>https://lesheuresflaneuses.fr/ecrire.html</loc>
+  </url>
 </urlset>
