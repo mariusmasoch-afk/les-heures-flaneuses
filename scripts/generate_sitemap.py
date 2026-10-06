@@ -20,6 +20,7 @@ TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 
 STATIC_PAGES = [
     (f"{SITE}/", "daily", "1.0", TODAY),
+    (f"{SITE}/categorie.html?cat=lifestyle", "weekly", "0.8", TODAY),
     (f"{SITE}/categorie.html?cat=mode", "weekly", "0.8", TODAY),
     (f"{SITE}/categorie.html?cat=sport", "weekly", "0.8", TODAY),
     (f"{SITE}/categorie.html?cat=hotels", "weekly", "0.8", TODAY),
@@ -33,7 +34,7 @@ STATIC_PAGES = [
 def fetch_articles():
     url = (
         f"{SUPABASE_URL}/rest/v1/articles"
-        "?select=slug,date_creation"
+        "?select=slug,date_creation,sous_categorie"
         "&statut=eq.publi%C3%A9"
         "&order=date_creation.desc"
     )
@@ -58,6 +59,13 @@ def fetch_articles():
         raise
 
 
+# Sous-rubrique -> rubrique de navigation (doit refléter subcats.js)
+SUB_GROUP = {
+    "hotels": "lifestyle", "montres": "lifestyle", "accessoires": "lifestyle", "loisirs": "lifestyle",
+    "ia-outils": "sport", "veille-techno": "sport", "objets-connectes": "sport",
+}
+
+
 def lastmod_from(date_creation):
     if not date_creation:
         return None
@@ -77,6 +85,22 @@ def build_xml(static_pages, articles):
             lines.append(f"    <lastmod>{lastmod}</lastmod>")
         lines.append(f"    <changefreq>{changefreq}</changefreq>")
         lines.append(f"    <priority>{priority}</priority>")
+        lines.append("  </url>")
+        lines.append("")
+
+    subs = {}
+    for a in articles:
+        sub = a.get("sous_categorie")
+        if sub in SUB_GROUP:
+            subs[sub] = max(subs.get(sub, ""), lastmod_from(a.get("date_creation")) or "")
+    for sub, lm in sorted(subs.items()):
+        loc = f"{SITE}/categorie.html?cat={SUB_GROUP[sub]}&sub={sub}"
+        lines.append("  <url>")
+        lines.append(f"    <loc>{escape(loc)}</loc>")
+        if lm:
+            lines.append(f"    <lastmod>{lm}</lastmod>")
+        lines.append("    <changefreq>weekly</changefreq>")
+        lines.append("    <priority>0.6</priority>")
         lines.append("  </url>")
         lines.append("")
 

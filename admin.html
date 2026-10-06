@@ -11,7 +11,7 @@
 
   <!-- Supabase CDN -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="/subcats.js?v=20261007"></script>
+  <script src="/subcats.js?v=20261008"></script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.6.2/dist/cropper.min.css"/>
@@ -1978,7 +1978,8 @@
   function fillSubSelect(cat, current) {
     const sel = document.getElementById('sub-select');
     if (!sel) return;
-    const list = (window.SUBCATS && window.SUBCATS[cat]) ? window.SUBCATS[cat].subs : [];
+    const g = window.groupOfCat ? window.groupOfCat(cat) : null;
+    const list = g ? window.SUBCATS[g].subs : [];
     sel.innerHTML = '<option value="">Aucune</option>' + list.map(x => `<option value="${x.id}">${x.label}</option>`).join('');
     sel.value = list.some(x => x.id === current) ? current : '';
     sel.disabled = !list.length;

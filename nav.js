@@ -129,9 +129,8 @@
 
   /* ---------- Compteurs d'articles par sous-rubrique (cache 10 min) ---------- */
   function applyCounts(counts) {
-    document.querySelectorAll('[data-cat] .np-subs li, #mobile-menu .mm-subs li').forEach(function (li) {
-      var cat = li.closest('[data-cat]').getAttribute('data-cat');
-      var n = (counts[cat] && counts[cat][li.getAttribute('data-sub')]) || 0;
+    document.querySelectorAll('.np-subs li, #mobile-menu .mm-subs li').forEach(function (li) {
+      var n = counts[li.getAttribute('data-sub')] || 0;
       li.hidden = n === 0;
       var c = li.querySelector('[data-count]');
       if (c) c.textContent = n || '';
@@ -139,19 +138,15 @@
   }
   function loadCounts() {
     var cached = null;
-    try { cached = JSON.parse(sessionStorage.getItem('lhf_subcounts') || 'null'); } catch (e) {}
+    try { cached = JSON.parse(sessionStorage.getItem('lhf_subcounts2') || 'null'); } catch (e) {}
     if (cached && Date.now() - cached.t < 600000) { applyCounts(cached.c); return; }
-    fetch(SUPABASE_URL + '/rest/v1/articles?select=categorie,sous_categorie&statut=eq.publi%C3%A9', {
+    fetch(SUPABASE_URL + '/rest/v1/articles?select=sous_categorie&statut=eq.publi%C3%A9', {
       headers: { apikey: SUPABASE_ANON, Authorization: 'Bearer ' + SUPABASE_ANON }
     }).then(function (r) { return r.json(); }).then(function (rows) {
       if (!Array.isArray(rows)) return;
       var counts = {};
-      rows.forEach(function (a) {
-        if (!a.categorie || !a.sous_categorie) return;
-        counts[a.categorie] = counts[a.categorie] || {};
-        counts[a.categorie][a.sous_categorie] = (counts[a.categorie][a.sous_categorie] || 0) + 1;
-      });
-      try { sessionStorage.setItem('lhf_subcounts', JSON.stringify({ t: Date.now(), c: counts })); } catch (e) {}
+      rows.forEach(function (a) { if (a.sous_categorie) counts[a.sous_categorie] = (counts[a.sous_categorie] || 0) + 1; });
+      try { sessionStorage.setItem('lhf_subcounts2', JSON.stringify({ t: Date.now(), c: counts })); } catch (e) {}
       applyCounts(counts);
     }).catch(function () {});
   }
