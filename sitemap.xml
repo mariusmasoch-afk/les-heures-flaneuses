@@ -9,6 +9,13 @@
   </url>
 
   <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle</loc>
+    <lastmod>2026-10-06</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=mode</loc>
     <lastmod>2026-10-06</lastmod>
     <changefreq>weekly</changefreq>
@@ -55,6 +62,48 @@
     <lastmod>2026-10-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=accessoires</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=ia-outils</loc>
+    <lastmod>2026-09-21</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=loisirs</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=montres</loc>
+    <lastmod>2026-09-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=objets-connectes</loc>
+    <lastmod>2026-09-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=veille-techno</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
   </url>
 
   <url>
