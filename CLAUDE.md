@@ -7,44 +7,33 @@ Dès que tu fais une action sur une collaboration, tu fais une mise à jour du e
 - Finir par « Bien à vous, » (ou « Best regards, » en anglais), puis la signature texte :
   Marius Masoch - Fondateur
   Les Heures Flâneuses
-- Template : v3 (remplace le v2). Structure en 4 blocs :
-  1. Accroche personnalisée sur la marque (1-2 lignes) : jamais générique, référencer un produit précis ou une sortie récente de la marque, montrer qu'on a vraiment regardé leur catalogue.
-  2. Preuve de crédibilité concrète : pas seulement "5 000+ visiteurs/semaine" mais l'argument de fond — contrairement à un post sponsorisé qui disparaît en 24h, les articles de test restent en ligne et continuent de générer du trafic des mois (parfois des années) après publication. Si une preuve ponctuelle est disponible et vérifiée (ex. article en 1ère page Google, cité dans l'aperçu IA), l'inclure.
-  3. Valeur d'échange explicite : en échange d'un prêt/envoi produit → article de test détaillé et durable, photos produit réutilisables par la marque, exposition SEO sur le nom du produit. Pas de post sponsorisé déguisé, avis honnête.
-  4. CTA fermé et direct sur la collaboration elle-même (ex. « Seriez-vous ouverts à une collaboration éditoriale autour de [produit] ? »). Ne PAS proposer spontanément l'envoi du media kit ou d'exemples d'articles — si la marque est intéressée, c'est elle qui les demandera.
+- Jamais de mention de « sport », ni de « photos réutilisables », ni d'« aperçu IA ». Ne PAS proposer spontanément le media kit ou des exemples d'articles. Ne jamais deviner une adresse email : utiliser une adresse trouvée sur une page officielle ou fournie par Marius.
+- Template : v4 (validé par Marius le 12/10, remplace le v3). Ton d'égal à égal, complet, pas quémandeur. Structure :
+  1. Présentation du blog : Marius, fondateur des Heures Flâneuses, média indépendant mode, tech, hôtels & voyages ; tests longs, en conditions réelles et sur plusieurs semaines, avec nos propres photos et un avis sans filtre, pensés pour répondre à la question du lecteur avant d'acheter.
+  2. Durabilité / preuve : nos articles ne sont pas faits pour un pic de 24h, ils sont référencés sur Google et lus longtemps après publication ; preuve : notre avis sur la Baltic Hermétique Tourer est en première page sur « avis baltic hermétique ». Visibilité durable sur le nom même du produit.
+  3. Pourquoi CE produit (personnalisé, précis : ce qui rend le produit intéressant + ce qu'on testerait concrètement).
+  4. Proposition simple : « dotation produit » (FR) / « product to review, complimentary unit » (EN) en échange d'un article de test complet et honnête. Préciser : aucune commission ni facturation de part et d'autre, le produit est la seule contrepartie ; contenu éditorial (on dit ce qui marche et ce qui marche moins bien) ; transmission de l'article à la publication.
+  5. CTA fermé : « Seriez-vous ouverts à une dotation du [produit] pour ce test ? »
 
-  Exemple FR :
-  Objet : [Marque] x Les Heures Flâneuses — un test produit qui reste visible des mois après publication
+  Exemple FR (Garmin CIRQA) :
+  Objet : Les Heures Flâneuses × [Marque] : un test du [produit] dans la durée
 
-  Bonjour [Prénom],
+  Bonjour [Prénom / rien si adresse générique],
 
-  Je suis tombé sur votre [produit précis / dernière collection] et j'aimerais beaucoup le tester en conditions réelles pour nos lecteurs.
+  Je me présente : Marius, fondateur des Heures Flâneuses, un média indépendant consacré à la mode, à la tech et aux hôtels & voyages. Nous publions des tests longs, réalisés en conditions réelles et sur plusieurs semaines, avec nos propres photos et un avis sans filtre, pour répondre à la question que se pose le lecteur avant d'acheter.
 
-  Je suis Marius, fondateur des Heures Flâneuses, un média indépendant mode, tech et hôtels & voyages. Contrairement à un post sponsorisé qui disparaît en 24h, nos articles de test restent en ligne et continuent de générer du trafic des mois, parfois des années après publication — [preuve concrète si disponible]. C'est ce référencement durable qui intéresse en général les marques avec qui on travaille.
+  Nos articles ne sont pas conçus pour un pic d'attention de 24h. Ils sont référencés sur Google et continuent d'être lus longtemps après leur publication : notre avis sur la Baltic Hermétique Tourer, par exemple, est en première page sur « avis baltic hermétique ». C'est cette visibilité durable, sur le nom même du produit, que nous apportons aux marques avec lesquelles nous travaillons.
 
-  En échange d'un prêt ou d'un envoi produit, on propose : un article de test détaillé et durable, des photos produit réutilisables de votre côté, et une exposition SEO sur le nom du produit. Pas de post sponsorisé déguisé — juste un avis honnête, ce que nos lecteurs viennent chercher chez nous.
+  Le [produit] nous intéresse particulièrement : [ce qui le rend intéressant]. Nous aimerions le tester au quotidien ([critères]) pour en tirer un avis détaillé.
 
-  Seriez-vous ouverts à une collaboration éditoriale autour de [produit] ?
+  Notre proposition est simple : une dotation produit (un [produit] à tester) en échange d'un article de test complet et honnête. Aucune commission ni facturation de part et d'autre, le produit est la seule contrepartie. Le contenu reste éditorial : nous disons ce qui fonctionne et ce qui fonctionne moins bien. À la publication, je vous transmets l'article.
+
+  Seriez-vous ouverts à une dotation du [produit] pour ce test ?
 
   Bien à vous,
   Marius Masoch - Fondateur
   Les Heures Flâneuses
 
-  Exemple EN (même structure) :
-  Subject: [Brand] x Les Heures Flâneuses — a product feature that stays visible for months
+  Version EN : même structure, objet « [Brand] x Les Heures Flâneuses: a long-term test of the [product] », « product to review (complimentary unit) » à la place de « dotation », CTA « Would you be open to providing a [product] for this review? », « Best regards, ».
 
-  Hi [Name],
 
-  I came across your [specific product / latest release] and would love to test it in real conditions for our readers.
-
-  I'm Marius, founder of Les Heures Flâneuses, an independent media covering fashion, tech, and hotels & travel. Unlike a sponsored post that disappears in 24 hours, our test articles stay online and keep generating traffic for months, sometimes years, after publication — [concrete proof if available]. That kind of lasting visibility is usually what makes a collaboration worthwhile for the brands we work with.
-
-  In exchange for a loan or product send, we offer: a detailed, lasting test article, reusable product photography on your end, and lasting SEO exposure on the product name. No disguised sponsored content — just an honest review, which is exactly what our readers come to us for.
-
-  Would you be open to an editorial collaboration around [product]?
-
-  Best regards,
-  Marius Masoch - Fondateur
-  Les Heures Flâneuses
-
-- Opérationnel : privilégier un contact nommé plutôt qu'une boîte générique (collab@, info@) quand c'est trouvable ; cycle de relance à 2 touches avec un angle différent à chaque relance plutôt que de répéter le même message.
