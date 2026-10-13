@@ -37,8 +37,8 @@ window.groupOfCat = function (cat) {
 
 // Couleurs des pastilles par rubrique de navigation
 window.GROUP_STYLE = {
-  lifestyle: { text: '#A8462F', bg: '#F3DFCB' },
-  sport:     { text: '#2B4E45', bg: '#DCE6DE' }
+  lifestyle: { text: '#A82E12', bg: '#FBDDD2' },
+  sport:     { text: '#8F4308', bg: '#FDE7CC' }
 };
 
 // Pastille d'une carte d'article : sous-rubrique si elle existe, sinon rubrique (jamais l'ancienne catégorie)

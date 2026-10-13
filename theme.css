@@ -5,21 +5,22 @@
    ============================================================ */
 
 :root {
-  /* Palette de base ("jour") */
-  --paper:        #EFE7D8; /* fond — lin, papier vieilli */
-  --paper-raised: #F6F0E4; /* cartes, surfaces légèrement plus claires */
-  --ink:          #24201B; /* texte — quasi noir, chaud */
-  --ink-soft:     #5B5348; /* texte secondaire */
-  --brick:        #A8462F; /* accent primaire — tampon postal */
-  --brick-deep:   #7E3220; /* accent primaire, hover/actif */
-  --pine:         #2B4E45; /* accent froid — malle de voyage */
-  --brass:        #C79A56; /* accent muet — tags, filets */
-  --line:         rgba(36,32,27,.14);
+  /* Palette issue du logo : le soleil, la mer, le papier crème du médaillon */
+  --paper:        #FAF8F2; /* fond — le crème du médaillon */
+  --paper-raised: #FFFDF9; /* cartes, surfaces légèrement plus claires */
+  --ink:          #2B1B15; /* texte — brun très sombre, teinté de rouge */
+  --ink-soft:     #6B574E; /* texte secondaire */
+  --brick:        #D13C1B; /* accent primaire — le rouge-orangé du soleil */
+  --brick-deep:   #A82E12; /* accent primaire, hover/actif */
+  --pine:         #B4560C; /* accent secondaire (rubrique Tech) — orange profond, lisible en texte */
+  --brass:        #F58B2B; /* orange des vagues — filets, étiquettes sur fond sombre */
+  --salmon:       #F5A080; /* corail des rayons — touches douces */
+  --line:         rgba(43,27,21,.13);
 
   --accent: var(--brick);
   --accent-deep: var(--brick-deep);
-  --ambient-a: #F2E4C8;
-  --ambient-b: #EFE7D8;
+  --ambient-a: #FCE9D6;
+  --ambient-b: #FAF8F2;
 
   --font-display: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif;
   --font-body: 'InterVariable', 'Inter', ui-sans-serif, system-ui, sans-serif;
@@ -27,29 +28,30 @@
 
 /* Bascule d'ambiance selon l'heure réelle du visiteur */
 html[data-daytime="morning"] {
-  --ambient-a: #F3D9C9;
-  --ambient-b: #EFE7D8;
+  --ambient-a: #FBDACB;
+  --ambient-b: #FAF8F2;
 }
 html[data-daytime="midday"] {
-  --ambient-a: #F2E4C8;
-  --ambient-b: #EFE7D8;
+  --ambient-a: #FCE9D6;
+  --ambient-b: #FAF8F2;
 }
 html[data-daytime="evening"] {
-  --ambient-a: #E8B77A;
-  --ambient-b: #E4CFA3;
-  --accent: #C1622B;
-  --accent-deep: #9A4B1F;
+  --ambient-a: #F7B98E;
+  --ambient-b: #F6E3CC;
+  --accent: #D9531F;
+  --accent-deep: #B03F14;
 }
 html[data-daytime="night"] {
-  --paper:        #1B1815;
-  --paper-raised: #241F1A;
-  --ink:          #EFE3D3;
-  --ink-soft:     #B8AA98;
-  --line:         rgba(239,231,216,.14);
-  --ambient-a:    #2E2620;
-  --ambient-b:    #1B1815;
-  --accent:       #D97A54;
-  --accent-deep:  #B85C38;
+  --paper:        #1D1411;
+  --paper-raised: #281C17;
+  --ink:          #F6EADF;
+  --ink-soft:     #C2AB9C;
+  --line:         rgba(246,234,223,.14);
+  --ambient-a:    #3A2118;
+  --ambient-b:    #1D1411;
+  --accent:       #F0714A;
+  --accent-deep:  #D4552F;
+  --pine:         #F5A860;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -148,14 +150,15 @@ html[data-daytime="night"] .nav-sun { background: var(--ink); box-shadow: 0 0 0 
 #mobile-menu a:last-child { border-bottom: 0; }
 
 /* ---- Variante navbar centrée (modèle "magazine") : logo au centre, rubriques en petites capitales dessous ---- */
-.nav-centered .nc-top { position: relative; display: flex; justify-content: center; align-items: center; padding-top: 1.15rem; padding-bottom: .65rem; transition: padding .3s cubic-bezier(.22,1,.36,1); }
+.nav-centered .nc-top { position: relative; display: flex; justify-content: center; align-items: center; padding-top: .8rem; padding-bottom: .5rem; transition: padding .3s cubic-bezier(.22,1,.36,1); }
 .nav-centered.is-condensed .nc-top { padding-top: .5rem; padding-bottom: .3rem; }
-.nc-logo { display: inline-flex; align-items: center; gap: .7rem; color: var(--ink); }
-.nc-logo-img { width: 36px; height: 36px; transition: width .3s ease, height .3s ease; }
-.nav-centered.is-condensed .nc-logo-img { width: 28px; height: 28px; }
-.nc-wordmark { font-size: 1.45rem; line-height: 1; font-weight: 400; letter-spacing: -.01em; white-space: nowrap; transition: font-size .3s ease; }
+.nc-logo { display: inline-flex; align-items: center; gap: .55rem; margin-right: 1.4rem; color: var(--ink); }
+.nc-logo-img { width: 52px; height: 52px; transition: width .3s ease, height .3s ease; }
+.nav-centered.is-condensed .nc-logo-img { width: 38px; height: 38px; }
+@media (min-width: 768px) { .nc-logo-img { width: 64px; height: 64px; } .nav-centered.is-condensed .nc-logo-img { width: 44px; height: 44px; } }
+.nc-wordmark { font-size: 1.2rem; line-height: 1; font-weight: 400; letter-spacing: -.01em; white-space: nowrap; transition: font-size .3s ease; }
 .nc-wordmark em { font-style: italic; color: var(--accent); }
-@media (min-width: 768px) { .nc-wordmark { font-size: 1.85rem; } .nav-centered.is-condensed .nc-wordmark { font-size: 1.4rem; } }
+@media (min-width: 768px) { .nc-logo { margin-right: 0; gap: .7rem; } .nc-wordmark { font-size: 1.85rem; } .nav-centered.is-condensed .nc-wordmark { font-size: 1.4rem; } }
 .nc-clock { position: absolute; left: 1.5rem; top: 50%; transform: translateY(-50%); display: none; }
 @media (min-width: 768px) { .nc-clock { display: inline-flex; } }
 .nc-burger { position: absolute; right: .75rem; top: 50%; transform: translateY(-50%); padding: .5rem; }
@@ -171,7 +174,7 @@ html[data-daytime="night"] .nav-sun { background: var(--ink); box-shadow: 0 0 0 
 /* ---- Panneau de sous-rubriques : il "se lève" depuis le soleil de l'horizon ---- */
 .nav-panel { position: absolute; left: 0; right: 0; top: 100%; visibility: hidden; pointer-events: none;
   background: var(--paper);
-  border-bottom: 1px solid var(--line); box-shadow: 0 28px 44px -28px rgba(36,32,27,.4);
+  border-bottom: 1px solid var(--line); box-shadow: 0 28px 44px -28px rgba(43,27,21,.4);
   clip-path: circle(0px at var(--sun-x, 50%) 0);
   transition: clip-path .45s cubic-bezier(.4,0,.2,1), visibility 0s linear .45s; }
 .nav-panel.open { visibility: visible; pointer-events: auto; clip-path: circle(2400px at var(--sun-x, 50%) 0);

@@ -2,10 +2,10 @@
 <html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261013" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=20261013" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261013" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261013" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Les Heures Flâneuses — Lifestyle &amp; tech : tests et avis sincères sur les montres, les accessoires, les loisirs et les objets connectés, pour choisir mieux et vivre à son rythme." />
   <link rel="canonical" href="https://lesheuresflaneuses.fr/" />
@@ -27,7 +27,7 @@
     "@type": "Organization",
     "name": "Les Heures Flâneuses",
     "url": "https://lesheuresflaneuses.fr/",
-    "logo": "https://lesheuresflaneuses.fr/favicon.png"
+    "logo": "https://lesheuresflaneuses.fr/images/logo/logo-512.png"
   }
   </script>
   <script type="application/ld+json">
@@ -49,10 +49,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/theme.css?v=20261010" />
+  <link rel="stylesheet" href="/theme.css?v=20261013" />
   <script src="/time-ambience.js"></script>
-  <script src="/subcats.js?v=20261010"></script>
-  <script src="/nav.js?v=20261010" defer></script>
+  <script src="/subcats.js?v=20261013"></script>
+  <script src="/nav.js?v=20261013" defer></script>
 
   <style>
     /* Popup newsletter */
@@ -79,14 +79,14 @@
     }
 
     /* Hero plein écran */
-    #hero { position:relative; width:100%; height:80vh; min-height:460px; max-height:840px; overflow:hidden; background:#14100D; }
+    #hero { position:relative; width:100%; height:80vh; min-height:460px; max-height:840px; overflow:hidden; background:#1A100D; }
     #hero-slides { position:absolute; inset:0; }
     .hero-slide { position:absolute; inset:0; background-size:cover; background-position:center; transition:opacity .8s ease; filter:saturate(.92) contrast(1.03); }
     #hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(20,16,13,.88) 0%, rgba(20,16,13,.2) 55%, transparent 100%); }
 
     /* Miniature hero */
-    .hero-thumb { width:88px; height:88px; border-radius:3px; overflow:hidden; background-size:cover; background-position:center; border:1px solid rgba(239,231,216,.35); cursor:pointer; transition:border-color .2s, transform .2s, opacity .2s; }
-    .hero-thumb.active { border-color:#EFE7D8; transform:scale(1.05); opacity:1; }
+    .hero-thumb { width:88px; height:88px; border-radius:3px; overflow:hidden; background-size:cover; background-position:center; border:1px solid rgba(246,234,223,.35); cursor:pointer; transition:border-color .2s, transform .2s, opacity .2s; }
+    .hero-thumb.active { border-color:#FAF8F2; transform:scale(1.05); opacity:1; }
     .hero-thumb:not(.active) { opacity:.45; }
 
     /* Titre du hero : grossit au survol */
@@ -95,8 +95,8 @@
     @media (prefers-reduced-motion: reduce) { #hero-link:hover #hero-title { transform: none; } }
 
     /* Dot */
-    .hero-dot { height:5px; border-radius:4px; background:rgba(239,231,216,.4); transition:width .3s, background .3s; }
-    .hero-dot.active { width:26px !important; background:#EFE7D8; }
+    .hero-dot { height:5px; border-radius:4px; background:rgba(246,234,223,.4); transition:width .3s, background .3s; }
+    .hero-dot.active { width:26px !important; background:#FAF8F2; }
 
     /* Cards */
     .article-card img { transition:transform .6s cubic-bezier(.22,1,.36,1); }
@@ -126,7 +126,7 @@
       <button id="np-close" aria-label="Fermer">
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.4"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
       </button>
-      <img src="/favicon.svg" alt="" style="height:44px;width:44px" class="rounded-sm mx-auto mb-4" />
+      <img src="/images/logo/logo-256.png" alt="Les Heures Flâneuses" width="72" height="72" style="height:72px;width:72px" class="mx-auto mb-4" />
       <h2 id="np-title" class="font-display text-2xl font-medium tracking-tight leading-snug" style="color:var(--ink)">Les meilleures expériences,<br>directement dans ta boîte mail</h2>
       <p class="text-sm mt-2" style="color:var(--ink-soft)">Un mail dès qu'un nouvel article est publié. Pas de spam, désinscription en un clic.</p>
       <form id="np-form" class="flex flex-col gap-3 mt-5" onsubmit="handleNewsletterPopup(event)">
@@ -136,7 +136,7 @@
           style="background:var(--paper);border:1px solid var(--line);color:var(--ink)" />
         <button type="submit" id="np-btn"
           class="w-full px-6 py-3 rounded-sm font-semibold text-sm transition-colors"
-          style="background:var(--ink);color:var(--paper)">S'abonner</button>
+          style="background:var(--accent);color:#FFFDF9">S'abonner</button>
       </form>
       <p id="np-success" class="hidden text-sm font-medium mt-3" style="color:var(--pine)">✓ Inscription confirmée !</p>
       <p id="np-error"   class="hidden text-sm mt-3" style="color:var(--accent)">Cette adresse est déjà inscrite ou une erreur est survenue.</p>
@@ -149,7 +149,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 nc-top">
       <span id="nav-clock" class="nav-clock nc-clock" title="Le site suit votre heure"><span class="nav-time">--:--</span><span class="nav-band"></span></span>
       <a href="/" class="nc-logo" aria-label="Les Heures Flâneuses — Accueil">
-        <img src="/favicon.svg" alt="" class="nc-logo-img rounded-sm" />
+        <img src="/images/logo/logo-256.png" alt="" width="64" height="64" class="nc-logo-img" />
         <span class="nc-wordmark font-display">Les Heures <em>Flâneuses</em></span>
       </a>
       <a href="#newsletter" class="nc-sub hidden md:inline-flex">S'abonner</a>
@@ -224,37 +224,40 @@
   </main>
 
   <!-- FOOTER -->
-  <footer style="background:#1B1815; color:#B8AA98">
+  <footer style="background:#1D1411; color:#C2AB9C">
 
-    <section id="newsletter" class="max-w-7xl mx-auto px-4 sm:px-6 py-24" style="border-bottom:1px solid rgba(239,231,216,.1)">
+    <section id="newsletter" class="max-w-7xl mx-auto px-4 sm:px-6 py-24" style="border-bottom:1px solid rgba(246,234,223,.1)">
       <div class="max-w-xl mx-auto text-center space-y-5">
-        <h2 class="font-display italic text-3xl md:text-4xl font-medium leading-snug" style="color:#EFE3D3">Les meilleures expériences,<br>sans passer des heures à chercher</h2>
+        <h2 class="font-display italic text-3xl md:text-4xl font-medium leading-snug" style="color:#F6EADF">Les meilleures expériences,<br>sans passer des heures à chercher</h2>
         <p class="text-base">Reçois un mail dès qu'un nouvel article est publié. Pas de spam, désinscription en un clic.</p>
         <form id="newsletter-form" class="flex flex-col sm:flex-row gap-3 mt-4" onsubmit="handleNewsletter(event)">
           <label for="email-input" class="sr-only">Adresse e-mail</label>
           <input id="email-input" type="email" placeholder="ton@email.com" required
             class="flex-1 rounded-sm px-5 py-3 text-sm focus:outline-none transition"
-            style="background:#241F1A; border:1px solid rgba(239,231,216,.15); color:#EFE3D3" />
+            style="background:#281C17; border:1px solid rgba(246,234,223,.15); color:#F6EADF" />
           <button type="submit" id="newsletter-btn"
             class="px-6 py-3 rounded-sm font-semibold text-sm transition-colors whitespace-nowrap"
-            style="background:var(--accent); color:#1B1815">S'abonner</button>
+            style="background:var(--accent); color:#FFFDF9">S'abonner</button>
         </form>
         <p id="newsletter-success" class="hidden text-sm font-medium" style="color:#8FAE9E">✓ Inscription confirmée !</p>
-        <p id="newsletter-error"   class="hidden text-sm" style="color:#D97A54">Cette adresse est déjà inscrite ou une erreur est survenue.</p>
+        <p id="newsletter-error"   class="hidden text-sm" style="color:#F0714A">Cette adresse est déjà inscrite ou une erreur est survenue.</p>
         <p class="text-xs opacity-70">En t'abonnant, tu acceptes notre politique de confidentialité.</p>
       </div>
     </section>
 
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 md:gap-16 items-start" style="border-bottom:1px solid rgba(239,231,216,.1)">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 md:gap-16 items-start" style="border-bottom:1px solid rgba(246,234,223,.1)">
       <div class="max-w-sm">
-        <a href="/" class="font-display inline-flex flex-col leading-none" style="color:#EFE3D3" aria-label="Les Heures Flâneuses, accueil">
-          <span class="text-base">Les Heures</span>
-          <span class="text-3xl italic" style="color:var(--accent)">Flâneuses</span>
+        <a href="/" class="font-display inline-flex items-center gap-4 leading-none" style="color:#F6EADF" aria-label="Les Heures Flâneuses, accueil">
+          <img src="/images/logo/logo-256.png" alt="" width="72" height="72" style="height:72px;width:72px" />
+          <span class="inline-flex flex-col leading-none">
+            <span class="text-base">Les Heures</span>
+            <span class="text-3xl italic" style="color:#F58B2B">Flâneuses</span>
+          </span>
         </a>
         <p class="mt-5 text-sm leading-relaxed">Un blog indépendant, écrit par Marius Masoch. Des tests et des avis sur le lifestyle et la tech, après usage réel.</p>
       </div>
       <nav aria-label="Pied de page" class="md:justify-self-end md:text-right">
-        <ul class="font-display text-xl md:text-2xl flex flex-wrap md:justify-end gap-x-6 gap-y-2" style="color:#EFE3D3">
+        <ul class="font-display text-xl md:text-2xl flex flex-wrap md:justify-end gap-x-6 gap-y-2" style="color:#F6EADF">
           <li><a href="categorie.html?cat=lifestyle" class="ink-link">Lifestyle</a></li>
           <li><a href="categorie.html?cat=sport" class="ink-link">Tech</a></li>
         </ul>
@@ -303,7 +306,7 @@
 
     return `<article class="article-card reveal grid md:grid-cols-12 gap-0 items-center mb-16 md:mb-24">
       <div class="md:col-span-8 md:col-start-1 md:row-start-1 h-72 md:h-[28rem] overflow-hidden" style="border:1px solid var(--line)">${img}</div>
-      <div class="md:col-span-5 md:col-start-8 md:row-start-1 md:-ml-20 p-6 md:p-8 relative z-10" style="background:var(--paper-raised); border:1px solid var(--line); box-shadow:0 18px 40px rgba(36,32,27,.12)">
+      <div class="md:col-span-5 md:col-start-8 md:row-start-1 md:-ml-20 p-6 md:p-8 relative z-10" style="background:var(--paper-raised); border:1px solid var(--line); box-shadow:0 18px 40px rgba(43,27,21,.12)">
         <div class="flex items-center gap-3 mb-4">
           ${catTag(a)}
           <span class="text-xs" style="color:var(--ink-soft)">${[date, mins].filter(Boolean).join(' · ')}</span>

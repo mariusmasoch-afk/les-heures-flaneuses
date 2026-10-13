@@ -2,10 +2,10 @@
 <html lang="fr" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261013" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=20261013" />
+  <link rel="shortcut icon" href="/favicon.ico?v=20261013" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261013" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Les Heures Flâneuses — Retrouvez tous nos articles par rubrique : lifestyle et tech." />
   <link rel="canonical" href="https://lesheuresflaneuses.fr/categorie.html" />
@@ -17,9 +17,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400..700;1,14..32,400..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/theme.css?v=20261010" />
+  <link rel="stylesheet" href="/theme.css?v=20261013" />
   <script src="/time-ambience.js"></script>
-  <script src="/nav.js?v=20261010" defer></script>
+  <script src="/nav.js?v=20261013" defer></script>
   <style>
     .article-card img { transition: transform .6s cubic-bezier(.22,1,.36,1); }
     .article-card:hover img { transform: scale(1.04); }
@@ -49,7 +49,7 @@
   <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}</script>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-39RE8T7LE5"></script>
   <script>gtag('js', new Date()); gtag('config', 'G-39RE8T7LE5');</script>
-  <script src="/subcats.js?v=20261010"></script>
+  <script src="/subcats.js?v=20261013"></script>
   <script>
     (function() {
       const cat = new URLSearchParams(location.search).get('cat') || '';
@@ -86,7 +86,7 @@
     <div class="max-w-6xl mx-auto px-4 sm:px-6 nc-top">
       <span id="nav-clock" class="nav-clock nc-clock" title="Le site suit votre heure"><span class="nav-time">--:--</span><span class="nav-band"></span></span>
       <a href="/" class="nc-logo" aria-label="Les Heures Flâneuses — Accueil">
-        <img src="/favicon.svg" alt="" class="nc-logo-img rounded-sm" />
+        <img src="/images/logo/logo-256.png" alt="" width="64" height="64" class="nc-logo-img" />
         <span class="nc-wordmark font-display">Les Heures <em>Flâneuses</em></span>
       </a>
       <a href="/#newsletter" class="nc-sub hidden md:inline-flex">S'abonner</a>
@@ -131,17 +131,20 @@
   </main>
 
   <!-- FOOTER -->
-  <footer style="background:#1B1815; color:#B8AA98" class="mt-16">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 md:gap-16 items-start" style="border-bottom:1px solid rgba(239,231,216,.1)">
+  <footer style="background:#1D1411; color:#C2AB9C" class="mt-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 grid md:grid-cols-2 gap-10 md:gap-16 items-start" style="border-bottom:1px solid rgba(246,234,223,.1)">
       <div class="max-w-sm">
-        <a href="/" class="font-display inline-flex flex-col leading-none" style="color:#EFE3D3" aria-label="Les Heures Flâneuses, accueil">
-          <span class="text-base">Les Heures</span>
-          <span class="text-3xl italic" style="color:var(--accent)">Flâneuses</span>
+        <a href="/" class="font-display inline-flex items-center gap-4 leading-none" style="color:#F6EADF" aria-label="Les Heures Flâneuses, accueil">
+          <img src="/images/logo/logo-256.png" alt="" width="72" height="72" style="height:72px;width:72px" />
+          <span class="inline-flex flex-col leading-none">
+            <span class="text-base">Les Heures</span>
+            <span class="text-3xl italic" style="color:#F58B2B">Flâneuses</span>
+          </span>
         </a>
         <p class="mt-5 text-sm leading-relaxed">Un blog indépendant, écrit par Marius Masoch. Des tests et des avis sur le lifestyle et la tech, après usage réel.</p>
       </div>
       <nav aria-label="Pied de page" class="md:justify-self-end md:text-right">
-        <ul class="font-display text-xl md:text-2xl flex flex-wrap md:justify-end gap-x-6 gap-y-2" style="color:#EFE3D3">
+        <ul class="font-display text-xl md:text-2xl flex flex-wrap md:justify-end gap-x-6 gap-y-2" style="color:#F6EADF">
           <li><a href="categorie.html?cat=lifestyle" class="ink-link">Lifestyle</a></li>
           <li><a href="categorie.html?cat=sport" class="ink-link">Tech</a></li>
         </ul>
@@ -166,11 +169,11 @@
     const db = createClient(SUPABASE_URL, SUPABASE_ANON);
 
     const CAT_META = {
-      'mode':       { label:'Mode',                desc:'Pièces incontournables, tendances et adresses mode sélectionnées avec soin.',  text:'#A8462F', bg:'#F3DFCB', emoji:'✨' },
-      'sport':      { label:'Tech',   desc:'Gadgets, objets connectés et innovations testés au quotidien.',         text:'#2B4E45', bg:'#DCE6DE', emoji:'💻' },
-      'hotels':     { label:'Hôtels & Voyages',    desc:'Nos coups de cœur hôtels et adresses de voyage pour des escapades mémorables.', text:'#8A6A2F', bg:'#EEE1BE', emoji:'🏨' },
+      'mode':       { label:'Mode',                desc:'Pièces incontournables, tendances et adresses mode sélectionnées avec soin.',  text:'#A82E12', bg:'#FBDDD2', emoji:'✨' },
+      'sport':      { label:'Tech',   desc:'Gadgets, objets connectés et innovations testés au quotidien.',         text:'#8F4308', bg:'#FDE7CC', emoji:'💻' },
+      'hotels':     { label:'Hôtels & Voyages',    desc:'Nos coups de cœur hôtels et adresses de voyage pour des escapades mémorables.', text:'#8F4308', bg:'#FDE7CC', emoji:'🏨' },
     };
-    CAT_META['lifestyle'] = { label:'Lifestyle', desc:(window.SUBCATS && window.SUBCATS.lifestyle ? window.SUBCATS.lifestyle.desc : ''), text:'#A8462F', bg:'#F3DFCB', emoji:'✨' };
+    CAT_META['lifestyle'] = { label:'Lifestyle', desc:(window.SUBCATS && window.SUBCATS.lifestyle ? window.SUBCATS.lifestyle.desc : ''), text:'#A82E12', bg:'#FBDDD2', emoji:'✨' };
     const CAT_STYLES = CAT_META;
 
     const params = new URLSearchParams(window.location.search);

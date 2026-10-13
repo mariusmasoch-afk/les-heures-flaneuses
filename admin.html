@@ -2,10 +2,10 @@
 <html lang="fr" class="h-full">
 <head>
   <meta charset="UTF-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg?v=20261013" />
+  <link rel="icon" type="image/png" sizes="512x512" href="/favicon.png?v=20261013" />
   <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" href="/favicon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20261013" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Les Heures Flâneuses — Administration</title>
 
@@ -26,12 +26,12 @@
           },
           colors: {
             brand: {
-              50:  '#fffbeb',
-              100: '#fef3c7',
-              400: '#fbbf24',
-              500: '#f59e0b',
-              600: '#d97706',
-              700: '#b45309',
+              50:  '#FDF3EE',
+              100: '#FBDDD2',
+              400: '#F58B2B',
+              500: '#D13C1B',
+              600: '#A82E12',
+              700: '#A82E12',
             },
           },
         },
@@ -92,7 +92,7 @@
   <!-- ====== GATE D'AUTHENTIFICATION (vraie auth Supabase) ====== -->
   <div id="auth-gate" style="position:fixed;inset:0;z-index:99999;background:#f9fafb;display:flex;align-items:center;justify-content:center;">
     <div style="width:100%;max-width:380px;padding:2rem;background:#fff;border-radius:1.25rem;box-shadow:0 4px 32px rgba(0,0,0,0.08);border:1px solid #f3f4f6;margin:1rem;">
-      <p style="font-size:1.25rem;font-weight:700;color:#111827;margin:0 0 4px;">Les Heures <span style="color:#f59e0b;">Flâneuses</span></p>
+      <p style="font-size:1.25rem;font-weight:700;color:#111827;margin:0 0 4px;">Les Heures <span style="color:#D13C1B;">Flâneuses</span></p>
       <p style="font-size:.8rem;color:#9ca3af;margin:0 0 1.5rem;">Administration — accès restreint</p>
       <div id="auth-error" style="display:none;background:#fef2f2;color:#ef4444;font-size:.8rem;padding:.6rem .9rem;border-radius:.6rem;margin-bottom:1rem;">Email ou mot de passe incorrect.</div>
       <input id="auth-email" type="email" placeholder="Email" autocomplete="username"
@@ -258,8 +258,8 @@
           </div>
         </div>
         <div class="bg-white rounded-2xl border border-gray-100 shadow-sm p-6 flex items-center gap-4">
-          <div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center shrink-0">
-            <svg class="w-5 h-5 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+          <div class="w-10 h-10 rounded-xl bg-brand-100 flex items-center justify-center shrink-0">
+            <svg class="w-5 h-5 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
           </div>
           <div>
             <p class="text-xs text-gray-400 font-medium uppercase tracking-wide">Brouillons</p>
@@ -416,7 +416,7 @@
             <div class="w-px h-5 bg-gray-200 mx-1"></div>
 
             <!-- Note produit -->
-            <button class="toolbar-btn text-amber-500" title="Insérer un bloc notation produit" onclick="insertRatingBlock()">
+            <button class="toolbar-btn text-brand-500" title="Insérer un bloc notation produit" onclick="insertRatingBlock()">
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
             </button>
 
@@ -436,7 +436,7 @@
             </button>
 
             <!-- Encadré warning -->
-            <button class="toolbar-btn text-amber-500" title="Insérer un encadré attention" onclick="insertCallout('warning')">
+            <button class="toolbar-btn text-brand-500" title="Insérer un encadré attention" onclick="insertCallout('warning')">
               <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/></svg>
             </button>
 
@@ -529,14 +529,14 @@
               </div>
 
               <div class="template-card" onclick="selectTemplate(this, 'product')" title="Test produit avec notation">
-                <svg class="w-6 h-6 text-amber-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <svg class="w-6 h-6 text-brand-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
                 </svg>
                 <span class="text-xs text-gray-600 leading-tight">Test produit</span>
               </div>
 
               <div class="template-card" onclick="selectTemplate(this, 'hotel')" title="Review hôtel / activité">
-                <svg class="w-6 h-6 text-amber-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                <svg class="w-6 h-6 text-brand-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/>
                 </svg>
                 <span class="text-xs text-gray-600 leading-tight">Hôtel / Lieu</span>
@@ -944,7 +944,7 @@
           <p class="text-sm font-medium text-gray-800 truncate">${a.titre}</p>
           <p class="text-xs text-gray-400">${a.categorie || '—'} · ${new Date(a.date_creation).toLocaleDateString('fr-FR')}</p>
         </div>
-        <span class="ml-4 shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold ${a.statut === 'publié' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+        <span class="ml-4 shrink-0 px-2 py-0.5 rounded-full text-xs font-semibold ${a.statut === 'publié' ? 'bg-emerald-100 text-emerald-700' : 'bg-brand-100 text-brand-600'}">
           ${a.statut}
         </span>
       </div>`).join('');
@@ -967,11 +967,11 @@
       return;
     }
     tbody.innerHTML = data.map(a => `
-      <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors ${a.is_carousel ? 'bg-amber-50' : ''}">
+      <tr class="border-b border-gray-50 hover:bg-gray-50 transition-colors ${a.is_carousel ? 'bg-brand-50' : ''}">
         <td class="px-4 py-3 text-center">
           <button onclick="toggleCarousel('${a.id}', ${a.is_carousel})"
             title="${a.is_carousel ? 'Retirer du carrousel' : 'Ajouter au carrousel'}"
-            class="text-xl leading-none transition-transform hover:scale-125 ${a.is_carousel ? 'text-amber-400' : 'text-gray-200 hover:text-amber-300'}">
+            class="text-xl leading-none transition-transform hover:scale-125 ${a.is_carousel ? 'text-brand-400' : 'text-gray-200 hover:text-brand-400'}">
             ★
           </button>
         </td>
@@ -979,7 +979,7 @@
         <td class="px-4 py-3 text-xs text-gray-500 hidden sm:table-cell">${a.categorie || '—'}</td>
         <td class="px-4 py-3 text-xs text-gray-400 hidden md:table-cell">${new Date(a.date_creation).toLocaleDateString('fr-FR')}</td>
         <td class="px-4 py-3">
-          <span class="px-2 py-0.5 rounded-full text-xs font-semibold ${a.statut === 'publié' ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700'}">
+          <span class="px-2 py-0.5 rounded-full text-xs font-semibold ${a.statut === 'publié' ? 'bg-emerald-100 text-emerald-700' : 'bg-brand-100 text-brand-600'}">
             ${a.statut}
           </span>
         </td>
@@ -1141,7 +1141,7 @@
   function insertCallout(type) {
     const styles = {
       info:    { bg: 'bg-sky-50',    border: 'border-sky-200',   text: 'text-sky-800',   icon: 'ℹ️', label: 'À noter' },
-      warning: { bg: 'bg-amber-50',  border: 'border-amber-200', text: 'text-amber-800', icon: '⚠️', label: 'Attention' },
+      warning: { bg: 'bg-brand-50',  border: 'border-brand-100', text: 'text-brand-700', icon: '⚠️', label: 'Attention' },
     };
     const s = styles[type];
     const html = `
@@ -1159,10 +1159,10 @@
 
   function insertRatingBlock() {
     const html = `
-      <div contenteditable="false" class="my-4 p-4 rounded-xl border border-amber-200 bg-amber-50 flex items-center gap-4 select-none">
-        <div class="text-3xl font-bold text-amber-500">9.2</div>
+      <div contenteditable="false" class="my-4 p-4 rounded-xl border border-brand-100 bg-brand-50 flex items-center gap-4 select-none">
+        <div class="text-3xl font-bold text-brand-500">9.2</div>
         <div>
-          <div class="flex gap-0.5 text-amber-400 text-lg">★★★★★</div>
+          <div class="flex gap-0.5 text-brand-400 text-lg">★★★★★</div>
           <div class="text-xs text-gray-500 mt-0.5">Note Les Heures Flâneuses</div>
         </div>
         <div class="ml-auto text-xs text-gray-400 italic">Bloc notation produit</div>
@@ -1174,9 +1174,9 @@
     const html = `
       <div contenteditable="false" class="verdict-block my-4 select-none" style="border:1px solid #e5e7eb;border-radius:.75rem;background:#f9fafb;overflow:hidden;">
         <div style="padding:1rem 1.25rem;border-bottom:1px solid #e5e7eb;display:flex;align-items:center;gap:1rem;">
-          <div style="font-size:2.5rem;font-weight:700;color:#f59e0b;line-height:1;">8.5</div>
+          <div style="font-size:2.5rem;font-weight:700;color:#D13C1B;line-height:1;">8.5</div>
           <div>
-            <div style="color:#f59e0b;font-size:1.1rem;letter-spacing:.05em;">★★★★☆</div>
+            <div style="color:#D13C1B;font-size:1.1rem;letter-spacing:.05em;">★★★★☆</div>
             <div style="font-size:.75rem;color:#9ca3af;margin-top:.15rem;">Note Les Heures Flâneuses</div>
           </div>
           <div style="margin-left:auto;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:#9ca3af;">Verdict rapide</div>
@@ -1420,7 +1420,7 @@
   let saveTimer;
   function updateSaveStatus() {
     const el = document.getElementById('save-status');
-    el.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span> Modifications non sauvegardées';
+    el.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-brand-400"></span> Modifications non sauvegardées';
     clearTimeout(saveTimer);
     saveTimer = setTimeout(() => {
       el.innerHTML = '<span class="w-1.5 h-1.5 rounded-full bg-gray-300"></span> Non sauvegardé';
@@ -1634,7 +1634,7 @@
     const len = document.getElementById('meta-desc').value.length;
     const el = document.getElementById('meta-count');
     el.textContent = `(${len}/160)`;
-    el.className = len > 160 ? 'text-red-400' : len > 130 ? 'text-amber-400' : 'text-gray-300';
+    el.className = len > 160 ? 'text-red-400' : len > 130 ? 'text-brand-400' : 'text-gray-300';
   }
 
   // --- Toast ---
@@ -1896,7 +1896,7 @@
         <tr>
           <td style="background:#111827;padding:28px 40px;text-align:center;">
             <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.45);">La lettre de</p>
-            <p style="margin:6px 0 0;font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-.01em;">Les Heures <span style="color:#f59e0b;">Flâneuses</span></p>
+            <p style="margin:6px 0 0;font-family:Inter,Arial,sans-serif;font-size:22px;font-weight:700;color:#fff;letter-spacing:-.01em;">Les Heures <span style="color:#D13C1B;">Flâneuses</span></p>
           </td>
         </tr>
 
@@ -1911,7 +1911,7 @@
         <!-- CORPS -->
         <tr>
           <td style="padding:40px 40px 32px;">
-            <p style="margin:0 0 20px;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#f59e0b;">Nouvel article</p>
+            <p style="margin:0 0 20px;font-family:Inter,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#D13C1B;">Nouvel article</p>
             <h1 style="margin:0 0 20px;font-family:Georgia,'Times New Roman',serif;font-size:26px;font-weight:700;line-height:1.35;color:#111827;">${titre}</h1>
             <p style="margin:0 0 32px;font-family:Inter,Arial,sans-serif;font-size:15px;line-height:1.75;color:#6b7280;">${extrait || ''}</p>
             <a href="${articleUrl}" style="display:inline-block;background:#111827;color:#ffffff;font-family:Inter,Arial,sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;text-decoration:none;padding:14px 28px;border-radius:4px;">Lire l'article →</a>
@@ -1930,7 +1930,7 @@
           <td style="padding:24px 40px 32px;text-align:center;">
             <p style="margin:0 0 8px;font-family:Inter,Arial,sans-serif;font-size:12px;color:#9ca3af;">Tu reçois cet email car tu es abonné aux <strong style="color:#6b7280;">Heures Flâneuses</strong>.</p>
             <p style="margin:0;font-family:Inter,Arial,sans-serif;font-size:12px;color:#9ca3af;">
-              <a href="https://lesheuresflaneuses.fr" style="color:#d97706;text-decoration:none;">lesheuresflaneuses.fr</a>
+              <a href="https://lesheuresflaneuses.fr" style="color:#A82E12;text-decoration:none;">lesheuresflaneuses.fr</a>
               &nbsp;·&nbsp;
               <a href="https://lesheuresflaneuses.fr/unsubscribe.html?email=${encodeURIComponent(email)}" style="color:#9ca3af;text-decoration:underline;">Se désabonner</a>
             </p>
