@@ -3,7 +3,8 @@ Dès que tu fais un nouveau brouillon de démarchage, tu l'intègres au excel de
 Dès que tu fais une action sur une collaboration, tu fais une mise à jour du excel de suivi 
 ## Règles pour les mails de démarchage
 - Expéditeur : toujours contact@lesheuresflaneuses.fr (adresse par défaut dans Gmail depuis le 29/09 ; vérifier que le brouillon affiche bien cet expéditeur).
-- Corps en texte brut uniquement (paramètre body, pas de htmlBody) : l'outil Gmail transforme tout lien ET tout nom de domaine écrit en toutes lettres en redirection google.com/url qui expire. Donc aucun lien, aucune URL, aucun nom de domaine dans le mail. Citer les articles par leur titre (« notre avis sur la Baltic Hermétique Tourer, à lire sur notre site »).
+- Création des brouillons : TOUJOURS via le script `scripts/gmail_drafts.py` (API Gmail officielle), jamais via le connecteur Gmail (create_draft/update_draft), qui réécrit les liens en redirections google.com/url expirant sous 24 h. Procédure : écrire `outreach/drafts.json` (liste de {to, subject, body}), puis `python3 scripts/gmail_drafts.py outreach/drafts.json --replace`. Dans le body, `[[texte|URL]]` crée un lien ; la ligne de signature « Les Heures Flâneuses » est liée automatiquement au site. Jeton OAuth déjà en place dans `outreach/` (ignoré par git) ; si l'autorisation a expiré, le script rouvre la fenêtre Google. Le connecteur Gmail reste utilisable pour LIRE les mails/brouillons.
+- Liens obligatoires dans chaque mail : « Baltic Hermétique Tourer » (article) pointe vers https://lesheuresflaneuses.fr/article.html?slug=avis-baltic-hermetique-tourer-beige-notre-test-honnete ; la signature « Les Heures Flâneuses » pointe vers https://lesheuresflaneuses.fr. Pas d'autre lien ni URL affichée en clair (liens uniquement sous forme de texte cliquable).
 - Finir par « Bien à vous, » (ou « Best regards, » en anglais), puis la signature texte :
   Marius Masoch - Fondateur
   Les Heures Flâneuses

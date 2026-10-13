@@ -3,14 +3,13 @@
 
 Le connecteur Gmail de Claude réécrit les liens en redirections google.com/url qui expirent ; l'API Gmail,
 elle, stocke le HTML tel quel. Usage :
-    python3 scripts/gmail_drafts.py outreach/drafts.json            # crée les brouillons
-    python3 scripts/gmail_drafts.py outreach/drafts.json --replace  # remplace les brouillons de même objet
+    python3 scripts/gmail_drafts.py outreach/drafts.json          # crée les brouillons
+    python3 scripts/gmail_drafts.py outreach/drafts.json --replace  # supprime avant les brouillons de même objet
 
-drafts.json : liste de {"to": "...", "subject": "...", "body": "texte, avec [[texte du lien|URL]] pour un lien"}
-La ligne de signature « Les Heures Flâneuses » est automatiquement liée au site.
-Première utilisation : placer le client OAuth « Application de bureau » dans outreach/client_secret.json
-(le navigateur s'ouvre une seule fois pour autoriser ; le jeton est gardé dans outreach/token.json).
-Ces deux fichiers sont ignorés par git.
+drafts.json : liste de {"to": "...", "subject": "...", "body": "texte avec [[Baltic Hermétique Tourer|URL]] pour un lien"}
+La signature « Les Heures Flâneuses » est automatiquement liée au site.
+Première utilisation : place le client OAuth « Application de bureau » dans outreach/client_secret.json
+(navigateur ouvert une seule fois pour autoriser, jeton gardé dans outreach/token.json). Ces deux fichiers sont ignorés par git.
 """
 import base64, html, json, re, sys
 from email.mime.multipart import MIMEMultipart
@@ -42,14 +41,8 @@ def service():
 
 def render(body):
     plain = LINK.sub(lambda m: f"{m[1]} ({m[2]})", body)
-    links = []
-
-    def stash(m):
-        links.append((m[1], m[2]))
-        return f"\x00{len(links) - 1}\x00"
-
-    h = html.escape(LINK.sub(stash, body))
-    h = re.sub("\x00(\\d+)\x00", lambda m: f'<a href="{html.escape(links[int(m[1])][1])}">{html.escape(links[int(m[1])][0])}</a>', h)
+    h = html.escape(LINK.sub("\x00\\1|\\2\x01", body))
+    h = re.sub("\x00(.+?)\\|(.+?)\x01", lambda m: f'<a href="{html.unescape(m[2])}">{m[1]}</a>', h)
     h = re.sub(r"(?m)^Les Heures Flâneuses$", f'<a href="{SITE}">Les Heures Flâneuses</a>', h)
     return plain, '<div dir="ltr">' + h.replace("\n", "<br>\n") + "</div>"
 
@@ -67,9 +60,13 @@ def main():
         plain, rich = render(item["body"])
         msg = MIMEMultipart("alternative")
         msg["To"], msg["From"], msg["Subject"] = item["to"], SENDER, item["subject"]
+        if item.get("cc"):  # optionnel : copie
+            msg["Cc"] = item["cc"]
         msg.attach(MIMEText(plain, "plain", "utf-8"))
         msg.attach(MIMEText(rich, "html", "utf-8"))
         raw = {"message": {"raw": base64.urlsafe_b64encode(msg.as_bytes()).decode()}}
+        if item.get("threadId"):  # optionnel : brouillon rattaché à un fil existant (l'objet doit rester « Re: … »)
+            raw["message"]["threadId"] = item["threadId"]
         if item["subject"] in existing:
             svc.users().drafts().update(userId="me", id=existing[item["subject"]], body=raw).execute()
             print("remplacé :", item["subject"])

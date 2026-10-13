@@ -138,8 +138,8 @@
   }
   function loadCounts() {
     var cached = null;
-    try { cached = JSON.parse(sessionStorage.getItem('lhf_subcounts2') || 'null'); } catch (e) {}
-    if (cached && Date.now() - cached.t < 600000) { applyCounts(cached.c); return; }
+    try { cached = JSON.parse(sessionStorage.getItem('lhf_subcounts3') || 'null'); } catch (e) {}
+    if (cached && Date.now() - cached.t < 120000) { applyCounts(cached.c); return; }
     fetch(SUPABASE_URL + '/rest/v1/articles?select=sous_categorie&statut=eq.publi%C3%A9', {
       headers: { apikey: SUPABASE_ANON, Authorization: 'Bearer ' + SUPABASE_ANON }
     }).then(function (r) { return r.json(); }).then(function (rows) {
