@@ -146,7 +146,7 @@
       if (!Array.isArray(rows)) return;
       var counts = {};
       rows.forEach(function (a) { if (a.sous_categorie) counts[a.sous_categorie] = (counts[a.sous_categorie] || 0) + 1; });
-      try { sessionStorage.setItem('lhf_subcounts2', JSON.stringify({ t: Date.now(), c: counts })); } catch (e) {}
+      try { sessionStorage.setItem('lhf_subcounts3', JSON.stringify({ t: Date.now(), c: counts })); } catch (e) {}
       applyCounts(counts);
     }).catch(function () {});
   }
