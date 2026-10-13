@@ -2,23 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://lesheuresflaneuses.fr/</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-13</lastmod>
   </url>
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle</loc>
-    <lastmod>2026-10-06</lastmod>
+    <lastmod>2026-10-13</lastmod>
   </url>
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-13</lastmod>
   </url>
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=accessoires</loc>
     <lastmod>2026-09-02</lastmod>
   </url>
   <url>
+    <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=hotels</loc>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=ia-outils</loc>
-    <lastmod>2026-09-21</lastmod>
+    <lastmod>2026-10-13</lastmod>
   </url>
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=lifestyle&amp;sub=loisirs</loc>
@@ -34,7 +38,22 @@
   </url>
   <url>
     <loc>https://lesheuresflaneuses.fr/categorie.html?cat=sport&amp;sub=veille-techno</loc>
-    <lastmod>2026-10-02</lastmod>
+    <lastmod>2026-10-13</lastmod>
+  </url>
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=mac-studio-m5-guide-avant-acheter</loc>
+    <lastmod>2026-10-13</lastmod>
+    <image:image><image:loc>https://lesheuresflaneuses.fr/images/mac-studio-m5/mac-studio-m5-cover.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-hotel-fabric-paris-4-etoiles</loc>
+    <lastmod>2026-10-13</lastmod>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1791875761517-v33hq33f3gr.jpg</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-plaud-notepin-enregistreur-ia</loc>
+    <lastmod>2026-10-13</lastmod>
+    <image:image><image:loc>https://yrgylnmhqcimwgmjponj.supabase.co/storage/v1/object/public/images/covers/1791874715394-ylklyqk752q.jpg</image:loc></image:image>
   </url>
   <url>
     <loc>https://lesheuresflaneuses.fr/article.html?slug=avis-fairphone-smartphone-reparable</loc>
