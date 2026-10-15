@@ -48,6 +48,10 @@
     .article-content img { border-radius:2px; margin:1.5rem 0; max-width:100%; }
     .article-content strong { font-weight:600; color:var(--ink); }
     /* Bloc Verdict rapide */
+    /* Mention légale : produit offert / prêté / contenu rémunéré */
+    .disclosure { margin:0 0 2rem; padding:1rem 1.25rem; border:1px solid var(--accent); border-left-width:4px; background:var(--paper-raised); border-radius:.25rem; }
+    .disclosure-label { margin:0 0 .25rem; font-size:.72rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--accent-deep); }
+    .disclosure-text { margin:0; font-size:.95rem; line-height:1.6; color:var(--ink); }
     .article-content .verdict-block { margin:1.5rem 0; border-radius:.75rem; border:1px solid var(--line); background:var(--paper-raised); overflow:hidden; }
     .article-content img { cursor:zoom-in; }
     .article-content a img { cursor:pointer; }
@@ -375,6 +379,16 @@
       return article;
     }
 
+    function disclosureHtml(a) {
+      const who = a.partenaire ? `<strong>${a.partenaire}</strong>` : 'la marque';
+      const t = {
+        offert:  { label:'Produit offert',      text:`${who} nous a offert ce produit pour réaliser ce test. Il s'agit d'une dotation : aucune rémunération n'a été versée en contrepartie, et cet avis reste libre et indépendant.` },
+        pret:    { label:'Produit prêté',       text:`${who} nous a prêté ce produit pour réaliser ce test. Aucune rémunération n'a été versée en contrepartie, et cet avis reste libre et indépendant.` },
+        remunere:{ label:'Contenu sponsorisé',  text:`Cet article a fait l'objet d'une rémunération de la part de ${who}. Notre avis reste notre opinion sincère.` },
+      }[a.type_partenariat];
+      return t ? `<aside class="disclosure" role="note" aria-label="Mention de partenariat"><p class="disclosure-label">${t.label}</p><p class="disclosure-text">${t.text}</p></aside>` : '';
+    }
+
     function render(a) {
       const style = window.cardTag(a);
       const date  = new Date(a.date_creation).toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
@@ -495,6 +509,9 @@
             <span>par <strong style="color:var(--ink)">${a.redacteurs.prenom} ${a.redacteurs.nom}</strong></span>
           </div>` : ''}
         </div>
+
+        <!-- Mention légale (produit offert / prêté / rémunéré) -->
+        ${disclosureHtml(a)}
 
         <!-- Extrait chapô -->
         ${a.extrait ? `<p class="font-display italic text-lg leading-relaxed mb-8 pb-8" style="color:var(--ink-soft); border-bottom:1px dashed var(--line)">${a.extrait}</p>` : ''}

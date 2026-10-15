@@ -37,4 +37,7 @@ Dès que tu fais une action sur une collaboration, tu fais une mise à jour du e
 
   Version EN : même structure, objet « [Brand] x Les Heures Flâneuses: a long-term test of the [product] », « product to review (complimentary unit) » à la place de « dotation », CTA « Would you be open to providing a [product] for this review? », « Best regards, ».
 
-
+## Obligation légale : mention des produits offerts
+- Tout article portant sur un produit offert, prêté ou rémunéré DOIT afficher la mention légale en haut de l'article (encadré « Produit offert / prêté / Contenu sponsorisé »). Elle est pilotée par les colonnes `type_partenariat` ('offert' | 'pret' | 'remunere', NULL = achat personnel) et `partenaire` (nom de la marque) de la table `articles` ; le sélecteur « Partenariat » de l'admin les renseigne.
+- Quand je crée ou modifie un article (SQL ou admin), je renseigne toujours ces deux champs si la marque a fourni le produit, et je mentionne aussi la dotation dans le texte (ex. « offerte par [marque] pour ce test »).
+- Quand une dotation est confirmée dans l'Excel (Collaboration en cours), je le rappelle pour l'article correspondant. Ne jamais publier un article de produit offert sans cette mention.

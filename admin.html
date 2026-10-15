@@ -604,6 +604,15 @@
               <option value="">Aucune</option>
             </select>
             <p class="text-xs text-gray-400 mt-1.5">Elle alimente le menu du site et les filtres de la page rubrique.</p>
+            <h3 class="text-xs font-semibold uppercase tracking-widest text-gray-400 mt-4 mb-2">Partenariat (mention légale)</h3>
+            <select id="partnership-select" class="w-full text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-400 transition">
+              <option value="">Aucun (achat personnel)</option>
+              <option value="offert">Produit offert</option>
+              <option value="pret">Produit prêté</option>
+              <option value="remunere">Contenu rémunéré</option>
+            </select>
+            <input id="partner-input" type="text" placeholder="Nom de la marque (ex : air up)" class="mt-2 w-full text-sm border border-gray-200 rounded-lg px-3 py-2 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-brand-400 transition" />
+            <p class="text-xs text-gray-400 mt-1.5">Obligatoire dès que la marque a offert ou prêté le produit : un encadré « Produit offert » s'affiche en haut de l'article.</p>
           </div>
 
           <!-- Tags -->
@@ -1032,6 +1041,8 @@
     const sel = document.getElementById('cat-select');
     if (sel && a.categorie) sel.value = a.categorie;
     fillSubSelect(a.categorie || '', a.sous_categorie || '');
+    document.getElementById('partnership-select').value = a.type_partenariat || '';
+    document.getElementById('partner-input').value = a.partenaire || '';
 
     // Lien d'achat
     document.getElementById('buy-link-input').value = a.lien_achat || '';
@@ -1670,6 +1681,8 @@
       slug:          document.getElementById('slug-input').value.trim(),
       categorie:     document.getElementById('cat-select').value,
       sous_categorie: document.getElementById('sub-select').value || null,
+      type_partenariat: document.getElementById('partnership-select').value || null,
+      partenaire:    document.getElementById('partner-input').value.trim() || null,
       tags:          [...tags],
       image_url,
       statut,
@@ -1782,6 +1795,8 @@
       document.getElementById('meta-desc').value         = '';
       document.getElementById('cat-select').value        = '';
       fillSubSelect('', '');
+      document.getElementById('partnership-select').value = '';
+      document.getElementById('partner-input').value = '';
       document.getElementById('redacteur-select').value  = '';
       removeCover();
       tags.length = 0;
